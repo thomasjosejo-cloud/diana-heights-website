@@ -16,15 +16,15 @@ export default function ContactPage() {
     };
 
     return (
-        <main style={{ backgroundColor: 'var(--ivory)', paddingTop: '90px' }}>
+        <main style={{ backgroundColor: 'var(--surface-light)', paddingTop: '90px' }}>
             {/* Contact Hero */}
-            <section style={{ backgroundColor: 'var(--ink)', color: '#ffffff', padding: '6rem 0 4rem', textAlign: 'center' }}>
+            <section style={{ backgroundColor: 'var(--sapphire-950)', color: '#ffffff', padding: '5.5rem 0 3.5rem', textAlign: 'center' }}>
                 <div className="container">
                     <span className="eyebrow eyebrow-dark">24-HOUR CONCIERGE & DESK</span>
-                    <h1 className="font-serif" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1rem', color: '#ffffff' }}>
+                    <h1 className="font-serif" style={{ fontSize: 'clamp(2.3rem, 4.5vw, 3.8rem)', marginBottom: '0.85rem', color: '#ffffff' }}>
                         Contact Us
                     </h1>
-                    <p style={{ color: 'var(--stone-300)', maxWidth: '650px', margin: '0 auto', fontSize: '1.05rem', fontWeight: '300' }}>
+                    <p style={{ color: '#CBD5E1', maxWidth: '620px', margin: '0 auto', fontSize: '1rem', fontWeight: '300' }}>
                         Located on NH-47 at Athani Junction, just ten minutes from Cochin International Airport. Our front desk is staffed around the clock.
                     </p>
                 </div>
@@ -33,67 +33,67 @@ export default function ContactPage() {
             {/* Main Contact Grid */}
             <section style={{ padding: 'var(--section-y) 0' }}>
                 <div className="container">
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4.5rem', alignItems: 'start' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start' }}>
                         {/* Left: Contact Info & Channels */}
                         <div>
                             <span className="eyebrow">HOTEL LOCATION & HOTLINES</span>
-                            <h2 className="font-serif" style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: 'var(--ink)' }}>
+                            <h2 className="font-serif" style={{ fontSize: '2.3rem', marginBottom: '1.25rem', color: 'var(--sapphire-950)' }}>
                                 Reach out directly to our team.
                             </h2>
-                            <p style={{ color: 'var(--stone-700)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '2.5rem' }}>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '2.25rem' }}>
                                 For immediate room bookings, flight layovers, banquet inquiries for Runway Hall, or Diana Ira Spa appointments, contact us via phone or WhatsApp.
                             </p>
 
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
                                 {/* Address */}
-                                <div style={{ display: 'flex', gap: '1.25rem' }}>
-                                    <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--brass)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                <div style={{ display: 'flex', gap: '1.15rem' }}>
+                                    <div style={{ width: '44px', height: '44px', borderRadius: '50%', backgroundColor: 'var(--gold)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                                         <i className="fa-solid fa-location-dot"></i>
                                     </div>
                                     <div>
-                                        <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--stone-500)', marginBottom: '0.25rem' }}>
+                                        <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>
                                             Physical Address
                                         </div>
-                                        <div style={{ fontSize: '1.1rem', fontWeight: '600', color: 'var(--ink)', lineHeight: '1.5' }}>
+                                        <div style={{ fontSize: '1.05rem', fontWeight: '600', color: 'var(--sapphire-950)', lineHeight: '1.45' }}>
                                             {HOTEL_ADDRESS}
                                         </div>
-                                        <div style={{ fontSize: '0.85rem', color: 'var(--brass)', marginTop: '0.25rem' }}>
+                                        <div style={{ fontSize: '0.8rem', color: 'var(--gold)', marginTop: '0.2rem' }}>
                                             5.5 km from Cochin International Airport (CIAL)
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Phone */}
-                                <div style={{ display: 'flex', gap: '1.25rem' }}>
-                                    <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--brass)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                <div style={{ display: 'flex', gap: '1.15rem' }}>
+                                    <div style={{ width: '44px', height: '44px', borderRadius: '50%', backgroundColor: 'var(--gold)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                                         <i className="fa-solid fa-phone"></i>
                                     </div>
                                     <div>
-                                        <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--stone-500)', marginBottom: '0.25rem' }}>
+                                        <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>
                                             24-Hour Hotlines
                                         </div>
-                                        <a href="tel:+919526799179" style={{ fontSize: '1.25rem', fontWeight: '700', color: 'var(--ink)', display: 'block' }}>
+                                        <a href="tel:+919526799179" style={{ fontSize: '1.2rem', fontWeight: '700', color: 'var(--sapphire-950)', display: 'block' }}>
                                             {HOTEL_PHONE}
                                         </a>
-                                        <div style={{ fontSize: '0.85rem', color: 'var(--stone-700)', marginTop: '0.25rem' }}>
+                                        <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', marginTop: '0.2rem' }}>
                                             Landline: 0484 261 0366
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Email */}
-                                <div style={{ display: 'flex', gap: '1.25rem' }}>
-                                    <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--brass)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                <div style={{ display: 'flex', gap: '1.15rem' }}>
+                                    <div style={{ width: '44px', height: '44px', borderRadius: '50%', backgroundColor: 'var(--gold)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                                         <i className="fa-solid fa-envelope"></i>
                                     </div>
                                     <div>
-                                        <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--stone-500)', marginBottom: '0.25rem' }}>
+                                        <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>
                                             Official Email Inquiries
                                         </div>
-                                        <a href={`mailto:${HOTEL_EMAIL}`} style={{ fontSize: '1.1rem', fontWeight: '600', color: 'var(--ink)', display: 'block' }}>
+                                        <a href={`mailto:${HOTEL_EMAIL}`} style={{ fontSize: '1.05rem', fontWeight: '600', color: 'var(--sapphire-950)', display: 'block' }}>
                                             {HOTEL_EMAIL}
                                         </a>
-                                        <a href="mailto:reservations@dianaheights.com" style={{ fontSize: '0.9rem', color: 'var(--stone-700)' }}>
+                                        <a href="mailto:reservations@dianaheights.com" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
                                             reservations@dianaheights.com
                                         </a>
                                     </div>
@@ -103,15 +103,15 @@ export default function ContactPage() {
 
                         {/* Right: Instant WhatsApp Message Form */}
                         <div>
-                            <div style={{ backgroundColor: 'var(--paper)', border: '1px solid var(--line)', borderRadius: 'var(--radius-lg)', padding: '3rem', boxShadow: 'var(--shadow-md)' }}>
+                            <div style={{ backgroundColor: 'var(--surface-pure)', border: '1px solid var(--line-light)', borderRadius: 'var(--radius-lg)', padding: '2.5rem', boxShadow: 'var(--shadow-sm)' }}>
                                 <span className="eyebrow">FAST RESPONSE</span>
-                                <h3 className="font-serif" style={{ fontSize: '2rem', marginBottom: '1.5rem', color: 'var(--ink)' }}>
+                                <h3 className="font-serif" style={{ fontSize: '1.85rem', marginBottom: '1.25rem', color: 'var(--sapphire-950)' }}>
                                     Send Direct Inquiry
                                 </h3>
 
-                                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
                                     <div>
-                                        <label style={{ display: 'block', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: '600', color: 'var(--stone-700)', marginBottom: '0.4rem' }}>
+                                        <label style={{ display: 'block', fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: '600', color: 'var(--text-secondary)', marginBottom: '0.35rem' }}>
                                             Your Full Name
                                         </label>
                                         <input
@@ -120,12 +120,12 @@ export default function ContactPage() {
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
                                             placeholder="e.g. Rahul Menon"
-                                            style={{ width: '100%', padding: '0.85rem 1rem', border: '1px solid var(--line)', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--ivory)', fontSize: '0.95rem' }}
+                                            style={{ width: '100%', padding: '0.8rem 0.95rem', border: '1px solid var(--line-light)', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--surface-light)', fontSize: '0.9rem' }}
                                         />
                                     </div>
 
                                     <div>
-                                        <label style={{ display: 'block', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: '600', color: 'var(--stone-700)', marginBottom: '0.4rem' }}>
+                                        <label style={{ display: 'block', fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: '600', color: 'var(--text-secondary)', marginBottom: '0.35rem' }}>
                                             Phone / WhatsApp Number
                                         </label>
                                         <input
@@ -134,18 +134,18 @@ export default function ContactPage() {
                                             value={phone}
                                             onChange={(e) => setPhone(e.target.value)}
                                             placeholder="+91 98765 43210"
-                                            style={{ width: '100%', padding: '0.85rem 1rem', border: '1px solid var(--line)', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--ivory)', fontSize: '0.95rem' }}
+                                            style={{ width: '100%', padding: '0.8rem 0.95rem', border: '1px solid var(--line-light)', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--surface-light)', fontSize: '0.9rem' }}
                                         />
                                     </div>
 
                                     <div>
-                                        <label style={{ display: 'block', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: '600', color: 'var(--stone-700)', marginBottom: '0.4rem' }}>
+                                        <label style={{ display: 'block', fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: '600', color: 'var(--text-secondary)', marginBottom: '0.35rem' }}>
                                             Inquiry Department
                                         </label>
                                         <select
                                             value={inquiryType}
                                             onChange={(e) => setInquiryType(e.target.value)}
-                                            style={{ width: '100%', padding: '0.85rem 1rem', border: '1px solid var(--line)', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--ivory)', fontSize: '0.95rem' }}
+                                            style={{ width: '100%', padding: '0.8rem 0.95rem', border: '1px solid var(--line-light)', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--surface-light)', fontSize: '0.9rem' }}
                                         >
                                             <option value="Room Booking">Room Booking & Transit Stay</option>
                                             <option value="Runway Hall (150 Pax)">Runway Hall (150 Pax Banquet)</option>
@@ -156,7 +156,7 @@ export default function ContactPage() {
                                     </div>
 
                                     <div>
-                                        <label style={{ display: 'block', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: '600', color: 'var(--stone-700)', marginBottom: '0.4rem' }}>
+                                        <label style={{ display: 'block', fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: '600', color: 'var(--text-secondary)', marginBottom: '0.35rem' }}>
                                             Message / Dates / Requirements
                                         </label>
                                         <textarea
@@ -164,11 +164,11 @@ export default function ContactPage() {
                                             value={message}
                                             onChange={(e) => setMessage(e.target.value)}
                                             placeholder="Specify check-in dates, number of guests, or special requirements..."
-                                            style={{ width: '100%', padding: '0.85rem 1rem', border: '1px solid var(--line)', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--ivory)', fontSize: '0.95rem', resize: 'vertical' }}
+                                            style={{ width: '100%', padding: '0.8rem 0.95rem', border: '1px solid var(--line-light)', borderRadius: 'var(--radius-sm)', backgroundColor: 'var(--surface-light)', fontSize: '0.9rem', resize: 'vertical' }}
                                         />
                                     </div>
 
-                                    <button type="submit" className="btn btn-brass" style={{ width: '100%', marginTop: '0.5rem' }}>
+                                    <button type="submit" className="btn btn-gold" style={{ width: '100%', marginTop: '0.35rem' }}>
                                         Submit via WhatsApp
                                     </button>
                                 </form>

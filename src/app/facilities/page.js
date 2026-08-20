@@ -9,15 +9,15 @@ export const metadata = {
 
 export default function FacilitiesPage() {
     return (
-        <main style={{ backgroundColor: 'var(--ivory)', paddingTop: '90px' }}>
+        <main style={{ backgroundColor: 'var(--surface-light)', paddingTop: '90px' }}>
             {/* Facilities Hero */}
-            <section style={{ backgroundColor: 'var(--ink)', color: '#ffffff', padding: '6rem 0 4rem', textAlign: 'center' }}>
+            <section style={{ backgroundColor: 'var(--sapphire-950)', color: '#ffffff', padding: '5.5rem 0 3.5rem', textAlign: 'center' }}>
                 <div className="container">
                     <span className="eyebrow eyebrow-dark">HOTEL FACILITIES & AMENITIES</span>
-                    <h1 className="font-serif" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1rem', color: '#ffffff' }}>
+                    <h1 className="font-serif" style={{ fontSize: 'clamp(2.3rem, 4.5vw, 3.8rem)', marginBottom: '0.85rem', color: '#ffffff' }}>
                         Everything under one roof.
                     </h1>
-                    <p style={{ color: 'var(--stone-300)', maxWidth: '650px', margin: '0 auto', fontSize: '1.05rem', fontWeight: '300' }}>
+                    <p style={{ color: '#CBD5E1', maxWidth: '620px', margin: '0 auto', fontSize: '1rem', fontWeight: '300' }}>
                         From the moment our doormen greet you on arrival, enjoy personalized service, rejuvenating Ayurvedic spa therapies, outdoor pool, and executive amenities.
                     </p>
                 </div>
@@ -26,21 +26,21 @@ export default function FacilitiesPage() {
             {/* Facilities Showcase Grid */}
             <section style={{ padding: 'var(--section-y) 0' }}>
                 <div className="container">
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2.5rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2rem' }}>
                         {facilitiesList.map((facility) => (
                             <div
                                 key={facility.id}
                                 style={{
-                                    backgroundColor: 'var(--paper)',
-                                    border: '1px solid var(--line)',
+                                    backgroundColor: 'var(--surface-pure)',
+                                    border: '1px solid var(--line-light)',
                                     borderRadius: 'var(--radius-md)',
                                     overflow: 'hidden',
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    boxShadow: 'var(--shadow-md)'
+                                    boxShadow: 'var(--shadow-sm)'
                                 }}
                             >
-                                <div style={{ height: '240px', backgroundColor: 'var(--ink)', overflow: 'hidden' }}>
+                                <div style={{ height: '230px', backgroundColor: 'var(--sapphire-950)', overflow: 'hidden' }}>
                                     <img
                                         src={facility.image}
                                         alt={facility.name}
@@ -48,32 +48,32 @@ export default function FacilitiesPage() {
                                     />
                                 </div>
 
-                                <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                                <div style={{ padding: '1.85rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                     <div>
-                                        <div style={{ fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--brass)', marginBottom: '0.35rem' }}>
+                                        <div style={{ fontSize: '0.725rem', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '0.3rem' }}>
                                             {facility.subtitle}
                                         </div>
-                                        <h3 className="font-serif" style={{ fontSize: '1.6rem', marginBottom: '0.75rem', color: 'var(--ink)' }}>
+                                        <h3 className="font-serif" style={{ fontSize: '1.5rem', marginBottom: '0.65rem', color: 'var(--sapphire-950)' }}>
                                             {facility.name}
                                         </h3>
-                                        <p style={{ color: 'var(--stone-700)', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
+                                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.65', marginBottom: '1.35rem' }}>
                                             {facility.description}
                                         </p>
                                     </div>
 
-                                    <div style={{ borderTop: '1px solid var(--line)', paddingTop: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                        <span style={{ fontSize: '0.8rem', color: 'var(--stone-500)' }}>
-                                            <i className="fa-regular fa-clock" style={{ color: 'var(--brass)', marginRight: '4px' }}></i> {facility.timing}
+                                    <div style={{ borderTop: '1px solid var(--line-light)', paddingTop: '0.85rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+                                            <i className="fa-regular fa-clock" style={{ color: 'var(--gold)', marginRight: '4px' }}></i> {facility.timing}
                                         </span>
                                         {facility.id === 'spa' && (
                                             <a
                                                 href={buildWhatsAppLink({ type: 'spa' })}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="link-brass"
-                                                style={{ fontSize: '0.8rem' }}
+                                                className="link-gold"
+                                                style={{ fontSize: '0.78rem' }}
                                             >
-                                                Book Spa Appointment &rarr;
+                                                Book Spa &rarr;
                                             </a>
                                         )}
                                     </div>
@@ -84,20 +84,20 @@ export default function FacilitiesPage() {
                 </div>
             </section>
 
-            {/* Complimentary Inclusions Section (Exact from Diana Heights website) */}
-            <section style={{ backgroundColor: 'var(--paper)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '5rem 0' }}>
+            {/* Complimentary Inclusions Section */}
+            <section style={{ backgroundColor: 'var(--surface-pure)', borderTop: '1px solid var(--line-light)', borderBottom: '1px solid var(--line-light)', padding: '4.5rem 0' }}>
                 <div className="container">
-                    <div style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 3.5rem' }}>
+                    <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3rem' }}>
                         <span className="eyebrow">HONEST VALUE</span>
-                        <h2 className="font-serif" style={{ fontSize: '2.5rem', color: 'var(--ink)', marginBottom: '1rem' }}>
+                        <h2 className="font-serif" style={{ fontSize: '2.3rem', color: 'var(--sapphire-950)', marginBottom: '0.85rem' }}>
                             Facilities & Amenities Provided on Complimentary Basis
                         </h2>
-                        <p style={{ color: 'var(--stone-700)', fontSize: '1rem' }}>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
                             Guests lodging with us can avail high-quality guest amenities and multi-channel entertainment at no extra charge:
                         </p>
                     </div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.25rem' }}>
                         {[
                             'Breakfast Buffet (Indian & Continental)',
                             'Bottled Mineral Water (1000ml) 02 Nos Daily',
@@ -117,17 +117,17 @@ export default function FacilitiesPage() {
                                 style={{
                                     display: 'flex',
                                     alignItems: 'center',
-                                    gap: '0.85rem',
-                                    backgroundColor: 'var(--ivory)',
-                                    border: '1px solid var(--line)',
-                                    padding: '1.25rem 1.5rem',
+                                    gap: '0.75rem',
+                                    backgroundColor: 'var(--surface-light)',
+                                    border: '1px solid var(--line-light)',
+                                    padding: '1.15rem 1.35rem',
                                     borderRadius: 'var(--radius-sm)',
-                                    fontSize: '0.9rem',
-                                    color: 'var(--ink)',
+                                    fontSize: '0.875rem',
+                                    color: 'var(--sapphire-950)',
                                     fontWeight: '500'
                                 }}
                             >
-                                <i className="fa-solid fa-check" style={{ color: 'var(--brass)', fontSize: '0.85rem' }}></i>
+                                <i className="fa-solid fa-check" style={{ color: 'var(--gold)', fontSize: '0.8rem' }}></i>
                                 <span>{item}</span>
                             </div>
                         ))}

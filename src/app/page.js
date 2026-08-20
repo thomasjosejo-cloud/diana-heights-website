@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { buildWhatsAppLink, HOTEL_PHONE } from '@/lib/whatsapp';
 import { roomsData } from '@/content/rooms';
-import { diningVenues } from '@/content/dining';
 
 const heroSlides = [
     '/assets/images/diana.png',
@@ -45,9 +44,9 @@ export default function HomePage() {
     return (
         <main>
             {/* ==========================================================================
-               1. HERO SECTION (KEN BURNS CAROUSEL + 3-LINE REVEAL + QUICK BOOK WIDGET)
+               1. HERO SECTION (MIDNIGHT SAPPHIRE & PLATINUM GOLD COCKPIT)
                ========================================================================== */}
-            <section className="hero-v2">
+            <section className="hero-sapphire">
                 <div className="hero-ken-burns">
                     {heroSlides.map((slide, index) => (
                         <div
@@ -62,11 +61,11 @@ export default function HomePage() {
 
                 <div className="container">
                     <div className="hero-grid">
-                        {/* Hero Left: Headline & Positioning */}
+                        {/* Hero Left: Headline & Factual 4-Star Positioning */}
                         <div>
                             <div className="status-pill" style={{ marginBottom: '1.25rem' }}>
                                 <span className="status-dot"></span>
-                                <span>Near Cochin Airport (CIAL) · Athani Junction</span>
+                                <span>Near Cochin Airport (CIAL) · 5.5 km along NH-47</span>
                             </div>
 
                             <h1 className="hero-headline">
@@ -76,7 +75,7 @@ export default function HomePage() {
                             </h1>
                             
                             <p className="hero-subtext">
-                                Unpack, unwind, or get straight to business. Two restaurants (including Flavours & Aero Cafe), Diana Ira Spa, and premium transit comfort just ten minutes from the tarmac — we handle the rest.
+                                Premium 4-star business hotel. 43 rooms, Flavours multi-cuisine restaurant, Aero Cafe, Diana Ira Spa, and an outdoor swimming pool — just ten minutes from Cochin International Airport.
                             </p>
                             
                             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
@@ -84,25 +83,25 @@ export default function HomePage() {
                                     href={buildWhatsAppLink({ type: 'booking' })} 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
-                                    className="btn btn-brass"
+                                    className="btn btn-gold"
                                 >
                                     Book Direct with Us
                                 </a>
                                 <Link href="/rooms" className="btn btn-outline-light">
-                                    Explore 4 Rooms
+                                    View 4 Room Categories
                                 </Link>
                             </div>
                         </div>
 
-                        {/* Hero Right: Frosted Quick-Book Widget */}
+                        {/* Hero Right: Frosted Midnight Quick-Booking Dock */}
                         <div>
                             <div className="quick-book-card">
-                                <div style={{ borderBottom: '1px solid var(--line-dark)', paddingBottom: '1rem', marginBottom: '1.5rem' }}>
-                                    <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--brass)', fontWeight: '600' }}>
+                                <div style={{ borderBottom: '1px solid var(--line-sapphire)', paddingBottom: '0.85rem', marginBottom: '1.25rem' }}>
+                                    <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--gold-light)', fontWeight: '600' }}>
                                         Direct Reservation Desk
                                     </div>
-                                    <h2 className="font-serif" style={{ fontSize: '1.5rem', color: '#ffffff', marginTop: '0.25rem' }}>
-                                        Check Availability
+                                    <h2 className="font-serif" style={{ fontSize: '1.45rem', color: '#ffffff', marginTop: '0.2rem' }}>
+                                        Check Availability & Rates
                                     </h2>
                                 </div>
 
@@ -110,7 +109,7 @@ export default function HomePage() {
                                     <div className="quick-book-grid">
                                         <div className="field-group">
                                             <label className="field-label" htmlFor="hero-checkin">
-                                                <i className="fa-regular fa-calendar"></i> Check In
+                                                <i className="fa-regular fa-calendar" style={{ color: 'var(--gold-light)' }}></i> Check In
                                             </label>
                                             <input
                                                 type="date"
@@ -123,7 +122,7 @@ export default function HomePage() {
 
                                         <div className="field-group">
                                             <label className="field-label" htmlFor="hero-checkout">
-                                                <i className="fa-regular fa-calendar"></i> Check Out
+                                                <i className="fa-regular fa-calendar" style={{ color: 'var(--gold-light)' }}></i> Check Out
                                             </label>
                                             <input
                                                 type="date"
@@ -136,7 +135,7 @@ export default function HomePage() {
 
                                         <div className="field-group full-width">
                                             <label className="field-label" htmlFor="hero-room">
-                                                <i className="fa-solid fa-bed"></i> Room Category
+                                                <i className="fa-solid fa-bed" style={{ color: 'var(--gold-light)' }}></i> Room Category
                                             </label>
                                             <select
                                                 id="hero-room"
@@ -153,7 +152,7 @@ export default function HomePage() {
 
                                         <div className="field-group">
                                             <label className="field-label" htmlFor="hero-adults">
-                                                <i className="fa-solid fa-user"></i> Adults
+                                                <i className="fa-solid fa-user" style={{ color: 'var(--gold-light)' }}></i> Adults
                                             </label>
                                             <select
                                                 id="hero-adults"
@@ -170,7 +169,7 @@ export default function HomePage() {
 
                                         <div className="field-group">
                                             <label className="field-label" htmlFor="hero-children">
-                                                <i className="fa-solid fa-child"></i> Children
+                                                <i className="fa-solid fa-child" style={{ color: 'var(--gold-light)' }}></i> Children
                                             </label>
                                             <select
                                                 id="hero-children"
@@ -185,7 +184,7 @@ export default function HomePage() {
                                         </div>
                                     </div>
 
-                                    <button type="submit" className="btn btn-brass" style={{ width: '100%' }}>
+                                    <button type="submit" className="btn btn-gold" style={{ width: '100%' }}>
                                         Check Rates via WhatsApp
                                     </button>
                                 </form>
@@ -196,29 +195,29 @@ export default function HomePage() {
             </section>
 
             {/* ==========================================================================
-               2. TRUST STRIP (DARK INK BAND)
+               2. TRUST STRIP (MIDNIGHT SAPPHIRE BAND)
                ========================================================================== */}
             <section className="trust-strip">
                 <div className="container">
                     <div className="trust-strip-inner">
                         <div className="trust-item">
-                            <i className="fa-solid fa-star" style={{ color: 'var(--brass)' }}></i>
+                            <i className="fa-solid fa-star" style={{ color: 'var(--gold-light)' }}></i>
                             <span><strong>4.3★</strong> Google Rating</span>
                         </div>
-                        <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--brass)', opacity: 0.6 }}></div>
+                        <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gold)', opacity: 0.6 }}></div>
                         <div className="trust-item">
-                            <i className="fa-solid fa-comment-dots" style={{ color: 'var(--brass)' }}></i>
-                            <span><strong>4,700+</strong> Verified Google Reviews</span>
+                            <i className="fa-solid fa-comment-dots" style={{ color: 'var(--gold-light)' }}></i>
+                            <span><strong>4,700+</strong> Verified Reviews</span>
                         </div>
-                        <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--brass)', opacity: 0.6 }}></div>
+                        <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gold)', opacity: 0.6 }}></div>
                         <div className="trust-item">
-                            <i className="fa-solid fa-plane-departure" style={{ color: 'var(--brass)' }}></i>
-                            <span><strong>5.5 km (10 min)</strong> From Cochin Airport</span>
+                            <i className="fa-solid fa-plane-departure" style={{ color: 'var(--gold-light)' }}></i>
+                            <span><strong>5.5 km (10 min)</strong> To Cochin Airport</span>
                         </div>
-                        <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--brass)', opacity: 0.6 }}></div>
+                        <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gold)', opacity: 0.6 }}></div>
                         <div className="trust-item">
-                            <i className="fa-solid fa-tag" style={{ color: 'var(--brass)' }}></i>
-                            <span><strong>Best Direct Rates</strong> — Zero OTA Fees</span>
+                            <i className="fa-solid fa-tag" style={{ color: 'var(--gold-light)' }}></i>
+                            <span><strong>Direct Rates</strong> — Zero OTA Fees</span>
                         </div>
                     </div>
                 </div>
@@ -232,36 +231,36 @@ export default function HomePage() {
                     <div className="monument-grid">
                         <div className="monument-anchor">
                             <div className="monument-number">5 min.</div>
-                            <div style={{ fontSize: '0.85rem', fontWeight: '700', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--stone-700)' }}>
+                            <div style={{ fontSize: '0.8rem', fontWeight: '700', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
                                 FROM COCHIN INTERNATIONAL AIRPORT
                             </div>
                         </div>
 
                         <div>
                             <span className="eyebrow">ABOUT DIANA HEIGHTS</span>
-                            <h2 className="section-title" style={{ color: 'var(--ink)' }}>
+                            <h2 className="section-title" style={{ color: 'var(--sapphire-950)' }}>
                                 Kochi's most complete airport hotel.
                             </h2>
-                            <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--stone-700)', marginBottom: '2rem' }}>
-                                Diana Heights is a business class hotel situated near Cochin International Airport and the commercial centers of the city, making it an ideal destination for travelers seeking convenience and comfort. Surrounded by a peaceful landscape, we offer 43 well-appointed rooms and suites, two multi-cuisine restaurants, Diana Ira Spa, an outdoor swimming pool, and Runway Hall banquet facilities for 150 guests.
+                            <p style={{ fontSize: '1.05rem', lineHeight: '1.75', color: 'var(--text-secondary)', marginBottom: '1.75rem' }}>
+                                Diana Heights is a 4-star rated business class hotel situated near Cochin International Airport along NH-47 at Athani Junction. Surrounded by a peaceful landscape, we offer 43 well-appointed rooms, Flavours multi-cuisine restaurant with 24-hr in-room dining, Aero Cafe, Diana Ira Spa, an outdoor swimming pool, and Runway Hall banquet facilities for 150 guests.
                             </p>
 
                             <div className="monument-stats-row">
                                 <div className="monument-stat-cell">
                                     <div className="monument-stat-num">43</div>
-                                    <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--stone-500)' }}>Rooms & Suites</div>
+                                    <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>Rooms & Suites</div>
                                 </div>
                                 <div className="monument-stat-cell">
                                     <div className="monument-stat-num">2</div>
-                                    <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--stone-500)' }}>Restaurants (Flavours & Aero)</div>
+                                    <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>Restaurants (Flavours & Aero)</div>
                                 </div>
                                 <div className="monument-stat-cell">
                                     <div className="monument-stat-num">1</div>
-                                    <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--stone-500)' }}>Diana Ira Spa</div>
+                                    <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>Diana Ira Spa</div>
                                 </div>
                                 <div className="monument-stat-cell">
                                     <div className="monument-stat-num">150</div>
-                                    <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--stone-500)' }}>Pax Event Capacity</div>
+                                    <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>Pax Event Capacity</div>
                                 </div>
                             </div>
                         </div>
@@ -272,16 +271,16 @@ export default function HomePage() {
             {/* ==========================================================================
                4. ROOMS — "FILM FRAMES" (4 ROOMS, 1 ADDRESS)
                ========================================================================== */}
-            <section className="section-rooms-film">
+            <section className="section-rooms">
                 <div className="container">
                     <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}>
                         <span className="eyebrow">ACCOMMODATIONS</span>
-                        <h2 className="section-title" style={{ color: 'var(--ink)' }}>
-                            Four rooms. One address.
+                        <h2 className="section-title" style={{ color: 'var(--sapphire-950)' }}>
+                            Four room categories. One address.
                         </h2>
                     </div>
 
-                    <div className="rooms-frames-grid">
+                    <div className="rooms-grid">
                         {roomsData.map((room) => {
                             const isPres = room.slug === 'presidential-suite';
                             const whatsappRoomLink = buildWhatsAppLink({
@@ -292,38 +291,38 @@ export default function HomePage() {
                             return (
                                 <div
                                     key={room.slug}
-                                    className={`film-frame-card ${isPres ? 'featured-presidential' : ''}`}
+                                    className={`room-card-sapphire ${isPres ? 'featured' : ''}`}
                                 >
                                     <div
-                                        className="film-frame-bg"
+                                        className="room-card-bg"
                                         style={{ backgroundImage: `url('${room.image}')` }}
                                     />
-                                    <div className="film-frame-overlay" />
+                                    <div className="room-card-overlay" />
 
-                                    <div className="film-frame-content">
-                                        <div className="film-frame-rule" />
-                                        <div style={{ display: 'flex', gap: '0.75rem', fontSize: '0.75rem', color: 'var(--brass-light)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem', fontWeight: '600' }}>
+                                    <div className="room-card-content">
+                                        <div className="room-card-rule" />
+                                        <div style={{ display: 'flex', gap: '0.65rem', fontSize: '0.725rem', color: 'var(--gold-light)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.45rem', fontWeight: '600' }}>
                                             <span>{room.areaSqFt}</span>
                                             <span>&bull;</span>
                                             <span>{room.sleeps}</span>
                                         </div>
-                                        <h3 className="film-frame-title font-serif">{room.name}</h3>
-                                        <p style={{ fontSize: '0.85rem', color: 'var(--stone-300)', lineHeight: '1.5', marginBottom: '1.5rem', fontWeight: '300' }}>
+                                        <h3 className="font-serif" style={{ fontSize: '1.65rem', color: '#ffffff', marginBottom: '0.5rem' }}>{room.name}</h3>
+                                        <p style={{ fontSize: '0.825rem', color: '#CBD5E1', lineHeight: '1.5', marginBottom: '1.25rem', fontWeight: '300' }}>
                                             {room.description}
                                         </p>
 
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: '1rem' }}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: '0.85rem' }}>
                                             <a
                                                 href={whatsappRoomLink}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="link-brass"
+                                                className="link-gold"
                                             >
                                                 Reserve on WhatsApp <i className="fa-solid fa-arrow-right"></i>
                                             </a>
                                             <Link
                                                 href={`/rooms/${room.slug}`}
-                                                style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', letterSpacing: '0.1em' }}
+                                                style={{ fontSize: '0.725rem', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', letterSpacing: '0.08em' }}
                                             >
                                                 Details &rarr;
                                             </Link>
@@ -337,92 +336,92 @@ export default function HomePage() {
             </section>
 
             {/* ==========================================================================
-               5. FACILITIES — "THE LUXURY MENU" (DARK INK 3x2 BRASS GRID)
+               5. FACILITIES — MIDNIGHT SAPPHIRE 3x2 GRID
                ========================================================================== */}
-            <section className="section-facilities-menu">
+            <section className="section-facilities">
                 <div className="container">
                     <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}>
-                        <span className="eyebrow eyebrow-dark">AMENITIES</span>
+                        <span className="eyebrow eyebrow-dark">AMENITIES & WELLNESS</span>
                         <h2 className="section-title" style={{ color: '#ffffff' }}>
                             Everything under one roof.
                         </h2>
                     </div>
 
-                    <div className="facilities-menu-grid">
+                    <div className="facilities-grid">
                         {/* 1. Diana Ira Spa */}
-                        <div className="facility-menu-cell">
+                        <div className="facility-cell">
                             <div>
-                                <div style={{ width: '30px', height: '1px', backgroundColor: 'var(--brass)', marginBottom: '1.25rem' }}></div>
-                                <h3 className="font-serif" style={{ fontSize: '1.5rem', color: '#ffffff', fontStyle: 'italic', marginBottom: '0.5rem' }}>Diana Ira Spa</h3>
-                                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--brass)', marginBottom: '0.75rem' }}>Ayurvedic Rejuvenation & Steam</div>
-                                <p style={{ fontSize: '0.875rem', color: 'var(--stone-300)', lineHeight: '1.6', fontWeight: '300' }}>
+                                <div style={{ width: '28px', height: '1px', backgroundColor: 'var(--gold)', marginBottom: '1.15rem' }}></div>
+                                <h3 className="font-serif" style={{ fontSize: '1.45rem', color: '#ffffff', fontStyle: 'italic', marginBottom: '0.4rem' }}>Diana Ira Spa</h3>
+                                <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--gold-light)', marginBottom: '0.65rem' }}>Ayurvedic Rejuvenation & Steam</div>
+                                <p style={{ fontSize: '0.85rem', color: '#CBD5E1', lineHeight: '1.6', fontWeight: '300' }}>
                                     Therapeutic massage, essential body care, facials, body wraps, and aroma steam chambers managed by trained certified masseurs.
                                 </p>
                             </div>
                         </div>
 
                         {/* 2. Outdoor Swimming Pool */}
-                        <div className="facility-menu-cell">
+                        <div className="facility-cell">
                             <div>
-                                <div style={{ width: '30px', height: '1px', backgroundColor: 'var(--brass)', marginBottom: '1.25rem' }}></div>
-                                <h3 className="font-serif" style={{ fontSize: '1.5rem', color: '#ffffff', fontStyle: 'italic', marginBottom: '0.5rem' }}>Outdoor Swimming Pool</h3>
-                                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--brass)', marginBottom: '0.75rem' }}>Turquoise Pool & Tropical Palms</div>
-                                <p style={{ fontSize: '0.875rem', color: 'var(--stone-300)', lineHeight: '1.6', fontWeight: '300' }}>
+                                <div style={{ width: '28px', height: '1px', backgroundColor: 'var(--gold)', marginBottom: '1.15rem' }}></div>
+                                <h3 className="font-serif" style={{ fontSize: '1.45rem', color: '#ffffff', fontStyle: 'italic', marginBottom: '0.4rem' }}>Outdoor Swimming Pool</h3>
+                                <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--gold-light)', marginBottom: '0.65rem' }}>Turquoise Pool & Tropical Palms</div>
+                                <p style={{ fontSize: '0.85rem', color: '#CBD5E1', lineHeight: '1.6', fontWeight: '300' }}>
                                     Landscaped outdoor swimming pool surrounded by tropical greenery and sun loungers for a serene escape.
                                 </p>
                             </div>
                         </div>
 
                         {/* 3. Dining */}
-                        <div className="facility-menu-cell">
+                        <div className="facility-cell">
                             <div>
-                                <div style={{ width: '30px', height: '1px', backgroundColor: 'var(--brass)', marginBottom: '1.25rem' }}></div>
-                                <h3 className="font-serif" style={{ fontSize: '1.5rem', color: '#ffffff', fontStyle: 'italic', marginBottom: '0.5rem' }}>Flavours & Aero Cafe</h3>
-                                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--brass)', marginBottom: '0.75rem' }}>Multi-Cuisine & Speciality Dining</div>
-                                <p style={{ fontSize: '0.875rem', color: 'var(--stone-300)', lineHeight: '1.6', fontWeight: '300' }}>
+                                <div style={{ width: '28px', height: '1px', backgroundColor: 'var(--gold)', marginBottom: '1.15rem' }}></div>
+                                <h3 className="font-serif" style={{ fontSize: '1.45rem', color: '#ffffff', fontStyle: 'italic', marginBottom: '0.4rem' }}>Flavours & Aero Cafe</h3>
+                                <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--gold-light)', marginBottom: '0.65rem' }}>Multi-Cuisine & Speciality Dining</div>
+                                <p style={{ fontSize: '0.85rem', color: '#CBD5E1', lineHeight: '1.6', fontWeight: '300' }}>
                                     Multi-cuisine eatery with 24-hour in-room dining alongside our intimate Aero Cafe for specialty Indian & Continental dishes.
                                 </p>
                             </div>
                         </div>
 
                         {/* 4. Health Club */}
-                        <div className="facility-menu-cell">
+                        <div className="facility-cell">
                             <div>
-                                <div style={{ width: '30px', height: '1px', backgroundColor: 'var(--brass)', marginBottom: '1.25rem' }}></div>
-                                <h3 className="font-serif" style={{ fontSize: '1.5rem', color: '#ffffff', fontStyle: 'italic', marginBottom: '0.5rem' }}>Health Club & Gym</h3>
-                                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--brass)', marginBottom: '0.75rem' }}>Fitness & Wellness Hub</div>
-                                <p style={{ fontSize: '0.875rem', color: 'var(--stone-300)', lineHeight: '1.6', fontWeight: '300' }}>
-                                    Fully equipped with premium cardio machinery, free weights, and stretching zones for maintaining your active routine.
+                                <div style={{ width: '28px', height: '1px', backgroundColor: 'var(--gold)', marginBottom: '1.15rem' }}></div>
+                                <h3 className="font-serif" style={{ fontSize: '1.45rem', color: '#ffffff', fontStyle: 'italic', marginBottom: '0.4rem' }}>Health Club & Gym</h3>
+                                <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--gold-light)', marginBottom: '0.65rem' }}>Fitness & Wellness Hub</div>
+                                <p style={{ fontSize: '0.85rem', color: '#CBD5E1', lineHeight: '1.6', fontWeight: '300' }}>
+                                    Fully equipped with modern cardio machinery, free weights, and stretching zones for maintaining your active routine.
                                 </p>
                             </div>
                         </div>
 
                         {/* 5. Runway Hall */}
-                        <div className="facility-menu-cell">
+                        <div className="facility-cell">
                             <div>
-                                <div style={{ width: '30px', height: '1px', backgroundColor: 'var(--brass)', marginBottom: '1.25rem' }}></div>
-                                <h3 className="font-serif" style={{ fontSize: '1.5rem', color: '#ffffff', fontStyle: 'italic', marginBottom: '0.5rem' }}>Runway Hall (150 Pax)</h3>
-                                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--brass)', marginBottom: '0.75rem' }}>Conferences & Banqueting</div>
-                                <p style={{ fontSize: '0.875rem', color: 'var(--stone-300)', lineHeight: '1.6', fontWeight: '300' }}>
+                                <div style={{ width: '28px', height: '1px', backgroundColor: 'var(--gold)', marginBottom: '1.15rem' }}></div>
+                                <h3 className="font-serif" style={{ fontSize: '1.45rem', color: '#ffffff', fontStyle: 'italic', marginBottom: '0.4rem' }}>Runway Hall (150 Pax)</h3>
+                                <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--gold-light)', marginBottom: '0.65rem' }}>Conferences & Banqueting</div>
+                                <p style={{ fontSize: '0.85rem', color: '#CBD5E1', lineHeight: '1.6', fontWeight: '300' }}>
                                     Smart conference hall for up to 150 delegates, known for hosting conferences, seminars, gala dinners, and wedding receptions.
                                 </p>
                             </div>
                         </div>
 
                         {/* 6. Business Lounge */}
-                        <div className="facility-menu-cell">
+                        <div className="facility-cell">
                             <div>
-                                <div style={{ width: '30px', height: '1px', backgroundColor: 'var(--brass)', marginBottom: '1.25rem' }}></div>
-                                <h3 className="font-serif" style={{ fontSize: '1.5rem', color: '#ffffff', fontStyle: 'italic', marginBottom: '0.5rem' }}>Business Lounge (20 Pax)</h3>
-                                <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--brass)', marginBottom: '0.75rem' }}>Executive Boardroom</div>
-                                <p style={{ fontSize: '0.875rem', color: 'var(--stone-300)', lineHeight: '1.6', fontWeight: '300' }}>
+                                <div style={{ width: '28px', height: '1px', backgroundColor: 'var(--gold)', marginBottom: '1.15rem' }}></div>
+                                <h3 className="font-serif" style={{ fontSize: '1.45rem', color: '#ffffff', fontStyle: 'italic', marginBottom: '0.4rem' }}>Business Lounge (20 Pax)</h3>
+                                <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--gold-light)', marginBottom: '0.65rem' }}>Executive Boardroom</div>
+                                <p style={{ fontSize: '0.85rem', color: '#CBD5E1', lineHeight: '1.6', fontWeight: '300' }}>
                                     Vibrant boardroom with natural decor, attractive lighting, and state-of-the-art facilities for focused executive meetings.
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
+                    <div style={{ textAlign: 'center', marginTop: '3rem' }}>
                         <Link href="/facilities" className="btn btn-outline-light">
                             Explore All Facilities & Amenities
                         </Link>
@@ -433,18 +432,18 @@ export default function HomePage() {
             {/* ==========================================================================
                6. DINING — "THE DIPTYCH" (FLAVOURS & AERO CAFE)
                ========================================================================== */}
-            <section className="section-dining-diptych" style={{ padding: 'var(--section-y) 0' }}>
+            <section style={{ padding: 'var(--section-y) 0', backgroundColor: 'var(--surface-light)' }}>
                 <div className="container">
                     <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}>
                         <span className="eyebrow">WORLD OF DELICIOUS WONDERS</span>
-                        <h2 className="section-title" style={{ color: 'var(--ink)' }}>
+                        <h2 className="section-title" style={{ color: 'var(--sapphire-950)' }}>
                             Two restaurants. Every craving covered.
                         </h2>
                     </div>
 
                     <div className="diptych-grid">
                         {/* Panel 1: Flavours Multi-Cuisine */}
-                        <div className="diptych-card">
+                        <div className="diptych-card-sapphire">
                             <div className="diptych-img-wrap">
                                 <img
                                     src="/assets/images/dining 01.png"
@@ -452,20 +451,20 @@ export default function HomePage() {
                                     className="diptych-img"
                                 />
                             </div>
-                            <div style={{ padding: '2.5rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                            <div style={{ padding: '2.25rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                 <div>
-                                    <div style={{ fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--brass)', marginBottom: '0.5rem' }}>
+                                    <div style={{ fontSize: '0.725rem', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '0.45rem' }}>
                                         MULTI-CUISINE & BUFFET (7:30 AM – 10:00 PM)
                                     </div>
-                                    <h3 className="font-serif" style={{ fontSize: '2rem', marginBottom: '0.75rem', color: 'var(--ink)' }}>
+                                    <h3 className="font-serif" style={{ fontSize: '1.85rem', marginBottom: '0.65rem', color: 'var(--sapphire-950)' }}>
                                         Flavours : Multi Cuisine
                                     </h3>
-                                    <p style={{ color: 'var(--stone-700)', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: '1.65', marginBottom: '1.35rem' }}>
                                         Guests can take pleasure in delicious meals from our signature wide menu. Highlights include daily breakfast buffets, authentic traditional Kerala curries, and 24-hour in-room dining.
                                     </p>
                                 </div>
                                 <div>
-                                    <Link href="/dining" className="link-brass">
+                                    <Link href="/dining" className="link-gold">
                                         Explore Flavours Menu & Timings <i className="fa-solid fa-arrow-right"></i>
                                     </Link>
                                 </div>
@@ -473,7 +472,7 @@ export default function HomePage() {
                         </div>
 
                         {/* Panel 2: Aero Cafe Speciality */}
-                        <div className="diptych-card">
+                        <div className="diptych-card-sapphire">
                             <div className="diptych-img-wrap">
                                 <img
                                     src="/assets/images/aero cafe.png"
@@ -481,20 +480,20 @@ export default function HomePage() {
                                     className="diptych-img"
                                 />
                             </div>
-                            <div style={{ padding: '2.5rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                            <div style={{ padding: '2.25rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                 <div>
-                                    <div style={{ fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--brass)', marginBottom: '0.5rem' }}>
+                                    <div style={{ fontSize: '0.725rem', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '0.45rem' }}>
                                         SPECIALITY DINING (11:00 AM – 11:00 PM)
                                     </div>
-                                    <h3 className="font-serif" style={{ fontSize: '2rem', marginBottom: '0.75rem', color: 'var(--ink)' }}>
+                                    <h3 className="font-serif" style={{ fontSize: '1.85rem', marginBottom: '0.65rem', color: 'var(--sapphire-950)' }}>
                                         Aero Cafe : Speciality Restaurant
                                     </h3>
-                                    <p style={{ color: 'var(--stone-700)', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
-                                        From casual all-day eateries to formal fine dining, savor distinctive Indian and Continental dishes, made-to-order sandwiches, artisanal coffee, and hot snacks in a welcoming ambience.
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: '1.65', marginBottom: '1.35rem' }}>
+                                        From casual all-day eateries to formal dining, savor distinctive Indian and Continental dishes, made-to-order sandwiches, artisanal coffee, and hot snacks in a welcoming ambience.
                                     </p>
                                 </div>
                                 <div>
-                                    <Link href="/dining" className="link-brass">
+                                    <Link href="/dining" className="link-gold">
                                         Discover Aero Cafe Delicacies <i className="fa-solid fa-arrow-right"></i>
                                     </Link>
                                 </div>
@@ -507,10 +506,10 @@ export default function HomePage() {
             {/* ==========================================================================
                7. EVENTS — "ONE NUMBER, ONE IMAGE" (150 PAX)
                ========================================================================== */}
-            <section style={{ backgroundColor: 'var(--paper)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: 'var(--section-y) 0' }}>
+            <section style={{ backgroundColor: 'var(--surface-pure)', borderTop: '1px solid var(--line-light)', borderBottom: '1px solid var(--line-light)', padding: 'var(--section-y) 0' }}>
                 <div className="container">
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '4rem', alignItems: 'center' }}>
-                        <div style={{ height: '480px', borderRadius: 'var(--radius-md)', overflow: 'hidden', backgroundColor: 'var(--ink)', boxShadow: 'var(--shadow-md)' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '3.5rem', alignItems: 'center' }}>
+                        <div style={{ height: '460px', borderRadius: 'var(--radius-md)', overflow: 'hidden', backgroundColor: 'var(--sapphire-950)', boxShadow: 'var(--shadow-md)' }}>
                             <img
                                 src="/assets/images/banquet 01.png"
                                 alt="Runway Hall Event and Banquet Venue"
@@ -520,20 +519,20 @@ export default function HomePage() {
 
                         <div>
                             <span className="eyebrow">BANQUETS & CONFERENCES</span>
-                            <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem', marginBottom: '1.25rem' }}>
-                                <span className="font-serif text-brass-gradient" style={{ fontSize: 'clamp(4.5rem, 8vw, 7rem)', lineHeight: '0.9' }}>150</span>
-                                <span className="font-serif" style={{ fontSize: '1.5rem', color: 'var(--ink)', fontStyle: 'italic' }}>guests. Every configuration.</span>
+                            <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.85rem', marginBottom: '1.15rem' }}>
+                                <span className="font-serif text-gold-gradient" style={{ fontSize: 'clamp(4.2rem, 7.5vw, 6.5rem)', lineHeight: '0.9' }}>150</span>
+                                <span className="font-serif" style={{ fontSize: '1.45rem', color: 'var(--sapphire-950)', fontStyle: 'italic' }}>guests. Every configuration.</span>
                             </div>
-                            <p style={{ fontSize: '1.05rem', color: 'var(--stone-700)', lineHeight: '1.7', marginBottom: '2rem' }}>
+                            <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: '1.7', marginBottom: '1.75rem' }}>
                                 Looking for a splendid get together? Runway Hall accommodates events for up to 150 people with acoustic sound and custom catering. The Business Lounge provides an executive boardroom setting for 20 guests with natural decor and attractive lighting.
                             </p>
 
-                            <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
+                            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                                 <a
                                     href={buildWhatsAppLink({ type: 'event', eventName: 'Runway Hall (150 Pax)' })}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="btn btn-brass"
+                                    className="btn btn-gold"
                                 >
                                     Enquire on WhatsApp
                                 </a>
@@ -549,40 +548,40 @@ export default function HomePage() {
             {/* ==========================================================================
                8. REVIEWS — "THE MONUMENT QUOTE"
                ========================================================================== */}
-            <section style={{ padding: 'var(--section-y) 0', backgroundColor: 'var(--ivory)', textAlign: 'center' }}>
+            <section style={{ padding: 'var(--section-y) 0', backgroundColor: 'var(--surface-light)', textAlign: 'center' }}>
                 <div className="container">
                     <span className="eyebrow">VERIFIED GUEST EXPERIENCES</span>
-                    <div className="font-serif text-brass-gradient" style={{ fontSize: '5rem', lineHeight: '1', marginBottom: '-1rem' }}>&ldquo;</div>
-                    <blockquote className="font-serif" style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2.2rem)', lineHeight: '1.4', color: 'var(--ink)', maxWidth: '900px', margin: '0 auto 1.5rem', fontWeight: '400' }}>
+                    <div className="font-serif text-gold-gradient" style={{ fontSize: '4.5rem', lineHeight: '1', marginBottom: '-0.75rem' }}>&ldquo;</div>
+                    <blockquote className="font-serif" style={{ fontSize: 'clamp(1.35rem, 2.3vw, 2.1rem)', lineHeight: '1.4', color: 'var(--sapphire-950)', maxWidth: '880px', margin: '0 auto 1.35rem', fontWeight: '400' }}>
                         Stayed here for a layover and ended up extending by two nights. The pool, the food at Flavours, and the staff — everything was beyond expectation for an airport hotel.
                     </blockquote>
-                    <div style={{ fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--stone-700)', fontWeight: '600' }}>
+                    <div style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-secondary)', fontWeight: '600' }}>
                         Rahul Menon &bull; Verified Google Review
                     </div>
 
-                    <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--line)', fontSize: '0.85rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--stone-500)' }}>
+                    <div style={{ marginTop: '2.5rem', paddingTop: '1.75rem', borderTop: '1px solid var(--line-light)', fontSize: '0.825rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
                         <strong>4.3★ on Google</strong> &bull; 4,700+ verified reviews &bull; Near Cochin International Airport
                     </div>
                 </div>
             </section>
 
             {/* ==========================================================================
-               9. CTA BAND (DARK INK CLOSING)
+               9. CTA BAND (MIDNIGHT SAPPHIRE CLOSING)
                ========================================================================== */}
-            <section style={{ padding: '6rem 0', backgroundColor: 'var(--ink)', color: '#ffffff', textAlign: 'center', borderTop: '1px solid var(--line-dark)' }}>
+            <section style={{ padding: '5.5rem 0', backgroundColor: 'var(--sapphire-950)', color: '#ffffff', textAlign: 'center', borderTop: '1px solid var(--line-sapphire)' }}>
                 <div className="container">
-                    <h2 className="font-serif" style={{ fontSize: 'clamp(2.2rem, 4vw, 3.5rem)', marginBottom: '1rem', color: '#ffffff' }}>
+                    <h2 className="font-serif" style={{ fontSize: 'clamp(2.1rem, 3.8vw, 3.2rem)', marginBottom: '0.85rem', color: '#ffffff' }}>
                         Your stay is waiting.
                     </h2>
-                    <p style={{ fontSize: '1.1rem', color: 'var(--stone-300)', maxWidth: '650px', margin: '0 auto 2.5rem', fontWeight: '300' }}>
+                    <p style={{ fontSize: '1.05rem', color: '#CBD5E1', maxWidth: '620px', margin: '0 auto 2.25rem', fontWeight: '300' }}>
                         43 rooms, full facilities, ten minutes from your gate — and guaranteed best direct booking rates.
                     </p>
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
                         <a
                             href={buildWhatsAppLink({ type: 'booking' })}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-brass"
+                            className="btn btn-gold"
                         >
                             Book Direct via WhatsApp
                         </a>

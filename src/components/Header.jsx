@@ -86,9 +86,9 @@ export default function Header() {
                     </nav>
 
                     {/* Header Actions */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-                        <a href="tel:+919526799179" className="header-phone-badge" title="Call Diana Heights Reservations">
-                            <i className="fa-solid fa-phone" style={{ color: 'var(--brass)', fontSize: '0.75rem' }}></i>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                        <a href="tel:+919526799179" className="header-phone-badge" title="Call Diana Heights Desk">
+                            <i className="fa-solid fa-phone" style={{ color: 'var(--gold-light)', fontSize: '0.725rem' }}></i>
                             <span>{HOTEL_PHONE}</span>
                         </a>
 
@@ -96,8 +96,8 @@ export default function Header() {
                             href={whatsappDirectLink} 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="btn btn-brass"
-                            style={{ padding: '0.6rem 1.4rem', fontSize: '0.75rem' }}
+                            className="btn btn-gold"
+                            style={{ padding: '0.55rem 1.35rem', fontSize: '0.75rem' }}
                         >
                             Book Direct
                         </a>
@@ -129,9 +129,9 @@ export default function Header() {
                 </ul>
 
                 <div className="mobile-nav-footer">
-                    <div style={{ marginBottom: '1.25rem', fontSize: '0.85rem', color: 'var(--stone-300)' }}>
-                        <div style={{ textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.7rem', color: 'var(--brass)', marginBottom: '0.25rem' }}>
-                            24-Hour Front Desk · 5.5 km from CIAL
+                    <div style={{ marginBottom: '1.25rem', fontSize: '0.85rem', color: '#94A3B8' }}>
+                        <div style={{ textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.7rem', color: 'var(--gold-light)', marginBottom: '0.25rem' }}>
+                            24-Hour Desk · 5.5 km from CIAL
                         </div>
                         <a href="tel:+919526799179" style={{ color: '#ffffff', fontWeight: '600', fontSize: '1.05rem' }}>
                             +91 952 679 9179
@@ -142,7 +142,7 @@ export default function Header() {
                         href={whatsappDirectLink} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="btn btn-brass" 
+                        className="btn btn-gold" 
                         style={{ width: '100%', textAlign: 'center' }}
                     >
                         Chat with Reservations
