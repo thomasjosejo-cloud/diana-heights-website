@@ -1,62 +1,81 @@
 import Link from 'next/link';
-import { buildWhatsAppLink } from '@/lib/whatsapp';
 
 export const metadata = {
-    title: 'Nearest Destinations · Sightseeing around Cochin Airport · Diana Heights',
-    description: 'Tourist places to see near Cochin International Airport. Athirappilly Waterfalls, Cherai Beach, Fort Kochi, Kalady, and Kerala backwaters.'
+    title: 'Nearest Destinations & Transit · Diana Heights Cochin Airport',
+    description: 'Explore key transit hubs and tourism destinations near Diana Heights. 5.5 km from Cochin Airport, near Kalady, Cherai Beach, and Athirappilly Waterfalls.'
 };
 
 const destinations = [
     {
         name: 'Cochin International Airport (CIAL)',
-        distance: '5.5 km (approx. 10 mins)',
-        description: 'Easily accessible along the NH-47 corridor, offering effortless transit connectivity.',
-        image: '/assets/images/diana.png'
+        distance: '5.5 km',
+        time: '10 Minutes',
+        tag: 'AIRPORT TRANSIT',
+        desc: 'Direct corridor along NH-47. Fast, hassle-free airport connectivity for business travelers and transit passengers.'
+    },
+    {
+        name: 'Angamaly Railway Station',
+        distance: '7.0 km',
+        time: '12 Minutes',
+        tag: 'RAILWAY TRANSIT',
+        desc: 'Major railway junction connecting Cochin with central and northern Kerala express train routes.'
     },
     {
         name: 'Kalady (Adi Shankaracharya Birthplace)',
-        distance: '8 km (approx. 15 mins)',
-        description: 'A serene spiritual destination on the banks of River Periyar, the birthplace of Adi Shankaracharya.',
-        image: '/assets/images/lobby.png'
+        distance: '8.0 km',
+        time: '15 Minutes',
+        tag: 'HERITAGE & PILGRIMAGE',
+        desc: 'Renowned holy birthplace of the great philosopher Adi Shankara on the peaceful banks of the Periyar River.'
+    },
+    {
+        name: 'Aluva Railway Station & KSRTC Stand',
+        distance: '14.0 km',
+        time: '20 Minutes',
+        tag: 'INTERCITY TRANSIT',
+        desc: 'Major transit hub connecting to the Kochi Metro network, long-distance interstate buses, and passenger rail.'
+    },
+    {
+        name: 'Malayattoor St. Thomas Church',
+        distance: '15.0 km',
+        time: '25 Minutes',
+        tag: 'HISTORIC PILGRIMAGE',
+        desc: 'Famous international pilgrimage shrine perched atop Malayattoor Hill, visited by travelers worldwide.'
     },
     {
         name: 'Cherai Beach',
-        distance: '20 km (approx. 35 mins)',
-        description: 'Picturesque coastline known for calm waters, golden sands, and dolphin sightings.',
-        image: '/assets/images/pool 01.png'
+        distance: '20.0 km',
+        time: '35 Minutes',
+        tag: 'COASTAL LEISURE',
+        desc: 'Golden shallow beaches where backwaters meet the Arabian Sea, famous for scenic sunsets and dolphin sightings.'
     },
     {
         name: 'Athirappilly & Vazhachal Waterfalls',
-        distance: '50 km (approx. 70 mins)',
-        description: 'The majestic "Niagara of India" plunging through lush tropical rainforest canopies.',
-        image: '/assets/images/athirapilly.jpg'
-    },
-    {
-        name: 'Fort Kochi & Heritage Quarters',
-        distance: '40 km (approx. 60 mins)',
-        description: 'Historic colonial architecture, Portuguese churches, Jewish synagogue, and iconic Chinese fishing nets.',
-        image: '/assets/images/fort kochi.jpg'
+        distance: '50.0 km',
+        time: '1 Hour 15 Mins',
+        tag: 'NATURAL WONDERS',
+        desc: 'Kerala’s most majestic waterfalls, cascading through lush rainforest canopies on the Chalakudy River.'
     },
     {
         name: 'Munnar Hill Station',
-        distance: '100 km (approx. 3.5 hours)',
-        description: 'Cool misty hills of the Western Ghats with endless tea plantations and cascading streams.',
-        image: '/assets/images/munnar.jpg'
+        distance: '100.0 km',
+        time: '3 Hours',
+        tag: 'HILL RETREAT',
+        desc: 'Spectacular rolling tea plantations, cool mist-covered peaks, and pristine Western Ghats mountain reserves.'
     }
 ];
 
 export default function DestinationsPage() {
     return (
         <main style={{ backgroundColor: 'var(--ivory)', paddingTop: '90px' }}>
-            {/* Destinations Hero */}
+            {/* Hero */}
             <section style={{ backgroundColor: 'var(--ink)', color: '#ffffff', padding: '6rem 0 4rem', textAlign: 'center' }}>
                 <div className="container">
-                    <span className="eyebrow eyebrow-dark">EXPLORE KERALA</span>
+                    <span className="eyebrow eyebrow-dark">STRATEGIC KERALA LOCATION</span>
                     <h1 className="font-serif" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1rem', color: '#ffffff' }}>
-                        Nearest Destinations
+                        Nearest Destinations & Transit
                     </h1>
                     <p style={{ color: 'var(--stone-300)', maxWidth: '650px', margin: '0 auto', fontSize: '1.05rem', fontWeight: '300' }}>
-                        Diana Heights is the ideal base to explore historical landmarks, beaches, and nature reserves around Cochin Airport.
+                        Located on the NH-47 corridor at Athani Junction, Diana Heights offers effortless access to CIAL, pilgrimage sites, beaches, and Kerala's iconic attractions.
                     </p>
                 </div>
             </section>
@@ -64,51 +83,52 @@ export default function DestinationsPage() {
             {/* Destinations Grid */}
             <section style={{ padding: 'var(--section-y) 0' }}>
                 <div className="container">
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2.5rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
                         {destinations.map((dest, i) => (
                             <div
                                 key={i}
                                 style={{
                                     backgroundColor: 'var(--paper)',
                                     border: '1px solid var(--line)',
-                                    borderRadius: 'var(--border-radius)',
-                                    overflow: 'hidden',
+                                    borderRadius: 'var(--radius-md)',
+                                    padding: '2.5rem',
                                     display: 'flex',
-                                    flexDirection: 'column'
+                                    flexDirection: 'column',
+                                    justifyContent: 'space-between',
+                                    boxShadow: 'var(--shadow-sm)'
                                 }}
                             >
-                                <div style={{ height: '220px', backgroundColor: 'var(--ink)', overflow: 'hidden' }}>
-                                    <img
-                                        src={dest.image}
-                                        alt={dest.name}
-                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                    />
+                                <div>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                                        <span style={{ fontSize: '0.7rem', fontWeight: '700', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--brass)' }}>
+                                            {dest.tag}
+                                        </span>
+                                        <span className="status-pill" style={{ fontSize: '0.7rem', padding: '0.2rem 0.6rem' }}>
+                                            {dest.time}
+                                        </span>
+                                    </div>
+
+                                    <h3 className="font-serif" style={{ fontSize: '1.5rem', color: 'var(--ink)', marginBottom: '0.5rem' }}>
+                                        {dest.name}
+                                    </h3>
+                                    <div style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--brass-deep)', marginBottom: '1rem' }}>
+                                        {dest.distance}
+                                    </div>
+                                    <p style={{ color: 'var(--stone-700)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                                        {dest.desc}
+                                    </p>
                                 </div>
 
-                                <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                                    <div>
-                                        <div style={{ fontSize: '0.75rem', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--brass)', marginBottom: '0.35rem' }}>
-                                            {dest.distance}
-                                        </div>
-                                        <h3 className="font-serif" style={{ fontSize: '1.5rem', marginBottom: '0.75rem', color: 'var(--ink)' }}>
-                                            {dest.name}
-                                        </h3>
-                                        <p style={{ color: 'var(--stone-700)', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
-                                            {dest.description}
-                                        </p>
-                                    </div>
-
-                                    <div style={{ borderTop: '1px solid var(--line)', paddingTop: '1rem' }}>
-                                        <a
-                                            href={buildWhatsAppLink({ type: 'general', message: `Inquiry about cab / tour arrangements for ${dest.name}` })}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="link-brass"
-                                            style={{ fontSize: '0.8rem' }}
-                                        >
-                                            Arrange Cab Pick-up &rarr;
-                                        </a>
-                                    </div>
+                                <div style={{ borderTop: '1px solid var(--line)', paddingTop: '1.25rem', marginTop: '1.5rem' }}>
+                                    <a
+                                        href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(dest.name)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="link-brass"
+                                        style={{ fontSize: '0.8rem' }}
+                                    >
+                                        Get Directions on Google Maps &rarr;
+                                    </a>
                                 </div>
                             </div>
                         ))}

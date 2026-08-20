@@ -46,18 +46,19 @@ export default async function RoomDetailPage({ params }) {
                         left: 0, 
                         width: '100%', 
                         height: '100%', 
-                        background: 'linear-gradient(to top, rgba(22,20,15,0.95) 0%, rgba(22,20,15,0.4) 60%, transparent 100%)' 
+                        background: 'linear-gradient(to top, rgba(20,18,13,0.96) 0%, rgba(20,18,13,0.45) 60%, transparent 100%)' 
                     }} 
                 />
 
                 <div className="container" style={{ position: 'relative', zIndex: 5, height: '100%', display: 'flex', alignItems: 'flex-end', paddingBottom: '3.5rem' }}>
                     <div>
-                        <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '0.75rem' }}>
-                            <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--brass)', fontWeight: '600' }}>
-                                {room.sizeQualitative}
+                        <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '0.75rem', alignItems: 'center' }}>
+                            <span className="status-pill" style={{ color: '#ffffff', borderColor: 'var(--brass)' }}>
+                                <span className="status-dot"></span>
+                                {room.areaSqFt}
                             </span>
                             <span style={{ color: 'rgba(255,255,255,0.4)' }}>&bull;</span>
-                            <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--stone-300)' }}>
+                            <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--stone-300)', fontWeight: '600' }}>
                                 {room.sleeps}
                             </span>
                         </div>
@@ -77,7 +78,7 @@ export default async function RoomDetailPage({ params }) {
                     <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '4rem', alignItems: 'start' }}>
                         {/* Left: Overview, Features, Gallery */}
                         <div>
-                            <span className="eyebrow">ROOM OVERVIEW</span>
+                            <span className="eyebrow">ROOM SPECIFICATIONS</span>
                             <h2 className="font-serif" style={{ fontSize: '2.2rem', marginBottom: '1.5rem', color: 'var(--ink)' }}>
                                 Generous space. Complete comfort.
                             </h2>
@@ -86,12 +87,20 @@ export default async function RoomDetailPage({ params }) {
                             </p>
 
                             {/* Key Facts Row */}
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '1.75rem 0', marginBottom: '3rem' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '1.75rem 0', marginBottom: '3rem' }}>
                                 <div>
                                     <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--stone-500)', marginBottom: '0.25rem' }}>
-                                        Bed Configuration
+                                        Room Size
                                     </div>
-                                    <div style={{ fontSize: '1.1rem', fontWeight: '600', color: 'var(--ink)' }}>
+                                    <div style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--ink)' }}>
+                                        {room.areaSqFt}
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--stone-500)', marginBottom: '0.25rem' }}>
+                                        Bed Type
+                                    </div>
+                                    <div style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--ink)' }}>
                                         {room.bedType}
                                     </div>
                                 </div>
@@ -99,7 +108,7 @@ export default async function RoomDetailPage({ params }) {
                                     <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--stone-500)', marginBottom: '0.25rem' }}>
                                         Max Occupancy
                                     </div>
-                                    <div style={{ fontSize: '1.1rem', fontWeight: '600', color: 'var(--ink)' }}>
+                                    <div style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--ink)' }}>
                                         {room.sleeps}
                                     </div>
                                 </div>
@@ -123,7 +132,7 @@ export default async function RoomDetailPage({ params }) {
                             {/* In-Room Amenities */}
                             <div style={{ marginBottom: '3rem' }}>
                                 <h3 className="font-serif" style={{ fontSize: '1.5rem', marginBottom: '1.25rem', color: 'var(--ink)' }}>
-                                    Complimentary Amenities
+                                    Complimentary Amenities Included
                                 </h3>
                                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
                                     {room.amenities.map((amenity, i) => (
@@ -142,7 +151,7 @@ export default async function RoomDetailPage({ params }) {
                                 </h3>
                                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
                                     {room.gallery.map((img, i) => (
-                                        <div key={i} style={{ borderRadius: 'var(--border-radius)', overflow: 'hidden', height: '180px', backgroundColor: 'var(--ink)' }}>
+                                        <div key={i} style={{ borderRadius: 'var(--radius-sm)', overflow: 'hidden', height: '180px', backgroundColor: 'var(--ink)', border: '1px solid var(--line)' }}>
                                             <img src={img} alt={`${room.name} view ${i + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                         </div>
                                     ))}
@@ -152,8 +161,8 @@ export default async function RoomDetailPage({ params }) {
 
                         {/* Right: Direct Reservation Card */}
                         <div style={{ position: 'sticky', top: '110px' }}>
-                            <div style={{ backgroundColor: 'var(--paper)', border: '1px solid var(--line)', borderRadius: 'var(--border-radius-lg)', padding: '2.5rem', boxShadow: '0 10px 30px rgba(22,20,15,0.05)' }}>
-                                <span className="eyebrow">DIRECT BOOKING</span>
+                            <div style={{ backgroundColor: 'var(--paper)', border: '1px solid var(--line)', borderRadius: 'var(--radius-lg)', padding: '2.5rem', boxShadow: 'var(--shadow-md)' }}>
+                                <span className="eyebrow">DIRECT RESERVATION</span>
                                 <h3 className="font-serif" style={{ fontSize: '1.8rem', marginBottom: '0.5rem', color: 'var(--ink)' }}>
                                     Reserve {room.name}
                                 </h3>
@@ -192,7 +201,7 @@ export default async function RoomDetailPage({ params }) {
                             {/* Back to all rooms link */}
                             <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
                                 <Link href="/rooms" className="link-brass">
-                                    &larr; View All Four Rooms
+                                    &larr; View All Four Room Categories
                                 </Link>
                             </div>
                         </div>

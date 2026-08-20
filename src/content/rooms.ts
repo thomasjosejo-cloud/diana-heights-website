@@ -2,12 +2,12 @@ export interface Room {
     slug: string;
     name: string;
     tagline: string;
+    areaSqFt: string;
     description: string;
     longDescription: string;
-    sizeQualitative: 'Expansive' | 'Generously sized' | 'Spacious' | 'Comfortable';
+    sizeQualitative: string;
     bedType: string;
     sleeps: string;
-    priceHint?: string;
     image: string;
     gallery: string[];
     features: string[];
@@ -19,10 +19,11 @@ export const roomsData: Room[] = [
     {
         slug: 'presidential-suite',
         name: 'Presidential Suite',
-        tagline: "The hotel's most exclusive address.",
-        description: "Expansive living room, private workspace, jacuzzi bath and floor-to-ceiling views. The hotel's most exclusive address.",
-        longDescription: "Our most exclusive accommodation at Diana Heights. Designed for senior dignitaries, corporate executives, and VIP guests, the Presidential Suite provides an expansive private living room, executive work desk, private dining table, master bedroom with plush king-size bedding, and a marble bath equipped with a jacuzzi tub.",
-        sizeQualitative: 'Expansive',
+        tagline: 'Symmetrical grandeur & the hotel\'s most exclusive address.',
+        areaSqFt: '750 Sq. Ft.',
+        description: 'Our most expansive accommodation featuring symmetrical grandeur, a separate living space, private dining area with 6-diner seating, service pantry, and jacuzzi bath.',
+        longDescription: 'The crowning achievement of Diana Heights. Showcases an oversized grand living room, executive work desk, formal dinner seating for six, service pantry, large private balconies, premium teak wood interiors, and VIP airport fast assistance.',
+        sizeQualitative: '750 Sq. Ft. · Expansive Luxury',
         bedType: 'Master King Bed',
         sleeps: 'Up to 4 Guests',
         image: '/assets/images/P suite 01.png',
@@ -32,30 +33,32 @@ export const roomsData: Room[] = [
             '/assets/images/suit 01.png'
         ],
         features: [
-            'Expansive living room & seating lounge',
-            'Dedicated private workstation & boardroom setup',
+            'Separate living & dining area with 6-diner seating',
+            'Service pantry & executive work desk',
             'Jacuzzi bath & walk-in rain shower',
-            'Separate dining space for six',
-            'Floor-to-ceiling panoramic views',
-            'VIP airport transfer assistance'
+            'Large private balconies with panoramic views',
+            'Hardwood teak wood flooring & designer fabrics',
+            'VIP airport transfer perks & priority concierge'
         ],
         amenities: [
             'High-speed Wi-Fi',
-            '55-inch Smart TV',
+            '55-inch Smart LCD TV',
             'In-room safe deposit locker',
-            'Espresso machine & tea station',
-            'Premium bathrobes & toiletries',
-            '24-Hour In-room dining service'
+            'Coffee maker machine & tea setup',
+            '2x 1000ml complimentary mineral water daily',
+            'Complimentary breakfast (Indian & Continental)',
+            '24-Hour in-room dining'
         ],
         staahCode: 'PRES'
     },
     {
         slug: 'luxury-suite',
         name: 'Luxury Suite',
-        tagline: 'Generous space with premium furnishings.',
-        description: 'Generous space with premium furnishings, separate sitting area and all the comforts of home — elevated.',
-        longDescription: 'Generously proportioned for leisurely comfort, the Luxury Suite features warm teak furnishings, a separate relaxation lounge, and private sit-out balconies overlooking our pristine turquoise pool. Perfect for families or extended transit stays.',
-        sizeQualitative: 'Generously sized',
+        tagline: 'Invitation-only heritage layout with pool-view balconies.',
+        areaSqFt: '560–650 Sq. Ft.',
+        description: 'A unique assemblage of our foremost accommodations, previously available by invitation only. Boasting large private sit-out balconies looking directly over our crystal pool.',
+        longDescription: 'A unique assemblage of our foremost accommodations, previously available by invitation only, now available to our discerning guests. Features generous space, classic elements tastefully mixed with contemporary touches, wooden flooring, and private balconies overlooking the crystal outdoor swimming pool.',
+        sizeQualitative: '560–650 Sq. Ft. · Pool Balcony',
         bedType: 'King Bed',
         sleeps: 'Up to 3 Guests',
         image: '/assets/images/suit 01.png',
@@ -65,19 +68,19 @@ export const roomsData: Room[] = [
             '/assets/images/pool 01.png'
         ],
         features: [
-            'Private sit-out balcony overlooking pool',
-            'Separate sitting area & plush sofa',
-            'Teak wood interior finishes',
+            'Large private sit-out balcony overlooking the pool',
+            'Separate sitting lounge with plush furnishings',
+            'Wooden flooring & teak accents',
             'Walk-in glass rain shower',
-            'Complimentary bottled water daily',
-            'Dedicated luggage repository'
+            'Plenty of natural light & acoustic insulation'
         ],
         amenities: [
-            'High-speed Wi-Fi',
-            '43-inch LED TV',
+            'Free high-speed internet',
+            '43-inch LED TV with multi-channel entertainment',
             'Safe deposit locker',
-            'Coffee & tea maker',
-            'Hairdryer & shaving kit',
+            'Coffee maker machine',
+            'Shaving & dental kit, hairdryer, bathrobes',
+            'Complimentary breakfast included',
             '24-Hour room service'
         ],
         staahCode: 'LUX'
@@ -85,10 +88,11 @@ export const roomsData: Room[] = [
     {
         slug: 'executive-room',
         name: 'Executive Room',
-        tagline: 'The right room for a productive stay.',
-        description: 'Stylish, functional, comfortable. The right room for a productive stay.',
-        longDescription: 'Engineered for business executives and transit guests who value quiet productivity and modern ergonomics. Offers a dedicated workspace, ergonomic chair, plush bedding options (King, Double, or Twin), and swift connectivity.',
-        sizeQualitative: 'Spacious',
+        tagline: 'Generous space with choice of King or Twin setups.',
+        areaSqFt: '300–500 Sq. Ft.',
+        description: 'Spacious and expansive business layout offering choices of Double, King, or Twin beds, a dedicated seating lounge, private balcony pull-outs, and work desk.',
+        longDescription: 'Designed with generous space and contemporary touches. Highlights a choice of plush Double, King, or Twin beds, a spacious dedicated seating lounge area, private balcony pull-outs, direct workspace writing desk, safe repository cabinet, and full-service room amenities.',
+        sizeQualitative: '300–500 Sq. Ft. · Executive Workspace',
         bedType: 'King, Double or Twin Beds',
         sleeps: 'Up to 3 Guests',
         image: '/assets/images/Executive room 01.png',
@@ -98,29 +102,31 @@ export const roomsData: Room[] = [
             '/assets/images/deluxe room 01.png'
         ],
         features: [
-            'Ergonomic work desk & task lighting',
-            'Plush bedding (Choice of King / Twins)',
-            'Dedicated seating corner',
-            'Modern rain shower bath',
-            'Direct high-speed internet port'
+            'Choice of Double, King, or Twin beds',
+            'Spacious dedicated seating lounge area',
+            'Direct workspace writing desk & ergonomic chair',
+            'Private balcony pull-outs & natural lighting',
+            'Modern rain shower bathroom'
         ],
         amenities: [
-            'High-speed Wi-Fi',
+            'Direct high-speed internet access',
             'Flat-screen LCD TV',
-            'Safe deposit box',
-            'Electric kettle & tea setup',
-            'Iron & ironing board on request',
-            'Daily housekeeping'
+            'Safe deposit locker',
+            'Electric kettle & tea/coffee setup',
+            '2x 1000ml mineral water bottles daily',
+            'Complimentary breakfast (Indian & Continental)',
+            'Iron and ironing board on request'
         ],
         staahCode: 'EXEC'
     },
     {
         slug: 'deluxe-room',
         name: 'Deluxe Room',
-        tagline: 'Perfect for leisure guests and families.',
-        description: 'Clean, comfortable and well-equipped. Perfect for leisure guests and families.',
-        longDescription: 'Our hallmark entry room offering refined simplicity and warm Keralite touches. Featuring hardwood flooring, acoustic soundproofing for a restful sleep near the airport corridor, and modern en-suite amenities.',
-        sizeQualitative: 'Comfortable',
+        tagline: 'Cozy comfort with wooden flooring and pool views.',
+        areaSqFt: '248 Sq. Ft.',
+        description: 'Cozy retreat blending ergonomic wooden flooring, pool view perspectives, 32-inch LCD TV, high-speed WiFi, tea/coffee maker, and modern rain shower.',
+        longDescription: 'These Deluxe Rooms let you relax as you admire a beautiful view of the pool. Stay connected as you enjoy free high-speed WiFi and watch movies with our 32-inch LCD TV. Blends warm aesthetic wooden flooring, teak furnishings, and an elegant rain shower.',
+        sizeQualitative: '248 Sq. Ft. · Pool View',
         bedType: 'Double Bed',
         sleeps: 'Up to 2 Guests',
         image: '/assets/images/deluxe room 01.png',
@@ -130,17 +136,18 @@ export const roomsData: Room[] = [
             '/assets/images/lobby.png'
         ],
         features: [
-            'Hardwood flooring & teak accents',
-            'Peaceful courtyard or pool perspective',
-            'Acoustic sound insulation',
-            'Modern en-suite bath with rain shower'
+            'Beautiful view of the swimming pool',
+            'Hardwood wooden flooring & teak furnishings',
+            'Modern en-suite bath with rain shower',
+            'Acoustic sound insulation for airport transit'
         ],
         amenities: [
-            'Free high-speed Wi-Fi',
-            '32-inch LCD TV',
-            'Complimentary mineral water (2x 1L)',
-            'Tea & coffee making facilities',
-            'Toiletries kit',
+            'Free high-speed WiFi',
+            '32-inch LCD TV with multi-channel entertainment',
+            '2x 1000ml mineral water bottles daily',
+            'Electric kettle & tea/coffee making facilities',
+            'Shaving kit, dental kit, soap & shampoo',
+            'Complimentary breakfast included',
             '24-Hour front desk support'
         ],
         staahCode: 'DLX'

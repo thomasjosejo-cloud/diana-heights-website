@@ -15,7 +15,7 @@ export default function Header() {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 40) {
+            if (window.scrollY > 30) {
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false);
@@ -31,12 +31,12 @@ export default function Header() {
     return (
         <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
             <div className="container">
-                <div className="header-inner">
+                <div className="header-capsule">
                     {/* Brand Logo Lockup */}
                     <Link href="/" className="brand-logo" aria-label="Diana Heights Homepage">
                         <img 
                             src="/assets/logo/logo.png" 
-                            alt="Diana Heights" 
+                            alt="Diana Heights Hotel" 
                             className="brand-logo-img" 
                         />
                         <span className="brand-title">
@@ -64,12 +64,12 @@ export default function Header() {
                             </li>
                             <li>
                                 <Link href="/facilities" className={`nav-link ${pathname === '/facilities' ? 'active' : ''}`}>
-                                    Facilities
+                                    Facilities & Spa
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/events" className={`nav-link ${pathname === '/events' ? 'active' : ''}`}>
-                                    Events
+                                    Events (150 Pax)
                                 </Link>
                             </li>
                             <li>
@@ -86,9 +86,9 @@ export default function Header() {
                     </nav>
 
                     {/* Header Actions */}
-                    <div className="header-actions">
-                        <a href="tel:+919526799179" className="header-phone" title="Call Diana Heights Reservations">
-                            <i className="fa-solid fa-phone" style={{ color: 'var(--brass)', fontSize: '0.8rem' }}></i>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                        <a href="tel:+919526799179" className="header-phone-badge" title="Call Diana Heights Reservations">
+                            <i className="fa-solid fa-phone" style={{ color: 'var(--brass)', fontSize: '0.75rem' }}></i>
                             <span>{HOTEL_PHONE}</span>
                         </a>
 
@@ -97,7 +97,7 @@ export default function Header() {
                             target="_blank" 
                             rel="noopener noreferrer" 
                             className="btn btn-brass"
-                            style={{ padding: '0.65rem 1.4rem', fontSize: '0.75rem' }}
+                            style={{ padding: '0.6rem 1.4rem', fontSize: '0.75rem' }}
                         >
                             Book Direct
                         </a>
@@ -120,21 +120,21 @@ export default function Header() {
             <div className={`mobile-nav ${isMenuOpen ? 'open' : ''}`}>
                 <ul className="mobile-nav-links">
                     <li><Link href="/">Home</Link></li>
-                    <li><Link href="/rooms">Rooms & Suites</Link></li>
-                    <li><Link href="/dining">Dining (2 Restaurants)</Link></li>
-                    <li><Link href="/facilities">Facilities & Spa</Link></li>
-                    <li><Link href="/events">Events & Banquets</Link></li>
-                    <li><Link href="/gallery">Gallery</Link></li>
+                    <li><Link href="/rooms">Rooms & Suites (4 Types)</Link></li>
+                    <li><Link href="/dining">Dining (Flavours & Aero Cafe)</Link></li>
+                    <li><Link href="/facilities">Diana Ira Spa & Pool</Link></li>
+                    <li><Link href="/events">Runway Hall (150 Pax)</Link></li>
+                    <li><Link href="/gallery">Photo Gallery</Link></li>
                     <li><Link href="/contact">Contact Hub</Link></li>
                 </ul>
 
                 <div className="mobile-nav-footer">
-                    <div style={{ marginBottom: '1rem', fontSize: '0.85rem', color: 'var(--stone-300)' }}>
+                    <div style={{ marginBottom: '1.25rem', fontSize: '0.85rem', color: 'var(--stone-300)' }}>
                         <div style={{ textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.7rem', color: 'var(--brass)', marginBottom: '0.25rem' }}>
-                            24-Hour Front Desk
+                            24-Hour Front Desk · 5.5 km from CIAL
                         </div>
-                        <a href="tel:+919526799179" style={{ color: '#ffffff', fontWeight: '600' }}>
-                            +91 9526799179
+                        <a href="tel:+919526799179" style={{ color: '#ffffff', fontWeight: '600', fontSize: '1.05rem' }}>
+                            +91 952 679 9179
                         </a>
                     </div>
 

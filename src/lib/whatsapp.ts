@@ -6,6 +6,7 @@
 export const HOTEL_PHONE = "+91 9526799179";
 export const HOTEL_PHONE_RAW = "919526799179";
 export const HOTEL_EMAIL = "info@dianaheights.com";
+export const HOTEL_ADDRESS = "NH-47, Athani Junction, Nedumbassery, Ernakulam District, Kerala – 683585";
 
 export interface WhatsAppBookingParams {
     type?: 'booking' | 'room' | 'event' | 'spa' | 'dining' | 'general';

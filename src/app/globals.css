@@ -1,39 +1,61 @@
 /* ==========================================================================
-   DIANA HEIGHTS v2 — MASTER DESIGN SYSTEM (HOSTORY PRODUCTION STANDARD)
+   DIANA HEIGHTS — ULTRA-LUXURY DESIGN SYSTEM & INTERACTIVE ENGINE
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap');
 
 :root {
-    /* v2 Locked Design Tokens */
-    --ink: #16140F;            /* Primary text, dark sections */
-    --ivory: #F5F0E6;          /* Page background */
-    --paper: #FBF8F1;          /* Raised surfaces / cards */
-    --brass: #A6845A;          /* Accent — only accent colour */
-    --brass-deep: #8A6A42;     /* Accent hover */
-    --brass-tint: #EFE6D6;     /* Faint accent wash */
-    --stone-700: #6B6358;      /* Secondary text */
-    --stone-500: #8C8478;      /* Metadata */
-    --stone-300: #C9C1B3;      /* Muted text on dark */
-    --line: #DED7C8;           /* Hairlines on light */
-    --line-dark: #3A352D;      /* Hairlines on dark */
+    /* Refined Luxury Palette */
+    --ink: #14120D;
+    --ink-light: #1E1B15;
+    --ink-card: #221F18;
+    --ivory: #F7F3EA;
+    --ivory-warm: #F0EADF;
+    --paper: #FAF7F0;
+    --paper-card: #FFFFFF;
+    
+    /* Metallic Brass & Gold Accents */
+    --brass: #A88659;
+    --brass-light: #C4A77D;
+    --brass-deep: #87683F;
+    --brass-glow: rgba(168, 134, 89, 0.25);
+    --brass-tint: #EFE6D8;
+    --brass-gradient: linear-gradient(135deg, #C4A77D 0%, #A88659 50%, #87683F 100%);
+    --gold-shimmer: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
 
-    /* Typography Tokens */
+    /* Neutral Tones */
+    --stone-900: #292620;
+    --stone-700: #575147;
+    --stone-500: #857D71;
+    --stone-300: #C2BBB0;
+    --line: #E2DBD0;
+    --line-dark: rgba(255, 255, 255, 0.12);
+
+    /* Fonts */
     --font-display: 'Playfair Display', Georgia, serif;
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-    /* Spacing */
-    --section-y: clamp(4.5rem, 9vh, 7rem);
-    --border-radius: 4px;
-    --border-radius-lg: 12px;
-    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Shadows & Glass */
+    --shadow-sm: 0 4px 12px rgba(20, 18, 13, 0.04);
+    --shadow-md: 0 12px 30px rgba(20, 18, 13, 0.08);
+    --shadow-lg: 0 24px 60px rgba(20, 18, 13, 0.14);
+    --shadow-glow: 0 0 40px var(--brass-glow);
+    --glass-light: rgba(250, 247, 240, 0.88);
+    --glass-dark: rgba(20, 18, 13, 0.78);
+    --glass-border: rgba(168, 134, 89, 0.25);
+
+    /* Transitions & Radii */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 9999px;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --section-y: clamp(5rem, 10vh, 8rem);
 }
 
-/* ==========================================================================
-   RESET & BASE TYPOGRAPHY
-   ========================================================================== */
-
-* {
+/* Base Reset */
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -43,6 +65,7 @@ html {
     scroll-behavior: smooth;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     background-color: var(--ivory);
     color: var(--ink);
 }
@@ -55,17 +78,38 @@ body {
     overflow-x: hidden;
 }
 
+::selection {
+    background: var(--brass);
+    color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--ivory);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--stone-300);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--brass);
+}
+
+/* Links & Buttons */
 a {
     color: inherit;
     text-decoration: none;
-    transition: var(--transition);
+    transition: all 0.3s var(--ease-out);
 }
 
 button, input, select, textarea {
     font-family: inherit;
     color: inherit;
-    outline: none;
     border: none;
+    outline: none;
     background: none;
 }
 
@@ -77,7 +121,7 @@ img {
 
 .container {
     width: 100%;
-    max-width: 1320px;
+    max-width: 1360px;
     margin: 0 auto;
     padding: 0 2rem;
 }
@@ -88,11 +132,11 @@ img {
     }
 }
 
-/* Typography Utilities */
+/* Typography Hierarchy */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     font-weight: 500;
-    line-height: 1.2;
+    line-height: 1.18;
     color: inherit;
 }
 
@@ -100,73 +144,106 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
 }
 
-.font-italic {
-    font-style: italic;
+.font-sans {
+    font-family: var(--font-sans);
+}
+
+.text-brass-gradient {
+    background: var(--brass-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
 }
 
 .eyebrow {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
+    font-size: 0.725rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--brass);
-    display: block;
-    margin-bottom: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
 }
 
-.eyebrow-dark {
-    color: var(--brass);
+.eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 1px;
+    background-color: var(--brass);
 }
 
-.section-heading {
-    font-size: clamp(2rem, 4vw, 3.25rem);
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.01em;
+.section-title {
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
 }
 
-/* ==========================================================================
-   BUTTONS & ACCENTS
-   ========================================================================== */
-
+/* Luxury Interactive Buttons */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.9rem 2rem;
-    font-size: 0.825rem;
+    gap: 0.6rem;
+    padding: 0.95rem 2.2rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s var(--ease-out);
     border: 1px solid transparent;
+    z-index: 1;
 }
 
 .btn-brass {
-    background-color: var(--brass);
+    background: var(--brass-gradient);
     color: #ffffff;
     border-color: var(--brass);
+    box-shadow: 0 4px 18px var(--brass-glow);
+}
+
+.btn-brass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: var(--gold-shimmer);
+    transform: skewX(-25deg);
+    transition: all 0.7s var(--ease-out);
+    z-index: -1;
 }
 
 .btn-brass:hover {
-    background-color: var(--brass-deep);
-    border-color: var(--brass-deep);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(168, 134, 89, 0.4);
     color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(166, 132, 90, 0.25);
+}
+
+.btn-brass:hover::before {
+    left: 140%;
 }
 
 .btn-outline-light {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.05);
     color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
 }
 
 .btn-outline-light:hover {
+    background: rgba(255, 255, 255, 0.18);
     border-color: #ffffff;
-    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+    color: #ffffff;
 }
 
 .btn-outline-dark {
@@ -178,27 +255,80 @@ h1, h2, h3, h4, h5, h6 {
 .btn-outline-dark:hover {
     border-color: var(--brass);
     color: var(--brass);
+    background: rgba(168, 134, 89, 0.05);
+    transform: translateY(-3px);
 }
 
 .link-brass {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.5rem;
     color: var(--brass);
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    transition: var(--transition);
+    transition: all 0.3s ease;
+}
+
+.link-brass i {
+    transition: transform 0.3s ease;
 }
 
 .link-brass:hover {
     color: var(--brass-deep);
-    gap: 0.75rem;
+}
+
+.link-brass:hover i {
+    transform: translateX(5px);
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+    background: var(--glass-light);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    transition: all 0.4s var(--ease-out);
+}
+
+.glass-card-dark {
+    background: var(--glass-dark);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(168, 134, 89, 0.3);
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+/* Floating Status Pill */
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    background: rgba(168, 134, 89, 0.12);
+    border: 1px solid rgba(168, 134, 89, 0.35);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--brass);
+    text-transform: uppercase;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #22c55e;
+    box-shadow: 0 0 8px #22c55e;
 }
 
 /* ==========================================================================
-   HEADER & NAVIGATION
+   HEADER & CAPSULE NAVIGATION
    ========================================================================== */
 
 header.site-header {
@@ -207,60 +337,50 @@ header.site-header {
     left: 0;
     width: 100%;
     z-index: 100;
-    transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 1.25rem 0;
+    transition: all 0.4s var(--ease-out);
 }
 
 header.site-header.scrolled {
-    background-color: rgba(245, 240, 230, 0.95);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    padding: 0.65rem 0;
+    background-color: rgba(247, 243, 234, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--line);
-    box-shadow: 0 4px 20px rgba(22, 20, 15, 0.05);
+    box-shadow: 0 8px 30px rgba(20, 18, 13, 0.06);
 }
 
-header.site-header.scrolled .brand-title {
-    color: var(--ink);
-}
-
-header.site-header.scrolled .nav-link {
-    color: var(--ink);
-}
-
-header.site-header.scrolled .nav-link:hover {
-    color: var(--brass);
-}
-
-header.site-header.scrolled .header-phone {
-    color: var(--stone-700);
-}
-
-header.site-header.scrolled .hamburger span {
-    background-color: var(--ink);
-}
-
-.header-inner {
+.header-capsule {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 90px;
-    transition: height 0.3s ease;
+    background: rgba(20, 18, 13, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.6rem 1.75rem;
+    border-radius: var(--radius-full);
+    transition: all 0.4s var(--ease-out);
 }
 
-header.site-header.scrolled .header-inner {
-    height: 75px;
+header.site-header.scrolled .header-capsule {
+    background: transparent;
+    backdrop-filter: none;
+    border-color: transparent;
+    padding: 0.3rem 0;
 }
 
 .brand-logo {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.85rem;
 }
 
 .brand-logo-img {
-    height: 48px;
+    height: 44px;
     width: auto;
     object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
 }
 
 .brand-title {
@@ -274,25 +394,37 @@ header.site-header.scrolled .header-inner {
 }
 
 .brand-title span {
-    color: var(--brass);
+    color: var(--brass-light);
     font-style: normal;
+}
+
+header.site-header.scrolled .brand-title {
+    color: var(--ink);
+}
+
+header.site-header.scrolled .brand-title span {
+    color: var(--brass);
 }
 
 .main-nav {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.8rem;
     list-style: none;
 }
 
 .nav-link {
-    font-size: 0.85rem;
+    font-size: 0.825rem;
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.9);
     position: relative;
-    padding: 0.5rem 0;
+    padding: 0.4rem 0;
+}
+
+header.site-header.scrolled .nav-link {
+    color: var(--ink);
 }
 
 .nav-link::after {
@@ -301,8 +433,8 @@ header.site-header.scrolled .header-inner {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 1.5px;
-    background-color: var(--brass);
+    height: 2px;
+    background: var(--brass-gradient);
     transition: width 0.3s ease;
 }
 
@@ -311,22 +443,28 @@ header.site-header.scrolled .header-inner {
     width: 100%;
 }
 
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.header-phone {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.85);
+.header-phone-badge {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #ffffff;
     display: flex;
     align-items: center;
     gap: 0.4rem;
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
 }
 
-.header-phone:hover {
+header.site-header.scrolled .header-phone-badge {
+    color: var(--stone-700);
+    background: rgba(20, 18, 13, 0.04);
+    border-color: var(--line);
+}
+
+.header-phone-badge:hover {
+    border-color: var(--brass);
     color: var(--brass);
 }
 
@@ -344,6 +482,10 @@ header.site-header.scrolled .header-inner {
     height: 2px;
     background-color: #ffffff;
     transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+header.site-header.scrolled .hamburger span {
+    background-color: var(--ink);
 }
 
 .hamburger.open span:nth-child(1) {
@@ -406,7 +548,7 @@ header.site-header.scrolled .header-inner {
 }
 
 /* ==========================================================================
-   HERO SECTION & KEN BURNS SLIDER
+   HERO SECTION — KEN BURNS & FLOATING QUICK BOOK DOCK
    ========================================================================== */
 
 .hero-v2 {
@@ -414,7 +556,7 @@ header.site-header.scrolled .header-inner {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 8rem 0 5rem;
+    padding: 9rem 0 5rem;
     overflow: hidden;
     background-color: var(--ink);
     color: #ffffff;
@@ -437,7 +579,7 @@ header.site-header.scrolled .header-inner {
     height: 100%;
     opacity: 0;
     transform: scale(1);
-    transition: opacity 1.5s ease-in-out, transform 8s ease-out;
+    transition: opacity 1.8s ease-in-out, transform 9s ease-out;
     background-size: cover;
     background-position: center;
 }
@@ -455,10 +597,10 @@ header.site-header.scrolled .header-inner {
     height: 100%;
     z-index: 2;
     background: linear-gradient(
-        to right,
-        rgba(22, 20, 15, 0.92) 0%,
-        rgba(22, 20, 15, 0.75) 45%,
-        rgba(22, 20, 15, 0.4) 100%
+        135deg,
+        rgba(20, 18, 13, 0.94) 0%,
+        rgba(20, 18, 13, 0.8) 50%,
+        rgba(20, 18, 13, 0.45) 100%
     );
 }
 
@@ -469,73 +611,65 @@ header.site-header.scrolled .header-inner {
     grid-template-columns: 1.15fr 0.85fr;
     gap: 4rem;
     align-items: center;
-    width: 100%;
 }
 
 .hero-headline {
-    font-size: clamp(2.5rem, 5.2vw, 4.5rem);
-    line-height: 1.08;
+    font-size: clamp(2.6rem, 5.2vw, 4.75rem);
+    line-height: 1.06;
     margin-bottom: 1.5rem;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
     color: #ffffff;
 }
 
 .hero-headline em {
     font-style: italic;
-    color: var(--brass);
+    background: var(--brass-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-subtext {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.82);
     margin-bottom: 2.25rem;
     max-width: 580px;
     font-weight: 300;
 }
 
-/* Quick Book Frosted Glass Widget */
+/* Quick Book Widget */
 .quick-book-card {
-    background: rgba(22, 20, 15, 0.65);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(222, 215, 200, 0.2);
-    border-radius: var(--border-radius-lg);
-    padding: 2.25rem;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    background: rgba(20, 18, 13, 0.72);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border: 1px solid rgba(168, 134, 89, 0.35);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), 0 0 30px rgba(168, 134, 89, 0.15);
+    position: relative;
 }
 
-.quick-book-header {
-    border-bottom: 1px solid var(--line-dark);
-    padding-bottom: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.quick-book-title {
-    font-size: 1.4rem;
-    font-family: var(--font-display);
-    color: #ffffff;
-    margin-bottom: 0.25rem;
-}
-
-.quick-book-subtitle {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--brass);
+.quick-book-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20%;
+    right: 20%;
+    height: 1px;
+    background: var(--brass-gradient);
 }
 
 .quick-book-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
+    gap: 1.1rem;
+    margin-bottom: 1.5rem;
 }
 
 .field-group {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.45rem;
 }
 
 .field-group.full-width {
@@ -545,26 +679,28 @@ header.site-header.scrolled .header-inner {
 .field-label {
     font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     color: var(--stone-300);
     display: flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.4rem;
+    font-weight: 600;
 }
 
 .field-input {
     background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--radius-sm);
     color: #ffffff;
-    padding: 0.75rem 0.9rem;
-    font-size: 0.875rem;
-    transition: var(--transition);
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
 .field-input:focus {
     border-color: var(--brass);
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 0 15px rgba(168, 134, 89, 0.3);
 }
 
 .field-input option {
@@ -572,13 +708,8 @@ header.site-header.scrolled .header-inner {
     color: #ffffff;
 }
 
-.quick-book-submit {
-    width: 100%;
-    margin-top: 0.5rem;
-}
-
 /* ==========================================================================
-   TRUST STRIP (DARK INK BAND)
+   TRUST STRIP
    ========================================================================== */
 
 .trust-strip {
@@ -586,7 +717,7 @@ header.site-header.scrolled .header-inner {
     color: #ffffff;
     border-top: 1px solid var(--line-dark);
     border-bottom: 1px solid var(--line-dark);
-    padding: 1.25rem 0;
+    padding: 1.5rem 0;
 }
 
 .trust-strip-inner {
@@ -600,27 +731,15 @@ header.site-header.scrolled .header-inner {
 .trust-item {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    font-size: 0.85rem;
+    gap: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 500;
-    letter-spacing: 0.05em;
     color: var(--stone-300);
 }
 
 .trust-item strong {
     color: #ffffff;
-}
-
-.trust-item .star-icon {
-    color: var(--brass);
-}
-
-.trust-bullet {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: var(--brass);
-    opacity: 0.6;
+    font-weight: 700;
 }
 
 /* ==========================================================================
@@ -630,43 +749,32 @@ header.site-header.scrolled .header-inner {
 .section-monument {
     padding: var(--section-y) 0;
     background-color: var(--ivory);
+    position: relative;
 }
 
 .monument-grid {
     display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 4.5rem;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 5rem;
     align-items: center;
 }
 
 .monument-anchor {
+    position: relative;
+    padding-right: 3.5rem;
     border-right: 1px solid var(--line);
-    padding-right: 3rem;
 }
 
 .monument-number {
     font-family: var(--font-display);
-    font-size: clamp(6.5rem, 12vw, 11rem);
-    line-height: 0.9;
+    font-size: clamp(7rem, 13vw, 12rem);
+    line-height: 0.88;
     font-weight: 400;
-    color: var(--brass);
+    background: var(--brass-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 1rem;
-    letter-spacing: -0.03em;
-}
-
-.monument-tagline {
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--stone-700);
-}
-
-.monument-copy {
-    font-size: 1.15rem;
-    line-height: 1.75;
-    color: var(--stone-700);
-    margin-bottom: 2.5rem;
+    letter-spacing: -0.04em;
 }
 
 .monument-stats-row {
@@ -674,12 +782,12 @@ header.site-header.scrolled .header-inner {
     grid-template-columns: repeat(4, 1fr);
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
-    padding: 1.75rem 0;
-    margin-top: 2rem;
+    padding: 2rem 0;
+    margin-top: 2.5rem;
 }
 
 .monument-stat-cell {
-    padding: 0 1.25rem;
+    padding: 0 1.5rem;
     border-right: 1px solid var(--line);
 }
 
@@ -689,20 +797,14 @@ header.site-header.scrolled .header-inner {
 
 .monument-stat-num {
     font-family: var(--font-display);
-    font-size: 2rem;
+    font-size: 2.25rem;
     color: var(--ink);
+    font-weight: 600;
     margin-bottom: 0.25rem;
 }
 
-.monument-stat-label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--stone-500);
-}
-
 /* ==========================================================================
-   ROOMS — "FILM FRAMES"
+   ROOMS — "FILM FRAMES" EXPANDING CARDS
    ========================================================================== */
 
 .section-rooms-film {
@@ -716,33 +818,33 @@ header.site-header.scrolled .header-inner {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
-    margin-top: 3rem;
+    margin-top: 3.5rem;
 }
 
 .film-frame-card {
     position: relative;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     overflow: hidden;
-    height: 65vh;
-    min-height: 520px;
+    height: 68vh;
+    min-height: 540px;
     background-color: var(--ink);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 2rem;
+    padding: 2.25rem;
     color: #ffffff;
-    box-shadow: 0 10px 30px rgba(22, 20, 15, 0.08);
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+    box-shadow: var(--shadow-md);
+    transition: all 0.6s var(--ease-out);
 }
 
 .film-frame-card.featured-presidential {
-    height: 72vh;
-    min-height: 580px;
+    height: 74vh;
+    min-height: 600px;
 }
 
 .film-frame-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(22, 20, 15, 0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(20, 18, 13, 0.22), 0 0 30px var(--brass-glow);
 }
 
 .film-frame-bg {
@@ -753,12 +855,12 @@ header.site-header.scrolled .header-inner {
     height: 100%;
     background-size: cover;
     background-position: center;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.9s var(--ease-out);
     z-index: 1;
 }
 
 .film-frame-card:hover .film-frame-bg {
-    transform: scale(1.06);
+    transform: scale(1.08);
 }
 
 .film-frame-overlay {
@@ -769,9 +871,9 @@ header.site-header.scrolled .header-inner {
     height: 100%;
     background: linear-gradient(
         to top,
-        rgba(22, 20, 15, 0.95) 0%,
-        rgba(22, 20, 15, 0.6) 50%,
-        rgba(22, 20, 15, 0.2) 100%
+        rgba(20, 18, 13, 0.96) 0%,
+        rgba(20, 18, 13, 0.65) 50%,
+        rgba(20, 18, 13, 0.15) 100%
     );
     z-index: 2;
 }
@@ -782,145 +884,103 @@ header.site-header.scrolled .header-inner {
 }
 
 .film-frame-rule {
-    width: 40px;
+    width: 36px;
     height: 2px;
-    background-color: var(--brass);
+    background: var(--brass-gradient);
     margin-bottom: 1rem;
-    transition: width 0.3s ease;
+    transition: width 0.4s ease;
 }
 
 .film-frame-card:hover .film-frame-rule {
-    width: 60px;
+    width: 65px;
 }
 
 .film-frame-title {
-    font-size: 1.6rem;
+    font-size: 1.75rem;
     color: #ffffff;
-    margin-bottom: 0.5rem;
-}
-
-.film-frame-desc {
-    font-size: 0.85rem;
-    color: var(--stone-300);
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
-    font-weight: 300;
-}
-
-.film-frame-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    padding-top: 1rem;
-}
-
-.film-frame-tags {
-    display: flex;
-    gap: 0.75rem;
-    font-size: 0.75rem;
-    color: var(--brass);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    margin-bottom: 0.6rem;
 }
 
 /* ==========================================================================
-   FACILITIES — "THE LUXURY MENU" (DARK INK SECTION)
+   FACILITIES & DINING SECTIONS
    ========================================================================== */
 
 .section-facilities-menu {
     padding: var(--section-y) 0;
     background-color: var(--ink);
     color: #ffffff;
+    position: relative;
 }
 
 .facilities-menu-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     border-top: 1px solid var(--line-dark);
-    margin-top: 3.5rem;
+    margin-top: 4rem;
 }
 
 .facility-menu-cell {
-    padding: 3rem 2.5rem;
+    padding: 3.5rem 2.5rem;
     border-right: 1px solid var(--line-dark);
     border-bottom: 1px solid var(--line-dark);
-    transition: background-color 0.4s ease;
+    transition: all 0.4s var(--ease-out);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.facility-menu-cell::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--brass-gradient);
+    transition: height 0.4s ease;
+}
+
+.facility-menu-cell:hover::before {
+    height: 100%;
+}
+
+.facility-menu-cell:hover {
+    background-color: rgba(255, 255, 255, 0.035);
+    transform: translateY(-2px);
 }
 
 .facility-menu-cell:nth-child(3n) {
     border-right: none;
 }
 
-.facility-menu-cell:hover {
-    background-color: rgba(255, 255, 255, 0.03);
-}
-
-.facility-menu-rule {
-    width: 30px;
-    height: 1px;
-    background-color: var(--brass);
-    margin-bottom: 1.25rem;
-}
-
-.facility-menu-name {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-style: italic;
-    color: #ffffff;
-    margin-bottom: 0.5rem;
-}
-
-.facility-menu-sub {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--brass);
-    margin-bottom: 1rem;
-}
-
-.facility-menu-desc {
-    font-size: 0.875rem;
-    color: var(--stone-300);
-    line-height: 1.6;
-    font-weight: 300;
-}
-
-/* ==========================================================================
-   DINING — "THE DIPTYCH"
-   ========================================================================== */
-
-.section-dining-diptych {
-    padding: var(--section-y) 0;
-    background-color: var(--ivory);
-}
-
+/* Dining Diptych */
 .diptych-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0;
-    margin-top: 3rem;
-    border: 1px solid var(--line);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    background-color: var(--paper);
+    gap: 2rem;
+    margin-top: 3.5rem;
 }
 
-.diptych-panel {
+.diptych-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all 0.5s var(--ease-out);
     display: flex;
     flex-direction: column;
-    border-right: 1px solid var(--line);
 }
 
-.diptych-panel:last-child {
-    border-right: none;
+.diptych-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg), 0 0 30px var(--brass-glow);
 }
 
 .diptych-img-wrap {
-    height: 380px;
+    height: 340px;
     position: relative;
     overflow: hidden;
     background-color: var(--ink);
@@ -933,218 +993,8 @@ header.site-header.scrolled .header-inner {
     transition: transform 0.8s ease;
 }
 
-.diptych-panel:hover .diptych-img {
-    transform: scale(1.05);
-}
-
-.diptych-content {
-    padding: 3rem 2.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.diptych-tag {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--brass);
-    margin-bottom: 0.75rem;
-}
-
-.diptych-title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: var(--ink);
-}
-
-.diptych-desc {
-    font-size: 0.95rem;
-    color: var(--stone-700);
-    line-height: 1.7;
-    margin-bottom: 2rem;
-}
-
-/* ==========================================================================
-   POOL BAND — CINEMATIC PAUSE
-   ========================================================================== */
-
-.section-pool-band {
-    height: 70vh;
-    min-height: 480px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: #ffffff;
-}
-
-.pool-band-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(22, 20, 15, 0.65);
-}
-
-.pool-band-content {
-    position: relative;
-    z-index: 5;
-    max-width: 800px;
-    padding: 0 2rem;
-}
-
-.pool-band-title {
-    font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-    font-style: italic;
-    margin-bottom: 1rem;
-    color: #ffffff;
-}
-
-.pool-band-sub {
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--brass);
-}
-
-/* ==========================================================================
-   EVENTS — "ONE NUMBER, ONE IMAGE"
-   ========================================================================== */
-
-.section-events-monument {
-    padding: var(--section-y) 0;
-    background-color: var(--paper);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-}
-
-.events-monument-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 4rem;
-    align-items: center;
-    margin-top: 2rem;
-}
-
-.events-img-frame {
-    position: relative;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    height: 480px;
-    box-shadow: 0 15px 40px rgba(22, 20, 15, 0.1);
-}
-
-.events-img-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.events-number-lockup {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.events-monument-num {
-    font-family: var(--font-display);
-    font-size: clamp(4.5rem, 8vw, 7.5rem);
-    line-height: 0.9;
-    color: var(--brass);
-}
-
-.events-monument-label {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    color: var(--ink);
-    font-style: italic;
-}
-
-/* ==========================================================================
-   REVIEWS — "THE MONUMENT QUOTE"
-   ========================================================================== */
-
-.section-reviews-monument {
-    padding: var(--section-y) 0;
-    background-color: var(--ivory);
-    text-align: center;
-}
-
-.review-quote-mark {
-    font-family: var(--font-display);
-    font-size: 5rem;
-    line-height: 1;
-    color: var(--brass);
-    display: block;
-    margin-bottom: -1rem;
-}
-
-.review-primary-text {
-    font-family: var(--font-display);
-    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
-    line-height: 1.4;
-    color: var(--ink);
-    max-width: 900px;
-    margin: 0 auto 1.5rem;
-    font-weight: 400;
-}
-
-.review-author {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--stone-700);
-}
-
-.review-proof-line {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--line);
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--stone-500);
-}
-
-/* ==========================================================================
-   CTA BAND (INK SECTION)
-   ========================================================================== */
-
-.section-cta-band {
-    padding: 6rem 0;
-    background-color: var(--ink);
-    color: #ffffff;
-    text-align: center;
-    border-top: 1px solid var(--line-dark);
-}
-
-.cta-band-title {
-    font-size: clamp(2.2rem, 4vw, 3.5rem);
-    margin-bottom: 1rem;
-}
-
-.cta-band-sub {
-    font-size: 1.1rem;
-    color: var(--stone-300);
-    max-width: 650px;
-    margin: 0 auto 2.5rem;
-    font-weight: 300;
-}
-
-.cta-band-actions {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+.diptych-card:hover .diptych-img {
+    transform: scale(1.06);
 }
 
 /* ==========================================================================
@@ -1154,7 +1004,7 @@ header.site-header.scrolled .header-inner {
 footer.site-footer {
     background-color: #0e0c09;
     color: #ffffff;
-    padding: 5rem 0 2rem;
+    padding: 5.5rem 0 2.5rem;
     border-top: 1px solid var(--line-dark);
 }
 
@@ -1167,21 +1017,21 @@ footer.site-footer {
 
 .footer-brand-title {
     font-family: var(--font-display);
-    font-size: 1.75rem;
+    font-size: 1.85rem;
     font-style: italic;
     color: #ffffff;
     margin-bottom: 1rem;
 }
 
 .footer-brand-title span {
-    color: var(--brass);
+    color: var(--brass-light);
     font-style: normal;
 }
 
 .footer-brand-desc {
-    font-size: 0.85rem;
+    font-size: 0.875rem;
     color: var(--stone-300);
-    line-height: 1.6;
+    line-height: 1.7;
     margin-bottom: 1.5rem;
 }
 
@@ -1238,7 +1088,7 @@ footer.site-footer {
 @media (max-width: 1024px) {
     .hero-grid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 3.5rem;
     }
 
     .rooms-frames-grid {
@@ -1253,6 +1103,10 @@ footer.site-footer {
         border-right: none;
     }
 
+    .diptych-grid {
+        grid-template-columns: 1fr;
+    }
+
     .footer-grid {
         grid-template-columns: 1fr 1fr;
         gap: 2.5rem;
@@ -1260,7 +1114,7 @@ footer.site-footer {
 }
 
 @media (max-width: 768px) {
-    .main-nav, .header-phone {
+    .main-nav, .header-phone-badge {
         display: none;
     }
 
@@ -1285,18 +1139,14 @@ footer.site-footer {
         gap: 1.5rem 0;
     }
 
-    .monument-stat-cell:nth-child(2) {
-        border-right: none;
-    }
-
     .rooms-frames-grid {
         grid-template-columns: 1fr;
     }
 
     .film-frame-card,
     .film-frame-card.featured-presidential {
-        height: 55vh;
-        min-height: 420px;
+        height: 56vh;
+        min-height: 440px;
     }
 
     .facilities-menu-grid {
@@ -1305,20 +1155,6 @@ footer.site-footer {
 
     .facility-menu-cell {
         border-right: none;
-    }
-
-    .diptych-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .diptych-panel {
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-    }
-
-    .events-monument-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
     }
 
     .footer-grid {
