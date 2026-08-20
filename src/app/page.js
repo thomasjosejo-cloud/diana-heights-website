@@ -510,7 +510,7 @@ export default function HomePage() {
                ========================================================================== */}
             <section style={{ backgroundColor: 'var(--surface-pure)', borderTop: '1px solid var(--line-light)', borderBottom: '1px solid var(--line-light)', padding: 'var(--section-y) 0' }}>
                 <div className="container">
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '3.5rem', alignItems: 'center' }}>
+                    <div className="grid-2-col-asymmetric">
                         <div style={{ height: '460px', borderRadius: 'var(--radius-md)', overflow: 'hidden', backgroundColor: 'var(--sapphire-950)', boxShadow: 'var(--shadow-md)' }}>
                             <img
                                 src="/assets/images/banquet 01.png"

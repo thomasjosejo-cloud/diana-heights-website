@@ -78,7 +78,7 @@ export default function GalleryPage() {
             {/* Gallery Grid */}
             <section style={{ padding: '2rem 0 6rem' }}>
                 <div className="container">
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: '1.25rem' }}>
                         {filteredItems.map((item, index) => (
                             <div
                                 key={index}

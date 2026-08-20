@@ -1088,69 +1088,307 @@ footer.site-footer {
     color: #64748B;
 }
 
-/* Responsive */
+/* ==========================================================================
+   RESPONSIVE — FULL MOBILE OPTIMIZATION
+   ========================================================================== */
+
+/* Responsive utility classes for inline grids */
+.grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.grid-2-col-asymmetric {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3.5rem;
+    align-items: center;
+}
+
+.grid-2-col-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.grid-venue-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+}
+
+.grid-complimentary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.25rem;
+}
+
+/* Tablet: max-width 1024px */
 @media (max-width: 1024px) {
     .hero-grid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
     }
+
+    .quick-book-card {
+        max-width: 100%;
+    }
+
     .rooms-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .facilities-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .facility-cell:nth-child(2n) {
         border-right: none;
     }
+
     .diptych-grid {
         grid-template-columns: 1fr;
     }
+
+    .grid-2-col-asymmetric {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .grid-2-col-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .grid-venue-card {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .grid-venue-card > div {
+        order: unset !important;
+    }
+
     .footer-grid {
         grid-template-columns: 1fr 1fr;
         gap: 2.5rem;
     }
-}
 
-@media (max-width: 768px) {
-    .main-nav, .header-phone-badge {
-        display: none;
-    }
-    .hamburger {
-        display: flex;
-    }
     .monument-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2.5rem;
     }
+
     .monument-anchor {
         border-right: none;
         border-bottom: 1px solid var(--line-light);
         padding-right: 0;
         padding-bottom: 1.5rem;
     }
+}
+
+/* Mobile: max-width 768px */
+@media (max-width: 768px) {
+    :root {
+        --section-y: clamp(3rem, 6vh, 4.5rem);
+    }
+
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    /* Header */
+    .main-nav, .header-phone-badge {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .brand-logo-img {
+        height: 42px;
+    }
+
+    header.site-header {
+        padding: 0.65rem 0;
+    }
+
+    /* Hero */
+    .hero-sapphire {
+        min-height: auto;
+        padding: 7rem 0 3.5rem;
+    }
+
+    .hero-headline {
+        font-size: clamp(1.75rem, 7vw, 2.8rem);
+    }
+
+    .hero-subtext {
+        font-size: 0.9rem;
+    }
+
+    .quick-book-card {
+        padding: 1.5rem;
+    }
+
+    .quick-book-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Trust Strip */
+    .trust-strip-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.85rem;
+    }
+
+    .trust-strip-inner > div[style*="width: 4px"] {
+        display: none;
+    }
+
+    /* Monument / About */
+    .monument-number {
+        font-size: clamp(4rem, 15vw, 6rem);
+    }
+
     .monument-stats-row {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1.25rem 0;
+        gap: 1rem 0;
     }
+
+    .monument-stat-cell {
+        padding: 0 0.75rem;
+    }
+
+    /* Rooms */
     .rooms-grid {
         grid-template-columns: 1fr;
     }
+
     .room-card-sapphire {
-        height: 480px;
+        height: 420px;
     }
+
+    /* Facilities */
     .facilities-grid {
         grid-template-columns: 1fr;
     }
+
     .facility-cell {
-        border-right: none;
+        border-right: none !important;
+        padding: 2rem 1.5rem;
     }
+
+    /* Diptych / Dining */
+    .diptych-img-wrap {
+        height: 220px;
+    }
+
+    /* Inline Grids → Stack vertically */
+    .grid-2-col,
+    .grid-2-col-asymmetric,
+    .grid-2-col-content,
+    .grid-venue-card {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .grid-venue-card > div {
+        order: unset !important;
+    }
+
+    .grid-complimentary {
+        grid-template-columns: 1fr;
+    }
+
+    /* Section titles */
+    .section-title {
+        font-size: clamp(1.65rem, 5.5vw, 2.4rem);
+    }
+
+    .eyebrow {
+        font-size: 0.65rem;
+    }
+
+    /* Footer */
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
+
     .footer-bottom {
         flex-direction: column;
         align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    /* Generic inner page hero */
+    .inner-hero-section {
+        padding: 4.5rem 0 2.5rem;
+    }
+
+    /* Buttons on mobile — full width for touch targets */
+    .hero-sapphire .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Small Phone: max-width 480px */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .hero-headline {
+        font-size: clamp(1.5rem, 7vw, 2rem);
+    }
+
+    .brand-logo-img {
+        height: 36px;
+    }
+
+    .quick-book-card {
+        padding: 1.25rem;
+        border-radius: var(--radius-md);
+    }
+
+    .room-card-sapphire {
+        height: 380px;
+        padding: 1.25rem;
+    }
+
+    .monument-number {
+        font-size: 3.5rem;
+    }
+
+    .monument-stats-row {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .monument-stat-num {
+        font-size: 1.65rem;
+    }
+
+    .btn {
+        padding: 0.75rem 1.35rem;
+        font-size: 0.72rem;
+    }
+
+    .status-pill {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.7rem;
+    }
+
+    .trust-item {
+        font-size: 0.78rem;
+    }
+
+    .facility-cell {
+        padding: 1.5rem 1rem;
     }
 }

@@ -33,7 +33,7 @@ export default function ContactPage() {
             {/* Main Contact Grid */}
             <section style={{ padding: 'var(--section-y) 0' }}>
                 <div className="container">
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start' }}>
+                    <div className="grid-2-col-content">
                         {/* Left: Contact Info & Channels */}
                         <div>
                             <span className="eyebrow">HOTEL LOCATION & HOTLINES</span>

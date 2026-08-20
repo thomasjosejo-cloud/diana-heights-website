@@ -97,7 +97,7 @@ export default function FacilitiesPage() {
                         </p>
                     </div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.25rem' }}>
+                    <div className="grid-complimentary">
                         {[
                             'Breakfast Buffet (Indian & Continental)',
                             'Bottled Mineral Water (1000ml) 02 Nos Daily',

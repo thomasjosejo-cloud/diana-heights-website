@@ -26,7 +26,7 @@ export default function RoomsPage() {
             {/* Rooms List */}
             <section style={{ padding: 'var(--section-y) 0' }}>
                 <div className="container">
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '3.5rem' }}>
                         {roomsData.map((room, index) => {
                             const isEven = index % 2 === 1;
                             const whatsappRoomLink = buildWhatsAppLink({
@@ -37,20 +37,17 @@ export default function RoomsPage() {
                             return (
                                 <div
                                     key={room.slug}
+                                    className="grid-venue-card"
                                     style={{
-                                        display: 'grid',
-                                        gridTemplateColumns: isEven ? '1fr 1fr' : '1fr 1fr',
-                                        gap: '3.5rem',
-                                        alignItems: 'center',
                                         backgroundColor: 'var(--surface-pure)',
                                         border: '1px solid var(--line-light)',
                                         borderRadius: 'var(--radius-md)',
                                         overflow: 'hidden',
-                                        padding: '2.5rem',
+                                        padding: 'clamp(1.5rem, 4vw, 2.5rem)',
                                         boxShadow: 'var(--shadow-sm)'
                                     }}
                                 >
-                                    <div style={{ order: isEven ? 2 : 1, height: '360px', borderRadius: 'var(--radius-sm)', overflow: 'hidden', backgroundColor: 'var(--sapphire-950)' }}>
+                                    <div style={{ order: isEven ? 2 : 1, height: '340px', borderRadius: 'var(--radius-sm)', overflow: 'hidden', backgroundColor: 'var(--sapphire-950)' }}>
                                         <img
                                             src={room.image}
                                             alt={room.name}
@@ -59,7 +56,7 @@ export default function RoomsPage() {
                                     </div>
 
                                     <div style={{ order: isEven ? 1 : 2 }}>
-                                        <div style={{ display: 'flex', gap: '0.65rem', alignItems: 'center', marginBottom: '0.5rem' }}>
+                                        <div style={{ display: 'flex', gap: '0.65rem', alignItems: 'center', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
                                             <span className="status-pill" style={{ color: 'var(--gold-deep)', borderColor: 'var(--gold)' }}>
                                                 {room.areaSqFt}
                                             </span>
@@ -68,18 +65,18 @@ export default function RoomsPage() {
                                             </span>
                                         </div>
 
-                                        <h2 className="font-serif" style={{ fontSize: '2.1rem', marginBottom: '0.45rem', color: 'var(--sapphire-950)' }}>
+                                        <h2 className="font-serif" style={{ fontSize: 'clamp(1.65rem, 3.5vw, 2.1rem)', marginBottom: '0.45rem', color: 'var(--sapphire-950)' }}>
                                             {room.name}
                                         </h2>
                                         <p style={{ color: 'var(--gold)', fontStyle: 'italic', marginBottom: '1rem', fontSize: '0.95rem', fontFamily: 'var(--font-display)' }}>
                                             {room.tagline}
                                         </p>
-                                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
+                                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: '1.7', marginBottom: '1.35rem' }}>
                                             {room.description}
                                         </p>
 
                                         {/* Highlights list */}
-                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.5rem', marginBottom: '1.75rem' }}>
+                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '0.5rem', marginBottom: '1.75rem' }}>
                                             {room.features.slice(0, 4).map((f, i) => (
                                                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
                                                     <i className="fa-solid fa-check" style={{ color: 'var(--gold)', fontSize: '0.725rem' }}></i>
@@ -88,7 +85,7 @@ export default function RoomsPage() {
                                             ))}
                                         </div>
 
-                                        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+                                        <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap', alignItems: 'center' }}>
                                             <a
                                                 href={whatsappRoomLink}
                                                 target="_blank"
@@ -101,7 +98,7 @@ export default function RoomsPage() {
                                                 href={`/rooms/${room.slug}`}
                                                 className="btn btn-outline-dark"
                                             >
-                                                Full Details & Photos &rarr;
+                                                Full Specs &rarr;
                                             </Link>
                                         </div>
                                     </div>

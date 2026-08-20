@@ -38,11 +38,8 @@ export default function EventsPage() {
                             return (
                                 <div
                                     key={venue.slug}
+                                    className="grid-venue-card"
                                     style={{
-                                        display: 'grid',
-                                        gridTemplateColumns: isEven ? '1fr 1fr' : '1fr 1fr',
-                                        gap: '3.5rem',
-                                        alignItems: 'center',
                                         backgroundColor: 'var(--surface-pure)',
                                         border: '1px solid var(--line-light)',
                                         borderRadius: 'var(--radius-md)',

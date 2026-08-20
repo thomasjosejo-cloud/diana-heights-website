@@ -66,15 +66,15 @@ const destinations = [
 
 export default function DestinationsPage() {
     return (
-        <main style={{ backgroundColor: 'var(--ivory)', paddingTop: '90px' }}>
+        <main style={{ backgroundColor: 'var(--surface-light)', paddingTop: '90px' }}>
             {/* Hero */}
-            <section style={{ backgroundColor: 'var(--ink)', color: '#ffffff', padding: '6rem 0 4rem', textAlign: 'center' }}>
+            <section style={{ backgroundColor: 'var(--sapphire-950)', color: '#ffffff', padding: '5.5rem 0 3.5rem', textAlign: 'center' }}>
                 <div className="container">
                     <span className="eyebrow eyebrow-dark">STRATEGIC KERALA LOCATION</span>
-                    <h1 className="font-serif" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1rem', color: '#ffffff' }}>
+                    <h1 className="font-serif" style={{ fontSize: 'clamp(2.3rem, 4.5vw, 3.8rem)', marginBottom: '0.85rem', color: '#ffffff' }}>
                         Nearest Destinations & Transit
                     </h1>
-                    <p style={{ color: 'var(--stone-300)', maxWidth: '650px', margin: '0 auto', fontSize: '1.05rem', fontWeight: '300' }}>
+                    <p style={{ color: '#CBD5E1', maxWidth: '620px', margin: '0 auto', fontSize: '1rem', fontWeight: '300' }}>
                         Located on the NH-47 corridor at Athani Junction, Diana Heights offers effortless access to CIAL, pilgrimage sites, beaches, and Kerala's iconic attractions.
                     </p>
                 </div>
@@ -83,15 +83,15 @@ export default function DestinationsPage() {
             {/* Destinations Grid */}
             <section style={{ padding: 'var(--section-y) 0' }}>
                 <div className="container">
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem' }}>
                         {destinations.map((dest, i) => (
                             <div
                                 key={i}
                                 style={{
-                                    backgroundColor: 'var(--paper)',
-                                    border: '1px solid var(--line)',
+                                    backgroundColor: 'var(--surface-pure)',
+                                    border: '1px solid var(--line-light)',
                                     borderRadius: 'var(--radius-md)',
-                                    padding: '2.5rem',
+                                    padding: '2rem',
                                     display: 'flex',
                                     flexDirection: 'column',
                                     justifyContent: 'space-between',
@@ -99,36 +99,26 @@ export default function DestinationsPage() {
                                 }}
                             >
                                 <div>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                                        <span style={{ fontSize: '0.7rem', fontWeight: '700', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--brass)' }}>
-                                            {dest.tag}
-                                        </span>
-                                        <span className="status-pill" style={{ fontSize: '0.7rem', padding: '0.2rem 0.6rem' }}>
-                                            {dest.time}
-                                        </span>
-                                    </div>
-
-                                    <h3 className="font-serif" style={{ fontSize: '1.5rem', color: 'var(--ink)', marginBottom: '0.5rem' }}>
+                                    <span style={{ fontSize: '0.7rem', fontWeight: '700', letterSpacing: '0.12em', color: 'var(--gold)', textTransform: 'uppercase', display: 'block', marginBottom: '0.35rem' }}>
+                                        {dest.tag}
+                                    </span>
+                                    <h2 className="font-serif" style={{ fontSize: '1.45rem', marginBottom: '0.65rem', color: 'var(--sapphire-950)' }}>
                                         {dest.name}
-                                    </h3>
-                                    <div style={{ fontSize: '1.1rem', fontWeight: '700', color: 'var(--brass-deep)', marginBottom: '1rem' }}>
-                                        {dest.distance}
-                                    </div>
-                                    <p style={{ color: 'var(--stone-700)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                                    </h2>
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: '1.65', marginBottom: '1.5rem' }}>
                                         {dest.desc}
                                     </p>
                                 </div>
 
-                                <div style={{ borderTop: '1px solid var(--line)', paddingTop: '1.25rem', marginTop: '1.5rem' }}>
-                                    <a
-                                        href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(dest.name)}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="link-brass"
-                                        style={{ fontSize: '0.8rem' }}
-                                    >
-                                        Get Directions on Google Maps &rarr;
-                                    </a>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--line-light)', paddingTop: '1rem', fontSize: '0.85rem' }}>
+                                    <span style={{ fontWeight: '700', color: 'var(--sapphire-950)' }}>
+                                        <i className="fa-solid fa-location-arrow" style={{ color: 'var(--gold)', marginRight: '6px' }}></i>
+                                        {dest.distance}
+                                    </span>
+                                    <span style={{ color: 'var(--text-muted)' }}>
+                                        <i className="fa-regular fa-clock" style={{ color: 'var(--gold)', marginRight: '6px' }}></i>
+                                        {dest.time}
+                                    </span>
                                 </div>
                             </div>
                         ))}

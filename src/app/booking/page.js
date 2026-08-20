@@ -23,14 +23,14 @@ export default function BookingPage() {
     };
 
     return (
-        <main style={{ backgroundColor: 'var(--ivory)', minHeight: '100vh', paddingTop: '90px' }}>
-            <section style={{ backgroundColor: 'var(--ink)', color: '#ffffff', padding: '6rem 0 4rem', textAlign: 'center' }}>
+        <main style={{ backgroundColor: 'var(--surface-light)', minHeight: '100vh', paddingTop: '90px' }}>
+            <section style={{ backgroundColor: 'var(--sapphire-950)', color: '#ffffff', padding: '5.5rem 0 3.5rem', textAlign: 'center' }}>
                 <div className="container">
                     <span className="eyebrow eyebrow-dark">DIRECT RESERVATIONS</span>
-                    <h1 className="font-serif" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1rem', color: '#ffffff' }}>
+                    <h1 className="font-serif" style={{ fontSize: 'clamp(2.3rem, 4.5vw, 3.8rem)', marginBottom: '0.85rem', color: '#ffffff' }}>
                         Book Direct & Save
                     </h1>
-                    <p style={{ color: 'var(--stone-300)', maxWidth: '650px', margin: '0 auto', fontSize: '1.05rem', fontWeight: '300' }}>
+                    <p style={{ color: '#CBD5E1', maxWidth: '620px', margin: '0 auto', fontSize: '1rem', fontWeight: '300' }}>
                         Guaranteed best rates with zero OTA commission fees, instant WhatsApp confirmation, and flexible check-in matching.
                     </p>
                 </div>
@@ -38,24 +38,24 @@ export default function BookingPage() {
 
             <section style={{ padding: 'var(--section-y) 0' }}>
                 <div className="container" style={{ maxWidth: '750px' }}>
-                    <div style={{ backgroundColor: 'var(--paper)', border: '1px solid var(--line)', borderRadius: 'var(--border-radius-lg)', padding: '3rem', boxShadow: '0 15px 40px rgba(22,20,15,0.06)' }}>
+                    <div style={{ backgroundColor: 'var(--surface-pure)', border: '1px solid var(--line-light)', borderRadius: 'var(--radius-lg)', padding: 'clamp(1.5rem, 5vw, 3rem)', boxShadow: 'var(--shadow-sm)' }}>
                         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                             <span className="eyebrow">RESERVATION DESK</span>
-                            <h2 className="font-serif" style={{ fontSize: '2rem', color: 'var(--ink)' }}>
+                            <h2 className="font-serif" style={{ fontSize: '2rem', color: 'var(--sapphire-950)' }}>
                                 Select Your Stay Dates
                             </h2>
                         </div>
 
                         <form onSubmit={handleBooking}>
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '1.25rem' }}>
+                            <div className="grid-2-col" style={{ gap: '1.25rem', marginBottom: '1.25rem' }}>
                                 <div className="field-group">
-                                    <label className="field-label" style={{ color: 'var(--stone-700)' }}>
-                                        <i className="fa-regular fa-calendar" style={{ color: 'var(--brass)' }}></i> Check In
+                                    <label className="field-label" style={{ color: 'var(--text-secondary)' }}>
+                                        <i className="fa-regular fa-calendar" style={{ color: 'var(--gold)' }}></i> Check In
                                     </label>
                                     <input
                                         type="date"
                                         className="field-input"
-                                        style={{ color: 'var(--ink)', borderColor: 'var(--line)', backgroundColor: 'var(--ivory)' }}
+                                        style={{ color: 'var(--sapphire-950)', borderColor: 'var(--line-light)', backgroundColor: 'var(--surface-light)' }}
                                         value={checkIn}
                                         onChange={(e) => setCheckIn(e.target.value)}
                                         required
@@ -63,13 +63,13 @@ export default function BookingPage() {
                                 </div>
 
                                 <div className="field-group">
-                                    <label className="field-label" style={{ color: 'var(--stone-700)' }}>
-                                        <i className="fa-regular fa-calendar" style={{ color: 'var(--brass)' }}></i> Check Out
+                                    <label className="field-label" style={{ color: 'var(--text-secondary)' }}>
+                                        <i className="fa-regular fa-calendar" style={{ color: 'var(--gold)' }}></i> Check Out
                                     </label>
                                     <input
                                         type="date"
                                         className="field-input"
-                                        style={{ color: 'var(--ink)', borderColor: 'var(--line)', backgroundColor: 'var(--ivory)' }}
+                                        style={{ color: 'var(--sapphire-950)', borderColor: 'var(--line-light)', backgroundColor: 'var(--surface-light)' }}
                                         value={checkOut}
                                         onChange={(e) => setCheckOut(e.target.value)}
                                         required
@@ -78,30 +78,30 @@ export default function BookingPage() {
                             </div>
 
                             <div className="field-group" style={{ marginBottom: '1.25rem' }}>
-                                <label className="field-label" style={{ color: 'var(--stone-700)' }}>
-                                    <i className="fa-solid fa-bed" style={{ color: 'var(--brass)' }}></i> Room Type
+                                <label className="field-label" style={{ color: 'var(--text-secondary)' }}>
+                                    <i className="fa-solid fa-bed" style={{ color: 'var(--gold)' }}></i> Room Type
                                 </label>
                                 <select
                                     className="field-input"
-                                    style={{ color: 'var(--ink)', borderColor: 'var(--line)', backgroundColor: 'var(--ivory)' }}
+                                    style={{ color: 'var(--sapphire-950)', borderColor: 'var(--line-light)', backgroundColor: 'var(--surface-light)' }}
                                     value={roomType}
                                     onChange={(e) => setRoomType(e.target.value)}
                                 >
-                                    <option value="Presidential Suite">Presidential Suite (Expansive · Jacuzzi · 4 Guests)</option>
-                                    <option value="Luxury Suite">Luxury Suite (Generous Space · Pool Balcony · 3 Guests)</option>
-                                    <option value="Executive Room">Executive Room (Workstation · Transit Rest · 3 Guests)</option>
-                                    <option value="Deluxe Room">Deluxe Room (Comfortable · Hardwood Floors · 2 Guests)</option>
+                                    <option value="Presidential Suite">Presidential Suite (750 Sq. Ft. · Jacuzzi · 4 Guests)</option>
+                                    <option value="Luxury Suite">Luxury Suite (560–650 Sq. Ft. · Pool Balcony · 3 Guests)</option>
+                                    <option value="Executive Room">Executive Room (300–500 Sq. Ft. · Workstation · 3 Guests)</option>
+                                    <option value="Deluxe Room">Deluxe Room (248 Sq. Ft. · Pool View · 2 Guests)</option>
                                 </select>
                             </div>
 
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '2rem' }}>
+                            <div className="grid-2-col" style={{ gap: '1.25rem', marginBottom: '2rem' }}>
                                 <div className="field-group">
-                                    <label className="field-label" style={{ color: 'var(--stone-700)' }}>
-                                        <i className="fa-solid fa-user" style={{ color: 'var(--brass)' }}></i> Adults
+                                    <label className="field-label" style={{ color: 'var(--text-secondary)' }}>
+                                        <i className="fa-solid fa-user" style={{ color: 'var(--gold)' }}></i> Adults
                                     </label>
                                     <select
                                         className="field-input"
-                                        style={{ color: 'var(--ink)', borderColor: 'var(--line)', backgroundColor: 'var(--ivory)' }}
+                                        style={{ color: 'var(--sapphire-950)', borderColor: 'var(--line-light)', backgroundColor: 'var(--surface-light)' }}
                                         value={adults}
                                         onChange={(e) => setAdults(e.target.value)}
                                     >
@@ -113,12 +113,12 @@ export default function BookingPage() {
                                 </div>
 
                                 <div className="field-group">
-                                    <label className="field-label" style={{ color: 'var(--stone-700)' }}>
-                                        <i className="fa-solid fa-child" style={{ color: 'var(--brass)' }}></i> Children
+                                    <label className="field-label" style={{ color: 'var(--text-secondary)' }}>
+                                        <i className="fa-solid fa-child" style={{ color: 'var(--gold)' }}></i> Children
                                     </label>
                                     <select
                                         className="field-input"
-                                        style={{ color: 'var(--ink)', borderColor: 'var(--line)', backgroundColor: 'var(--ivory)' }}
+                                        style={{ color: 'var(--sapphire-950)', borderColor: 'var(--line-light)', backgroundColor: 'var(--surface-light)' }}
                                         value={children}
                                         onChange={(e) => setChildren(e.target.value)}
                                     >
@@ -129,14 +129,17 @@ export default function BookingPage() {
                                 </div>
                             </div>
 
-                            <button type="submit" className="btn btn-brass" style={{ width: '100%', padding: '1.1rem' }}>
-                                Check Availability via WhatsApp
+                            <button type="submit" className="btn btn-gold" style={{ width: '100%', padding: '1rem', fontSize: '0.9rem' }}>
+                                Complete Reservation on WhatsApp
                             </button>
-                        </form>
 
-                        <div style={{ textAlign: 'center', marginTop: '2rem', fontSize: '0.85rem', color: 'var(--stone-500)' }}>
-                            Prefer calling? Speak to our reservations desk at <a href="tel:+919526799179" style={{ color: 'var(--ink)', fontWeight: '600' }}>{HOTEL_PHONE}</a>
-                        </div>
+                            <div style={{ textAlign: 'center', marginTop: '1.5rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                                Need urgent booking assistance? Call front desk at{' '}
+                                <a href="tel:+919526799179" style={{ color: 'var(--sapphire-950)', fontWeight: '700' }}>
+                                    {HOTEL_PHONE}
+                                </a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </section>
