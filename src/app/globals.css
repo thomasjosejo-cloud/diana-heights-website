@@ -914,6 +914,159 @@ header.site-header.scrolled {
 }
 
 /* ==========================================================================
+   MOBILE BOOKING FLOW — STICKY CTA BAR + PORTAL BOOKING SHEET
+   (desktop hidden by default; activated only at <= 768px)
+   ========================================================================== */
+
+.mobile-cta-bar {
+    display: none;
+}
+
+.booking-sheet-root {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /* --- Sticky bottom CTA bar --- */
+    .mobile-cta-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 900;
+        padding: 0.75rem 1.1rem;
+        padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+        background: rgba(6, 11, 20, 0.92);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid var(--line-gold);
+        box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.45);
+        transform: translateY(120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.35s var(--ease-out), opacity 0.35s var(--ease-out);
+    }
+
+    .mobile-cta-bar.is-visible {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .mobile-cta-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Reserve space so the fixed bar never permanently covers the closing CTA */
+    body {
+        padding-bottom: calc(64px + env(safe-area-inset-bottom));
+    }
+
+    /* --- Portal booking sheet --- */
+    .booking-sheet-root {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        pointer-events: none;
+    }
+
+    .booking-sheet-root.is-open {
+        pointer-events: auto;
+    }
+
+    .booking-sheet-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(6, 11, 20, 0.6);
+        opacity: 0;
+        transition: opacity 0.3s var(--ease-out);
+    }
+
+    .booking-sheet-root.is-open .booking-sheet-backdrop {
+        opacity: 1;
+    }
+
+    .booking-sheet {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        max-height: 90vh;
+        overflow-y: auto;
+        background: var(--sapphire-950);
+        border-top: 1px solid var(--line-gold);
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.6);
+        padding: 1.35rem 1.35rem calc(1.5rem + env(safe-area-inset-bottom));
+        transform: translateY(100%);
+        transition: transform 0.35s var(--ease-out);
+    }
+
+    .booking-sheet-root.is-open .booking-sheet {
+        transform: translateY(0);
+    }
+
+    .booking-sheet-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.25rem;
+    }
+
+    .booking-sheet-title {
+        font-size: 1.4rem;
+        color: #ffffff;
+    }
+
+    .booking-sheet-close {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.06);
+        color: #ffffff;
+        font-size: 1.05rem;
+        cursor: pointer;
+        transition: all 0.25s var(--ease-out);
+    }
+
+    .booking-sheet-close:hover {
+        border-color: var(--gold);
+        color: var(--gold-light);
+    }
+
+    .booking-sheet-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .booking-sheet-submit {
+        grid-column: 1 / -1;
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.35rem;
+    }
+}
+
+/* Honor reduced-motion: no slide/fade transforms */
+@media (prefers-reduced-motion: reduce) {
+    .mobile-cta-bar,
+    .mobile-cta-bar.is-visible,
+    .booking-sheet,
+    .booking-sheet-root.is-open .booking-sheet,
+    .booking-sheet-backdrop {
+        transition: none;
+    }
+}
+
+/* ==========================================================================
    TRUST STRIP
    ========================================================================== */
 
@@ -1428,18 +1581,29 @@ footer.site-footer {
         padding: 0.65rem 0;
     }
 
-    /* Hero */
+    /* Hero — tightened spacing now that the inline widget is hidden on mobile */
     .hero-sapphire {
         min-height: auto;
-        padding: 7rem 0 3.5rem;
+        padding: 6rem 0 2.75rem;
+    }
+
+    .hero-content-center {
+        margin-bottom: 0;
     }
 
     .hero-headline {
         font-size: clamp(1.75rem, 7vw, 2.8rem);
+        margin-bottom: 1rem;
     }
 
     .hero-subtext {
         font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Inline hero reservation widget is replaced by the sticky bar + sheet on mobile */
+    .hero-reservation-bar {
+        display: none;
     }
 
     .quick-book-card {
