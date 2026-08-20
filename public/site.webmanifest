@@ -1,0 +1,21 @@
+{
+  "name": "Diana Heights Hotel",
+  "short_name": "Diana Heights",
+  "description": "4-Star Business Class Hotel near Cochin International Airport",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1526",
+  "theme_color": "#0B1526",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

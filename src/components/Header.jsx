@@ -4,6 +4,16 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { buildWhatsAppLink, HOTEL_PHONE } from '@/lib/whatsapp';
 
+const NAV_LINKS = [
+    { href: '/', label: 'Home' },
+    { href: '/rooms', label: 'Rooms' },
+    { href: '/dining', label: 'Dining' },
+    { href: '/facilities', label: 'Facilities' },
+    { href: '/events', label: 'Events' },
+    { href: '/gallery', label: 'Gallery' },
+    { href: '/contact', label: 'Contact' },
+];
+
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,93 +24,64 @@ export default function Header() {
     }, [pathname]);
 
     useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 20) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
-        };
-
+        const handleScroll = () => setIsScrolled(window.scrollY > 20);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     const whatsappDirectLink = buildWhatsAppLink({ type: 'booking' });
 
+    const isActive = (href) => {
+        if (href === '/') return pathname === '/';
+        return pathname.startsWith(href);
+    };
+
     return (
         <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
             <div className="container">
                 <div className="header-container">
-                    {/* Brand Logo - Single clean radiant gold mark */}
+                    {/* Brand — Clean typographic lockup, legible at any size */}
                     <Link href="/" className="brand-logo-wrap" aria-label="Diana Heights Hotel Homepage">
-                        <img 
-                            src="/assets/logo/diana-logo-gold.png" 
-                            alt="Diana Heights Hotel" 
-                            className="brand-logo-img" 
-                        />
+                        <span className="brand-mark">
+                            <span className="brand-name">Diana Heights</span>
+                        </span>
                     </Link>
 
-                    {/* Desktop Navigation - Clean single-line items */}
+                    {/* Desktop Navigation */}
                     <nav aria-label="Main Navigation">
                         <ul className="main-nav">
-                            <li>
-                                <Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`}>
-                                    Home
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/rooms" className={`nav-link ${pathname.startsWith('/rooms') ? 'active' : ''}`}>
-                                    Rooms
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/dining" className={`nav-link ${pathname === '/dining' ? 'active' : ''}`}>
-                                    Dining
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/facilities" className={`nav-link ${pathname === '/facilities' ? 'active' : ''}`}>
-                                    Spa & Pool
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/events" className={`nav-link ${pathname === '/events' ? 'active' : ''}`}>
-                                    Events (150 Pax)
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/gallery" className={`nav-link ${pathname === '/gallery' ? 'active' : ''}`}>
-                                    Gallery
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/contact" className={`nav-link ${pathname === '/contact' ? 'active' : ''}`}>
-                                    Contact
-                                </Link>
-                            </li>
+                            {NAV_LINKS.map((link) => (
+                                <li key={link.href}>
+                                    <Link
+                                        href={link.href}
+                                        className={`nav-link ${isActive(link.href) ? 'active' : ''}`}
+                                    >
+                                        {link.label}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </nav>
 
                     {/* Header Actions */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                         <a href="tel:+919526799179" className="header-phone-badge" title="Call Diana Heights Front Desk">
-                            <i className="fa-solid fa-phone" style={{ color: 'var(--gold-light)', fontSize: '0.7rem' }}></i>
+                            <i className="fa-solid fa-phone" style={{ color: 'var(--gold-light)', fontSize: '0.65rem' }}></i>
                             <span>{HOTEL_PHONE}</span>
                         </a>
 
-                        <a 
-                            href={whatsappDirectLink} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
+                        <a
+                            href={whatsappDirectLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="btn btn-gold"
-                            style={{ padding: '0.55rem 1.25rem', fontSize: '0.75rem' }}
+                            style={{ padding: '0.5rem 1.15rem', fontSize: '0.72rem' }}
                         >
                             Book Direct
                         </a>
 
-                        {/* Hamburger Button */}
-                        <button 
+                        {/* Hamburger */}
+                        <button
                             className={`hamburger ${isMenuOpen ? 'open' : ''}`}
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                             aria-label="Toggle navigation menu"
@@ -113,24 +94,20 @@ export default function Header() {
                 </div>
             </div>
 
-            {/* Mobile Drawer Navigation */}
+            {/* Mobile Drawer */}
             <div className={`mobile-nav ${isMenuOpen ? 'open' : ''}`}>
-                <div style={{ marginBottom: '2rem' }}>
-                    <img 
-                        src="/assets/logo/diana-logo-gold.png" 
-                        alt="Diana Heights Hotel" 
-                        style={{ height: '40px', width: 'auto' }} 
-                    />
+                <div style={{ marginBottom: '2.5rem' }}>
+                    <span className="brand-mark" style={{ fontSize: '1.5rem' }}>
+                        <span className="brand-name">Diana Heights</span>
+                    </span>
                 </div>
 
                 <ul className="mobile-nav-links">
-                    <li><Link href="/">Home</Link></li>
-                    <li><Link href="/rooms">Rooms & Suites</Link></li>
-                    <li><Link href="/dining">Dining (Flavours & Aero Cafe)</Link></li>
-                    <li><Link href="/facilities">Diana Ira Spa & Pool</Link></li>
-                    <li><Link href="/events">Runway Hall (150 Pax)</Link></li>
-                    <li><Link href="/gallery">Photo Gallery</Link></li>
-                    <li><Link href="/contact">Contact Hub</Link></li>
+                    {NAV_LINKS.map((link) => (
+                        <li key={link.href}>
+                            <Link href={link.href}>{link.label}</Link>
+                        </li>
+                    ))}
                 </ul>
 
                 <div className="mobile-nav-footer">
@@ -143,11 +120,11 @@ export default function Header() {
                         </a>
                     </div>
 
-                    <a 
-                        href={whatsappDirectLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="btn btn-gold" 
+                    <a
+                        href={whatsappDirectLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-gold"
                         style={{ width: '100%', textAlign: 'center' }}
                     >
                         Chat with Reservations
