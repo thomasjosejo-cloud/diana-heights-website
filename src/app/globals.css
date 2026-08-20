@@ -396,6 +396,18 @@ header.site-header.scrolled {
     flex-shrink: 0;
 }
 
+.brand-logo-img {
+    height: 56px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.4));
+    transition: opacity 0.3s ease;
+}
+
+.brand-logo-img:hover {
+    opacity: 0.88;
+}
+
 .brand-mark {
     display: flex;
     flex-direction: column;

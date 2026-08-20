@@ -40,11 +40,13 @@ export default function Header() {
         <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
             <div className="container">
                 <div className="header-container">
-                    {/* Brand — Clean typographic lockup, legible at any size */}
+                    {/* Brand Logo */}
                     <Link href="/" className="brand-logo-wrap" aria-label="Diana Heights Hotel Homepage">
-                        <span className="brand-mark">
-                            <span className="brand-name">Diana Heights</span>
-                        </span>
+                        <img
+                            src="/assets/logo/diana-logo-header.png"
+                            alt="Diana Heights Hotel"
+                            className="brand-logo-img"
+                        />
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -97,9 +99,11 @@ export default function Header() {
             {/* Mobile Drawer */}
             <div className={`mobile-nav ${isMenuOpen ? 'open' : ''}`}>
                 <div style={{ marginBottom: '2.5rem' }}>
-                    <span className="brand-mark" style={{ fontSize: '1.5rem' }}>
-                        <span className="brand-name">Diana Heights</span>
-                    </span>
+                    <img
+                        src="/assets/logo/diana-logo-header.png"
+                        alt="Diana Heights Hotel"
+                        style={{ height: '44px', width: 'auto' }}
+                    />
                 </div>
 
                 <ul className="mobile-nav-links">
