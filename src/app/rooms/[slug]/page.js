@@ -75,7 +75,7 @@ export default async function RoomDetailPage({ params }) {
             {/* Room Details & Booking Grid */}
             <section style={{ padding: 'var(--section-y) 0' }}>
                 <div className="container">
-                    <div className="grid-2-col-content" style={{ gridTemplateColumns: '1.2fr 0.8fr' }}>
+                    <div className="grid-2-col-content ratio-main-sidebar">
                         {/* Left: Overview, Features, Gallery */}
                         <div className="reveal reveal-left">
                             <span className="eyebrow">ROOM SPECIFICATIONS</span>
