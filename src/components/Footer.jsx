@@ -1,71 +1,97 @@
-"use client";
 import Link from 'next/link';
+import { HOTEL_PHONE, HOTEL_EMAIL } from '@/lib/whatsapp';
 
 export default function Footer() {
     return (
-        <footer>
-            <div className="container footer-grid">
-                <div className="footer-brand">
-                    <Link href="/" className="logo" style={{ marginBottom: '1.5rem', display: 'inline-block' }}>
-                        <img src="/assets/logo/logo.png" alt="Diana Heights Logo" style={{ maxHeight: '95px', width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0px 4px 12px rgba(0,0,0,0.5)) brightness(1.2)' }} />
-                    </Link>
-                    <p>Establishing the standard for premium airport-transit and boutique corporate hospitality in Kerala.</p>
-                </div>
-                
-                <div>
-                    <h4 className="footer-col-title">Navigation</h4>
-                    <ul className="footer-links">
-                        <li className="footer-link"><Link href="/">Home</Link></li>
-                        <li className="footer-link"><Link href="/about">About Diana Heights</Link></li>
-                        <li className="footer-link"><Link href="/rooms">Rooms & Suites</Link></li>
-                        <li className="footer-link"><Link href="/facilities">Facilities & MICE</Link></li>
-                        <li className="footer-link"><Link href="/destinations">Travel Guide</Link></li>
-                        <li className="footer-link"><Link href="/gallery">Photo Gallery</Link></li>
-                        <li className="footer-link"><Link href="/contact">Contact Hub</Link></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 className="footer-col-title">Contact Us</h4>
-                    <div className="footer-contact-info">
+        <footer className="site-footer">
+            <div className="container">
+                <div className="footer-grid">
+                    {/* Brand Column */}
+                    <div>
+                        <div className="footer-brand-title">
+                            Diana <span>Heights</span>
+                        </div>
+                        <p className="footer-brand-desc">
+                            Premium business-class hotel just ten minutes from Cochin International Airport. Everything you need, under one roof.
+                        </p>
+                        <div style={{ fontSize: '0.8rem', color: 'var(--brass)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+                            Nedumbassery · Cochin · Kerala
+                        </div>
+                    </div>
+
+                    {/* Navigation */}
+                    <div>
+                        <h4 className="footer-col-title">Navigation</h4>
+                        <ul className="footer-nav-list">
+                            <li><Link href="/">Home</Link></li>
+                            <li><Link href="/rooms">Rooms & Suites</Link></li>
+                            <li><Link href="/dining">Dining</Link></li>
+                            <li><Link href="/facilities">Facilities</Link></li>
+                            <li><Link href="/events">Events & MICE</Link></li>
+                            <li><Link href="/gallery">Gallery</Link></li>
+                            <li><Link href="/contact">Contact</Link></li>
+                        </ul>
+                    </div>
+
+                    {/* Accommodations */}
+                    <div>
+                        <h4 className="footer-col-title">Our Rooms</h4>
+                        <ul className="footer-nav-list">
+                            <li><Link href="/rooms/presidential-suite">Presidential Suite</Link></li>
+                            <li><Link href="/rooms/luxury-suite">Luxury Suite</Link></li>
+                            <li><Link href="/rooms/executive-room">Executive Room</Link></li>
+                            <li><Link href="/rooms/deluxe-room">Deluxe Room</Link></li>
+                        </ul>
+                    </div>
+
+                    {/* Contact & Location */}
+                    <div>
+                        <h4 className="footer-col-title">Location & Desk</h4>
                         <div className="footer-contact-item">
-                            <i className="fa-solid fa-location-dot"></i>
-                            <span>NH-47, Athani Junction, Nedumbassery, Ernakulam, Kerala - 683585</span>
+                            <i className="fa-solid fa-location-dot" style={{ color: 'var(--brass)', marginTop: '4px' }}></i>
+                            <span>
+                                NH-47, Near Cochin International Airport, Athani, Cochin, Kerala 683585
+                            </span>
                         </div>
                         <div className="footer-contact-item">
-                            <i className="fa-solid fa-phone"></i>
-                            <span>+91 952 679 9179</span>
+                            <i className="fa-solid fa-phone" style={{ color: 'var(--brass)' }}></i>
+                            <a href="tel:+919526799179" style={{ color: 'var(--stone-300)' }}>
+                                {HOTEL_PHONE}
+                            </a>
                         </div>
                         <div className="footer-contact-item">
-                            <i className="fa-solid fa-envelope"></i>
-                            <span>reservations@dianaheights.com</span>
+                            <i className="fa-solid fa-envelope" style={{ color: 'var(--brass)' }}></i>
+                            <a href={`mailto:${HOTEL_EMAIL}`} style={{ color: 'var(--stone-300)' }}>
+                                {HOTEL_EMAIL}
+                            </a>
+                        </div>
+                        <div style={{ marginTop: '1.25rem', display: 'flex', gap: '1rem', color: 'var(--stone-300)' }}>
+                            <a href="https://www.facebook.com/dianaheightshotel" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style={{ color: 'var(--stone-300)' }}>
+                                <i className="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/dianaheightshotel" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ color: 'var(--stone-300)' }}>
+                                <i className="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://twitter.com/diana_heights" target="_blank" rel="noopener noreferrer" aria-label="Twitter" style={{ color: 'var(--stone-300)' }}>
+                                <i className="fa-brands fa-x-twitter"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/diana-heights-luxury-hotel/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style={{ color: 'var(--stone-300)' }}>
+                                <i className="fa-brands fa-linkedin-in"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-                
-                <div className="footer-newsletter">
-                    <h4 className="footer-col-title">Newsletter</h4>
-                    <p>Join our club for exclusive transit packages and local culinary recipes.</p>
-                    <form className="newsletter-form" onSubmit={(e) => { e.preventDefault(); alert('Subscribed to premium newsletters!'); }}>
-                        <input type="email" placeholder="Your Email Address" className="newsletter-input" required />
-                        <button type="submit" className="newsletter-btn"><i className="fa-solid fa-arrow-right"></i></button>
-                    </form>
+
+                {/* Footer Bottom */}
+                <div className="footer-bottom">
+                    <div>
+                        &copy; 2026 Diana Heights Hotel. All rights reserved.
+                    </div>
+                    <div>
+                        Managed by <strong style={{ color: 'var(--brass)' }}>HOSTORY</strong>
+                    </div>
                 </div>
-            </div>
-            
-            <div className="container footer-bottom">
-                <p>&copy; 2026 Diana Heights Luxury Hotel. All rights reserved.</p>
-                <div className="footer-socials">
-                    <a href="#"><i className="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i className="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i className="fa-brands fa-twitter"></i></a>
-                    <a href="#"><i className="fa-brands fa-linkedin"></i></a>
-                </div>
-            </div>
-             <div className="container footer-bottom" style={{borderTop: 'none', paddingTop: 0, justifyContent: 'center'}}>
-                <p style={{fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)'}}>Digitally Transformed by Hostory, thehostory.in</p>
             </div>
         </footer>
     );
 }
-

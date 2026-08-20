@@ -2,215 +2,149 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-export default function Page() {
-    const [activeFilter, setActiveFilter] = useState('all');
-    const [lightboxImage, setLightboxImage] = useState(null);
+const galleryItems = [
+    { src: '/assets/images/diana.png', title: 'Hotel Facade & Grounds', category: 'exterior' },
+    { src: '/assets/images/pool 01.png', title: 'Outdoor Sky Pool', category: 'facilities' },
+    { src: '/assets/images/pool 02.png', title: 'Poolside Greenery', category: 'facilities' },
+    { src: '/assets/images/P suite 01.png', title: 'Presidential Suite Master', category: 'rooms' },
+    { src: '/assets/images/P suite 02.png', title: 'Presidential Suite Living', category: 'rooms' },
+    { src: '/assets/images/suit 01.png', title: 'Luxury Suite', category: 'rooms' },
+    { src: '/assets/images/Executive room 01.png', title: 'Executive Room Workstation', category: 'rooms' },
+    { src: '/assets/images/deluxe room 01.png', title: 'Deluxe Room Bedding', category: 'rooms' },
+    { src: '/assets/images/dining 01.png', title: 'Free Zone Café Dining', category: 'dining' },
+    { src: '/assets/images/aero cafe.png', title: 'Aero Café Specialty Dining', category: 'dining' },
+    { src: '/assets/images/BAR.png', title: 'Executive Lounge & Bar', category: 'dining' },
+    { src: '/assets/images/spa.jpg', title: 'Diana Ira Spa Ayurvedic Wellness', category: 'facilities' },
+    { src: '/assets/images/gym 01.png', title: 'Modern Fitness Center', category: 'facilities' },
+    { src: '/assets/images/banquet 01.png', title: 'Runway Hall Conference Layout', category: 'events' },
+    { src: '/assets/images/lobby.png', title: 'Main Welcome Lobby', category: 'exterior' }
+];
 
-    const openLightbox = (src) => {
-        setLightboxImage(src);
-    };
+export default function GalleryPage() {
+    const [selectedCategory, setSelectedCategory] = useState('all');
+    const [activeImage, setActiveImage] = useState(null);
 
-    const closeLightbox = () => {
-        setLightboxImage(null);
-    };
-
-    const isVisible = (category) => {
-        return activeFilter === 'all' || activeFilter === category;
-    };
+    const filteredItems = selectedCategory === 'all'
+        ? galleryItems
+        : galleryItems.filter(item => item.category === selectedCategory);
 
     return (
-        <main>
-            {/* ==========================================================================
-               GALLERY HERO BANNER
-               ========================================================================== */}
-            <section className="hero" style={{'minHeight': '50vh', 'padding': '6rem 0', 'display': 'flex', 'alignItems': 'center'}}>
-                <div className="hero-bg">
-                    <img src="/assets/images/dining 01.png" alt="Diana Heights gourmet culinary dishes gallery banner" />
-                </div>
-                <div className="container" style={{'position': 'relative', 'zIndex': '5', 'height': '100%', 'display': 'flex', 'alignItems': 'flex-end', 'paddingBottom': '4rem'}}>
-                    <div className="hero-content animate-fade-in visible">
-                        <h1 className="hero-title" style={{'fontSize': '3rem', 'marginBottom': '0'}}>Photo Gallery</h1>
-                        <p className="hero-description" style={{'marginTop': '0.5rem', 'marginBottom': '0'}}>Explore the elegant spaces and wellness sanctuaries of our property.</p>
-                    </div>
-                </div>
-            </section>
-
-            {/* ==========================================================================
-               FILTERABLE PHOTO GRID
-               ========================================================================== */}
-            <section className="section section-gallery" style={{'backgroundColor': 'var(--bg-primary)'}}>
+        <main style={{ backgroundColor: 'var(--ivory)', paddingTop: '90px' }}>
+            {/* Gallery Hero */}
+            <section style={{ backgroundColor: 'var(--ink)', color: '#ffffff', padding: '6rem 0 4rem', textAlign: 'center' }}>
                 <div className="container">
-                    {/* Filter Categories */}
-                    <div className="gallery-filters animate-fade-in">
-                        <button className={`gallery-filter-btn ${activeFilter === 'all' ? 'active' : ''}`} onClick={() => setActiveFilter('all')}>All Photos</button>
-                        <button className={`gallery-filter-btn ${activeFilter === 'accommodations' ? 'active' : ''}`} onClick={() => setActiveFilter('accommodations')}>Accommodations</button>
-                        <button className={`gallery-filter-btn ${activeFilter === 'culinary' ? 'active' : ''}`} onClick={() => setActiveFilter('culinary')}>Culinary</button>
-                        <button className={`gallery-filter-btn ${activeFilter === 'events' ? 'active' : ''}`} onClick={() => setActiveFilter('events')}>Conventions</button>
-                        <button className={`gallery-filter-btn ${activeFilter === 'rejuvenation' ? 'active' : ''}`} onClick={() => setActiveFilter('rejuvenation')}>Wellness & Pool</button>
-                    </div>
+                    <span className="eyebrow eyebrow-dark">VISUAL EXPERIENCES</span>
+                    <h1 className="font-serif" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1rem', color: '#ffffff' }}>
+                        Photo Gallery
+                    </h1>
+                    <p style={{ color: 'var(--stone-300)', maxWidth: '650px', margin: '0 auto', fontSize: '1.05rem', fontWeight: '300' }}>
+                        Take a visual tour through our rooms, restaurants, pool, spa, and banquet venues near Cochin International Airport.
+                    </p>
+                </div>
+            </section>
 
-                    {/* Photos Grid */}
-                    <div className="gallery-grid animate-fade-in">
-                        {/* Accommodations */}
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('accommodations') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/deluxe room 01.png')}>
-                            <img src="/assets/images/deluxe room 01.png" alt="Deluxe Room" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Deluxe Room</span>
-                                <span className="gallery-overlay-tag">Accommodations</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('accommodations') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/Executive room 01.png')}>
-                            <img src="/assets/images/Executive room 01.png" alt="Executive Room" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Executive Room</span>
-                                <span className="gallery-overlay-tag">Accommodations</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('accommodations') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/room 08.png')}>
-                            <img src="/assets/images/room 08.png" alt="Suite Living Area" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Suite Living Area</span>
-                                <span className="gallery-overlay-tag">Accommodations</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('accommodations') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/suit 01.png')}>
-                            <img src="/assets/images/suit 01.png" alt="Luxury Suite" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Luxury Suite</span>
-                                <span className="gallery-overlay-tag">Accommodations</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('accommodations') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/P suite 01.png')}>
-                            <img src="/assets/images/P suite 01.png" alt="Presidential Suite" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Presidential Suite</span>
-                                <span className="gallery-overlay-tag">Accommodations</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('accommodations') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/washroom 01.png')}>
-                            <img src="/assets/images/washroom 01.png" alt="Presidential Jacuzzi" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Presidential Jacuzzi</span>
-                                <span className="gallery-overlay-tag">Accommodations</span>
-                            </div>
-                        </div>
-
-                        {/* Culinary */}
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('culinary') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/dining 01.png')}>
-                            <img src="/assets/images/dining 01.png" alt="Aero Cafe Dining" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Aero Café Dining</span>
-                                <span className="gallery-overlay-tag">Culinary</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('culinary') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/dining 02.png')}>
-                            <img src="/assets/images/dining 02.png" alt="Fine Dining" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Fine Dining Setup</span>
-                                <span className="gallery-overlay-tag">Culinary</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('culinary') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/dining 03.png')}>
-                            <img src="/assets/images/dining 03.png" alt="Restaurant Interior" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Restaurant Interior</span>
-                                <span className="gallery-overlay-tag">Culinary</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('culinary') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/dining 04.png')}>
-                            <img src="/assets/images/dining 04.png" alt="Gourmet Dishes" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Gourmet Dishes</span>
-                                <span className="gallery-overlay-tag">Culinary</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('culinary') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/BAR.png')}>
-                            <img src="/assets/images/BAR.png" alt="Bar Setup" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Lounge Bar</span>
-                                <span className="gallery-overlay-tag">Culinary</span>
-                            </div>
-                        </div>
-
-                        {/* Events */}
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('events') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/banquet 01.png')}>
-                            <img src="/assets/images/banquet 01.png" alt="Runway Banquet Hall" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Runway Banquet Hall</span>
-                                <span className="gallery-overlay-tag">Conventions</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('events') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/banquet 02.png')}>
-                            <img src="/assets/images/banquet 02.png" alt="Executive Boardroom" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Executive Boardroom</span>
-                                <span className="gallery-overlay-tag">Conventions</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('events') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/banquet 03.png')}>
-                            <img src="/assets/images/banquet 03.png" alt="Conference Layout" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Conference Layout</span>
-                                <span className="gallery-overlay-tag">Conventions</span>
-                            </div>
-                        </div>
-
-                        {/* Rejuvenation (Wellness & Pool) */}
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('rejuvenation') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/spa.jpg')}>
-                            <img src="/assets/images/spa.jpg" alt="Diana Hut Spa" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Diana Hut Spa</span>
-                                <span className="gallery-overlay-tag">Wellness</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('rejuvenation') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/pool 01.png')}>
-                            <img src="/assets/images/pool 01.png" alt="Sky Swimming Pool" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Sky Swimming Pool</span>
-                                <span className="gallery-overlay-tag">Pool</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('rejuvenation') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/pool 02.png')}>
-                            <img src="/assets/images/pool 02.png" alt="Outdoor Pool Lounge" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Outdoor Pool Lounge</span>
-                                <span className="gallery-overlay-tag">Pool</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('rejuvenation') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/gym 01.png')}>
-                            <img src="/assets/images/gym 01.png" alt="Fitness Center Cardio" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Fitness Center - Cardio</span>
-                                <span className="gallery-overlay-tag">Gym</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('rejuvenation') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/gym 02.png')}>
-                            <img src="/assets/images/gym 02.png" alt="Fitness Center Weights" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Fitness Center - Weights</span>
-                                <span className="gallery-overlay-tag">Gym</span>
-                            </div>
-                        </div>
-                        <div className="gallery-item glass-panel" style={{ display: isVisible('rejuvenation') ? 'block' : 'none' }} onClick={() => openLightbox('/assets/images/gym 03.png')}>
-                            <img src="/assets/images/gym 03.png" alt="Fitness Center Layout" />
-                            <div className="gallery-item-overlay">
-                                <span className="gallery-overlay-title">Fitness Center - Layout</span>
-                                <span className="gallery-overlay-tag">Gym</span>
-                            </div>
-                        </div>
+            {/* Category Filter Tabs */}
+            <section style={{ padding: '3rem 0 1rem' }}>
+                <div className="container">
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+                        {[
+                            { label: 'All Photos', value: 'all' },
+                            { label: 'Rooms & Suites', value: 'rooms' },
+                            { label: 'Dining', value: 'dining' },
+                            { label: 'Pool & Wellness', value: 'facilities' },
+                            { label: 'Events & MICE', value: 'events' },
+                            { label: 'Exterior & Lobby', value: 'exterior' }
+                        ].map((tab) => (
+                            <button
+                                key={tab.value}
+                                onClick={() => setSelectedCategory(tab.value)}
+                                className="btn"
+                                style={{
+                                    padding: '0.65rem 1.4rem',
+                                    fontSize: '0.75rem',
+                                    backgroundColor: selectedCategory === tab.value ? 'var(--brass)' : 'var(--paper)',
+                                    color: selectedCategory === tab.value ? '#ffffff' : 'var(--ink)',
+                                    borderColor: selectedCategory === tab.value ? 'var(--brass)' : 'var(--line)'
+                                }}
+                            >
+                                {tab.label}
+                            </button>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* ==========================================================================
-               LIGHTBOX INTEGRATED POPUP MODAL (SHARED)
-               ========================================================================== */}
-            <div id="lightbox" className="lightbox" style={{ display: lightboxImage ? 'flex' : 'none' }} onClick={closeLightbox}>
-                <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-                    <span id="lightbox-close" className="lightbox-close" onClick={closeLightbox}>&times;</span>
-                    {lightboxImage && <img id="lightbox-img" className="lightbox-img" src={lightboxImage} alt="Full Screen Lightbox View" />}
+            {/* Gallery Grid */}
+            <section style={{ padding: '2rem 0 var(--section-y)' }}>
+                <div className="container">
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem' }}>
+                        {filteredItems.map((item, index) => (
+                            <div
+                                key={index}
+                                onClick={() => setActiveImage(item)}
+                                style={{
+                                    position: 'relative',
+                                    height: '260px',
+                                    borderRadius: 'var(--border-radius)',
+                                    overflow: 'hidden',
+                                    backgroundColor: 'var(--ink)',
+                                    cursor: 'pointer',
+                                    boxShadow: '0 4px 15px rgba(22,20,15,0.06)',
+                                    border: '1px solid var(--line)'
+                                }}
+                            >
+                                <img
+                                    src={item.src}
+                                    alt={item.title}
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
+                                    onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                                    onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                                />
+                                <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', padding: '1rem', background: 'linear-gradient(to top, rgba(22,20,15,0.9), transparent)', color: '#ffffff' }}>
+                                    <div style={{ fontSize: '0.9rem', fontFamily: 'var(--font-display)' }}>{item.title}</div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            {/* Lightbox Modal */}
+            {activeImage && (
+                <div
+                    onClick={() => setActiveImage(null)}
+                    style={{
+                        position: 'fixed',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: 'rgba(22, 20, 15, 0.95)',
+                        zIndex: 200,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '2rem'
+                    }}
+                >
+                    <div style={{ maxWidth: '900px', width: '100%', position: 'relative' }} onClick={(e) => e.stopPropagation()}>
+                        <button
+                            onClick={() => setActiveImage(null)}
+                            style={{ position: 'absolute', top: '-40px', right: 0, color: '#ffffff', fontSize: '1.5rem', cursor: 'pointer' }}
+                        >
+                            &times; Close
+                        </button>
+                        <img
+                            src={activeImage.src}
+                            alt={activeImage.title}
+                            style={{ width: '100%', maxHeight: '75vh', objectFit: 'contain', borderRadius: 'var(--border-radius)' }}
+                        />
+                        <div style={{ textAlign: 'center', color: '#ffffff', marginTop: '1rem', fontFamily: 'var(--font-display)', fontSize: '1.25rem' }}>
+                            {activeImage.title}
+                        </div>
+                    </div>
+                </div>
+            )}
         </main>
     );
 }

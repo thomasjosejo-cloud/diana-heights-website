@@ -1,112 +1,92 @@
 import Link from 'next/link';
+import { HOTEL_PHONE, buildWhatsAppLink } from '@/lib/whatsapp';
 
-export default function Page() {
+export const metadata = {
+    title: 'About Us · Our Story & Heritage · Diana Heights Cochin',
+    description: "Learn about Diana Heights, Kochi's most complete airport hotel, situated 10 minutes from Cochin International Airport in Athani, Nedumbassery."
+};
+
+export default function AboutPage() {
     return (
-        <main>
-            {/* ==========================================================================
-       INTERIOR HERO BANNER (ABOUT)
-       ========================================================================== */}
-    <section className="hero" style={{'minHeight': '50vh', 'padding': '6rem 0', 'display': 'flex', 'alignItems': 'center'}}>
-        <div className="hero-bg">
-            <img src="/assets/images/P suite 02.png" alt="Diana Heights Rejuvenating Spa and Interior Lobby" />
-        </div>
-        <div className="container" style={{'position': 'relative', 'zIndex': '5', 'height': '100%', 'display': 'flex', 'alignItems': 'flex-end', 'paddingBottom': '4rem'}}>
-            <div className="hero-content animate-fade-in visible">
-                <h1 className="hero-title" style={{'fontSize': '3rem', 'marginBottom': '0'}}>Our Story & Heritage</h1>
-                <p className="hero-description" style={{'marginTop': '0.5rem', 'marginBottom': '0'}}>Behind the premier transit luxury experience in Ernakulam district.</p>
-            </div>
-        </div>
-    </section>
-
-    {/* ==========================================================================
-       STORYTELLING PHILOSOPHY
-       ========================================================================== */}
-    <section className="section section-story" style={{'backgroundColor': 'var(--bg-primary)'}}>
-        <div className="container">
-            <div className="intro-grid animate-fade-in">
-                <div className="intro-text-content">
-                    <span className="section-subtitle">Since Inception</span>
-                    <h2 className="section-title" style={{'marginBottom': '2rem'}}>A Philosophy of Infinite Care</h2>
-                    <p>
-                        Diana Heights Nedumbassery was born out of a simple, visionary realization: international airline travelers and regional corporate leaders required an immaculate, top-tier home that offered complete tranquility without long road commutes from Ernakulam city center.
-                    </p>
-                    <p>
-                        By combining Kerala's historic, world-renowned lineage of warmth and healing (Athithi Devo Bhava) with hyper-focused transit efficiency, we created a rare hybrid. Whether you are checking in at 2:00 AM after a long flight from Europe, or hosting a high-stakes board negotiation in our Runway Hall, every detail is engineered to feel effortless.
-                    </p>
-                    <p>
-                        We completed an extensive structural renovation in 2021, refining our rooms, upgrading our sky pool water systems, and introducing custom luxury mattresses to guarantee therapeutic rest. Our team stands ready to serve you.
+        <main style={{ backgroundColor: 'var(--ivory)', paddingTop: '90px' }}>
+            {/* About Hero */}
+            <section style={{ backgroundColor: 'var(--ink)', color: '#ffffff', padding: '6rem 0 4rem', textAlign: 'center' }}>
+                <div className="container">
+                    <span className="eyebrow eyebrow-dark">OUR HERITAGE & PROMISE</span>
+                    <h1 className="font-serif" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1rem', color: '#ffffff' }}>
+                        Kochi's most complete airport hotel.
+                    </h1>
+                    <p style={{ color: 'var(--stone-300)', maxWidth: '650px', margin: '0 auto', fontSize: '1.05rem', fontWeight: '300' }}>
+                        Where business travellers decompress, families celebrate, and transit guests discover a reason to extend the stay.
                     </p>
                 </div>
-                
-                <div className="intro-img-wrapper glass-panel">
-                    <img src="/assets/images/suit 01.png" alt="Diana Heights Teak Wood Interior Luxury Suite Suite" className="intro-img" />
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    {/* ==========================================================================
-       METRICS & STATISTICAL COUNTER GRID
-       ========================================================================== */}
-    <section className="section section-metrics" style={{'backgroundColor': 'var(--bg-secondary)', 'borderTop': '1px solid var(--border-color)', 'borderBottom': '1px solid var(--border-color)'}}>
-        <div className="container">
-            <div className="metrics-grid animate-fade-in">
-                <div className="glass-panel" style={{'padding': '2.5rem 1.5rem', 'borderRadius': 'var(--border-radius)'}}>
-                    <div style={{'fontFamily': 'var(--font-heading)', 'fontSize': '2.85rem', 'color': 'var(--accent-color)', 'fontWeight': '700', 'marginBottom': '0.5rem'}}>5 km</div>
-                    <div style={{'fontSize': '0.75rem', 'textTransform': 'uppercase', 'letterSpacing': '0.15em', 'color': 'var(--text-secondary)'}}>From CIAL Airport</div>
-                </div>
-                <div className="glass-panel" style={{'padding': '2.5rem 1.5rem', 'borderRadius': 'var(--border-radius)'}}>
-                    <div style={{'fontFamily': 'var(--font-heading)', 'fontSize': '2.85rem', 'color': 'var(--accent-color)', 'fontWeight': '700', 'marginBottom': '0.5rem'}}>4</div>
-                    <div style={{'fontSize': '0.75rem', 'textTransform': 'uppercase', 'letterSpacing': '0.15em', 'color': 'var(--text-secondary)'}}>Premium Room Types</div>
-                </div>
-                <div className="glass-panel" style={{'padding': '2.5rem 1.5rem', 'borderRadius': 'var(--border-radius)'}}>
-                    <div style={{'fontFamily': 'var(--font-heading)', 'fontSize': '2.85rem', 'color': 'var(--accent-color)', 'fontWeight': '700', 'marginBottom': '0.5rem'}}>24/7</div>
-                    <div style={{'fontSize': '0.75rem', 'textTransform': 'uppercase', 'letterSpacing': '0.15em', 'color': 'var(--text-secondary)'}}>Executive Room Service</div>
-                </div>
-                <div className="glass-panel" style={{'padding': '2.5rem 1.5rem', 'borderRadius': 'var(--border-radius)'}}>
-                    <div style={{'fontFamily': 'var(--font-heading)', 'fontSize': '2.85rem', 'color': 'var(--accent-color)', 'fontWeight': '700', 'marginBottom': '0.5rem'}}>100%</div>
-                    <div style={{'fontSize': '0.75rem', 'textTransform': 'uppercase', 'letterSpacing': '0.15em', 'color': 'var(--text-secondary)'}}>Satisfaction Rating</div>
-                </div>
-            </div>
-        </div>
-    </section>
+            {/* About Narrative Section */}
+            <section style={{ padding: 'var(--section-y) 0' }}>
+                <div className="container">
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '4rem', alignItems: 'center' }}>
+                        <div>
+                            <span className="eyebrow">THE MONUMENT</span>
+                            <h2 className="font-serif" style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: 'var(--ink)' }}>
+                                Ten minutes from your gate. Everything else, taken care of.
+                            </h2>
+                            <p style={{ color: 'var(--stone-700)', fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>
+                                Situated right on the NH-47 highway corridor in Athani, Nedumbassery, Diana Heights was established to solve a singular challenge: providing seamless business-class comfort and warm Keralite hospitality just minutes from Cochin International Airport (CIAL).
+                            </p>
+                            <p style={{ color: 'var(--stone-700)', fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '2.5rem' }}>
+                                With 43 well-appointed rooms and suites, two restaurants (including our 24-hour Free Zone Café and specialty Aero Café), a full-service spa, an outdoor swimming pool, a modern health club, and 150-pax banquet facilities, we bring everything you need under one roof.
+                            </p>
 
-    {/* ==========================================================================
-       OUR SIX CORE VALUES
-       ========================================================================== */}
-    <section className="section section-values" style={{'backgroundColor': 'var(--bg-tertiary)'}}>
-        <div className="container">
-            <div className="section-title-wrap">
-                <span className="section-subtitle">Our Integrity Pillars</span>
-                <h2 className="section-title">The Values that Guide Us</h2>
-            </div>
-            
-            <div className="values-grid animate-fade-in">
-                {/* Value 1 */}
-                <div className="glass-panel" style={{'padding': '2rem', 'borderRadius': 'var(--border-radius)', 'transition': 'transform 0.3s ease'}}>
-                    <i className="fa-solid fa-hotel" style={{'color': 'var(--accent-color)', 'fontSize': '2rem', 'marginBottom': '1.25rem'}}></i>
-                    <h3 style={{'fontSize': '1.2rem', 'marginBottom': '0.75rem'}}>Immaculate Curation</h3>
-                    <p style={{'fontSize': '0.85rem', 'color': 'var(--text-secondary)', 'fontWeight': '300'}}>Immaculate room curation, where botanical details and silent restoration are prepared daily for your arrival.</p>
-                </div>
-                {/* Value 2 */}
-                <div className="glass-panel" style={{'padding': '2rem', 'borderRadius': 'var(--border-radius)', 'transition': 'transform 0.3s ease'}}>
-                    <i className="fa-solid fa-clock" style={{'color': 'var(--accent-color)', 'fontSize': '2rem', 'marginBottom': '1.25rem'}}></i>
-                    <h3 style={{'fontSize': '1.2rem', 'marginBottom': '0.75rem'}}>Adaptive Timing</h3>
-                    <p style={{'fontSize': '0.85rem', 'color': 'var(--text-secondary)', 'fontWeight': '300'}}>We offer flexible checkout matching, rapid airport shuttle cycles, and round-the-clock check-in desks.</p>
-                </div>
-                {/* Value 3 */}
-                <div className="glass-panel" style={{'padding': '2rem', 'borderRadius': 'var(--border-radius)', 'transition': 'transform 0.3s ease'}}>
-                    <i className="fa-solid fa-tree" style={{'color': 'var(--accent-color)', 'fontSize': '2rem', 'marginBottom': '1.25rem'}}></i>
-                    <h3 style={{'fontSize': '1.2rem', 'marginBottom': '0.75rem'}}>Eco-Conscious Luxury</h3>
-                    <p style={{'fontSize': '0.85rem', 'color': 'var(--text-secondary)', 'fontWeight': '300'}}>We compost waste, recycle water for our tropical gardens, and utilize energy-saving room sensors.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                                <a
+                                    href={buildWhatsAppLink({ type: 'booking' })}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn btn-brass"
+                                >
+                                    Book Direct with Us
+                                </a>
+                                <Link href="/rooms" className="btn btn-outline-dark">
+                                    View Accommodations
+                                </Link>
+                            </div>
+                        </div>
 
-    {/* ==========================================================================
-       GLOBAL PREMIUM FOOTER
-       ========================================================================== */}
+                        <div style={{ height: '480px', borderRadius: 'var(--border-radius)', overflow: 'hidden', backgroundColor: 'var(--ink)', boxShadow: '0 15px 40px rgba(22,20,15,0.1)' }}>
+                            <img
+                                src="/assets/images/lobby.png"
+                                alt="Diana Heights Welcome Lobby"
+                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Property Stats Band */}
+            <section style={{ backgroundColor: 'var(--paper)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)', padding: '4rem 0' }}>
+                <div className="container">
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', textAlign: 'center' }}>
+                        <div>
+                            <div className="font-serif" style={{ fontSize: '3rem', color: 'var(--brass)', marginBottom: '0.25rem' }}>43</div>
+                            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--stone-700)' }}>Rooms & Suites</div>
+                        </div>
+                        <div>
+                            <div className="font-serif" style={{ fontSize: '3rem', color: 'var(--brass)', marginBottom: '0.25rem' }}>2</div>
+                            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--stone-700)' }}>Restaurants (24/7 Dining)</div>
+                        </div>
+                        <div>
+                            <div className="font-serif" style={{ fontSize: '3rem', color: 'var(--brass)', marginBottom: '0.25rem' }}>150</div>
+                            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--stone-700)' }}>Pax Event Capacity</div>
+                        </div>
+                        <div>
+                            <div className="font-serif" style={{ fontSize: '3rem', color: 'var(--brass)', marginBottom: '0.25rem' }}>5 min</div>
+                            <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--stone-700)' }}>Drive to CIAL Airport</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
     );
 }

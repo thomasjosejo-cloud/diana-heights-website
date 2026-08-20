@@ -1,127 +1,120 @@
 import Link from 'next/link';
+import { buildWhatsAppLink } from '@/lib/whatsapp';
 
-export default function Page() {
+export const metadata = {
+    title: 'Nearest Destinations · Sightseeing around Cochin Airport · Diana Heights',
+    description: 'Tourist places to see near Cochin International Airport. Athirappilly Waterfalls, Cherai Beach, Fort Kochi, Kalady, and Kerala backwaters.'
+};
+
+const destinations = [
+    {
+        name: 'Cochin International Airport (CIAL)',
+        distance: '5.5 km (approx. 10 mins)',
+        description: 'Easily accessible along the NH-47 corridor, offering effortless transit connectivity.',
+        image: '/assets/images/diana.png'
+    },
+    {
+        name: 'Kalady (Adi Shankaracharya Birthplace)',
+        distance: '8 km (approx. 15 mins)',
+        description: 'A serene spiritual destination on the banks of River Periyar, the birthplace of Adi Shankaracharya.',
+        image: '/assets/images/lobby.png'
+    },
+    {
+        name: 'Cherai Beach',
+        distance: '20 km (approx. 35 mins)',
+        description: 'Picturesque coastline known for calm waters, golden sands, and dolphin sightings.',
+        image: '/assets/images/pool 01.png'
+    },
+    {
+        name: 'Athirappilly & Vazhachal Waterfalls',
+        distance: '50 km (approx. 70 mins)',
+        description: 'The majestic "Niagara of India" plunging through lush tropical rainforest canopies.',
+        image: '/assets/images/athirapilly.jpg'
+    },
+    {
+        name: 'Fort Kochi & Heritage Quarters',
+        distance: '40 km (approx. 60 mins)',
+        description: 'Historic colonial architecture, Portuguese churches, Jewish synagogue, and iconic Chinese fishing nets.',
+        image: '/assets/images/fort kochi.jpg'
+    },
+    {
+        name: 'Munnar Hill Station',
+        distance: '100 km (approx. 3.5 hours)',
+        description: 'Cool misty hills of the Western Ghats with endless tea plantations and cascading streams.',
+        image: '/assets/images/munnar.jpg'
+    }
+];
+
+export default function DestinationsPage() {
     return (
-        <main>
-            {/* ==========================================================================
-       DESTINATIONS HERO BANNER
-       ========================================================================== */}
-    <section className="hero" style={{'minHeight': '50vh', 'padding': '6rem 0', 'display': 'flex', 'alignItems': 'center'}}>
-        <div className="hero-bg">
-            <img src="/assets/images/athirapilly.jpg" alt="Athirappilly Waterfalls Kerala beautiful tropical jungle landscape" />
-        </div>
-        <div className="container" style={{'position': 'relative', 'zIndex': '5', 'height': '100%', 'display': 'flex', 'alignItems': 'flex-end', 'paddingBottom': '4rem'}}>
-            <div className="hero-content animate-fade-in visible">
-                <h1 className="hero-title" style={{'fontSize': '3rem', 'marginBottom': '0'}}>Explore Kerala</h1>
-                <p className="hero-description" style={{'marginTop': '0.5rem', 'marginBottom': '0'}}>Curated regional sightseeing guides starting from Nedumbassery.</p>
-            </div>
-        </div>
-    </section>
+        <main style={{ backgroundColor: 'var(--ivory)', paddingTop: '90px' }}>
+            {/* Destinations Hero */}
+            <section style={{ backgroundColor: 'var(--ink)', color: '#ffffff', padding: '6rem 0 4rem', textAlign: 'center' }}>
+                <div className="container">
+                    <span className="eyebrow eyebrow-dark">EXPLORE KERALA</span>
+                    <h1 className="font-serif" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1rem', color: '#ffffff' }}>
+                        Nearest Destinations
+                    </h1>
+                    <p style={{ color: 'var(--stone-300)', maxWidth: '650px', margin: '0 auto', fontSize: '1.05rem', fontWeight: '300' }}>
+                        Diana Heights is the ideal base to explore historical landmarks, beaches, and nature reserves around Cochin Airport.
+                    </p>
+                </div>
+            </section>
 
-    {/* ==========================================================================
-       Sightseeing CARD GRID
-       ========================================================================== */}
-    <section className="section section-destinations" style={{'backgroundColor': 'var(--bg-primary)'}}>
-        <div className="container">
-            <div className="section-title-wrap">
-                <span className="section-subtitle">Local Wonders</span>
-                <h2 className="section-title">Nearest Excursions</h2>
-            </div>
+            {/* Destinations Grid */}
+            <section style={{ padding: 'var(--section-y) 0' }}>
+                <div className="container">
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2.5rem' }}>
+                        {destinations.map((dest, i) => (
+                            <div
+                                key={i}
+                                style={{
+                                    backgroundColor: 'var(--paper)',
+                                    border: '1px solid var(--line)',
+                                    borderRadius: 'var(--border-radius)',
+                                    overflow: 'hidden',
+                                    display: 'flex',
+                                    flexDirection: 'column'
+                                }}
+                            >
+                                <div style={{ height: '220px', backgroundColor: 'var(--ink)', overflow: 'hidden' }}>
+                                    <img
+                                        src={dest.image}
+                                        alt={dest.name}
+                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                    />
+                                </div>
 
-            <div className="destinations-grid">
-                {/* Destination 1: Athirappilly */}
-                <div className="destination-card animate-fade-in">
-                    <div className="dest-img-wrap">
-                        <img src="/assets/images/athirapilly.jpg" alt="Athirappilly Waterfalls Kerala tourist attraction" className="dest-img" />
-                        <span className="dest-distance glass-panel" style={{'backgroundColor': 'var(--accent-color)', 'color': 'var(--bg-primary)'}}>40 km | 60 Mins</span>
-                    </div>
-                    <div className="dest-content">
-                        <h3 className="dest-title">Athirappilly Waterfalls</h3>
-                        <p className="dest-desc">The majestic "Niagara of India". Experience roaring, massive water cascades cutting through rich, botanical jungle canopies of Chalakudy. An absolute natural visual masterpiece.</p>
-                        <div className="dest-meta">
-                            <span>Recommended: Morning Trip</span>
-                            <span>Direct Cab Pick-up</span>
-                        </div>
+                                <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                                    <div>
+                                        <div style={{ fontSize: '0.75rem', fontWeight: '600', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--brass)', marginBottom: '0.35rem' }}>
+                                            {dest.distance}
+                                        </div>
+                                        <h3 className="font-serif" style={{ fontSize: '1.5rem', marginBottom: '0.75rem', color: 'var(--ink)' }}>
+                                            {dest.name}
+                                        </h3>
+                                        <p style={{ color: 'var(--stone-700)', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
+                                            {dest.description}
+                                        </p>
+                                    </div>
+
+                                    <div style={{ borderTop: '1px solid var(--line)', paddingTop: '1rem' }}>
+                                        <a
+                                            href={buildWhatsAppLink({ type: 'general', message: `Inquiry about cab / tour arrangements for ${dest.name}` })}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="link-brass"
+                                            style={{ fontSize: '0.8rem' }}
+                                        >
+                                            Arrange Cab Pick-up &rarr;
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
-
-                {/* Destination 2: Fort Kochi */}
-                <div className="destination-card animate-fade-in">
-                    <div className="dest-img-wrap">
-                        <img src="/assets/images/fort kochi.jpg" alt="Fort Kochi Chinese Fishing Nets Kerala tourist attraction" className="dest-img" />
-                        <span className="dest-distance glass-panel" style={{'backgroundColor': 'var(--accent-color)', 'color': 'var(--bg-primary)'}}>38 km | 65 Mins</span>
-                    </div>
-                    <div className="dest-content">
-                        <h3 className="dest-title">Fort Kochi & Heritage</h3>
-                        <p className="dest-desc">Immerse in colonial histories. Stroll through cobblestone streets lined with Portuguese churches, Dutch palaces, ancient Jewish quarters, and Chinese fishing nets silhouetted against gold sunsets.</p>
-                        <div className="dest-meta">
-                            <span>Recommended: Afternoon</span>
-                            <span>Historical Walking Tours</span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Destination 3: Kerala Backwaters */}
-                <div className="destination-card animate-fade-in">
-                    <div className="dest-img-wrap">
-                        <img src="/assets/images/kerala backwaters.jpg" alt="Kerala Backwaters Houseboats lagoon cruise" className="dest-img" />
-                        <span className="dest-distance glass-panel" style={{'backgroundColor': 'var(--accent-color)', 'color': 'var(--bg-primary)'}}>28 km | 45 Mins</span>
-                    </div>
-                    <div className="dest-content">
-                        <h3 className="dest-title">Cochin Backwater Cruise</h3>
-                        <p className="dest-desc">Cruising Kerala's tranquil watery veins. Book a premium teak houseboat day-trip, navigating past dense coconut palms, quiet fishing villages, and peaceful birds sanctuaries.</p>
-                        <div className="dest-meta">
-                            <span>Recommended: Day Trip</span>
-                            <span>Private Houseboat Booking</span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Destination 4: Munnar */}
-                <div className="destination-card animate-fade-in">
-                    <div className="dest-img-wrap">
-                        <img src="/assets/images/munnar.jpg" alt="Munnar Tea Gardens Kerala tourist attraction" className="dest-img" />
-                        <span className="dest-distance glass-panel" style={{'backgroundColor': 'var(--accent-color)', 'color': 'var(--bg-primary)'}}>110 km | 3.5 Hours</span>
-                    </div>
-                    <div className="dest-content">
-                        <h3 className="dest-title">Munnar Tea Gardens</h3>
-                        <p className="dest-desc">Escape to the cool, misty hills of the Western Ghats. Munnar boasts endless emerald-green tea plantations, cascading waterfalls, and exotic flora like the Neelakurinji.</p>
-                        <div className="dest-meta">
-                            <span>Recommended: Day Trip</span>
-                            <span>Scenic Mountain Drive</span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Destination 5: Guruvayoor Temple */}
-                <div className="destination-card animate-fade-in">
-                    <div className="dest-img-wrap">
-                        <img src="/assets/images/guruvayoor temple.jpeg" alt="Guruvayoor Temple Kerala" className="dest-img" />
-                        <span className="dest-distance glass-panel" style={{'backgroundColor': 'var(--accent-color)', 'color': 'var(--bg-primary)'}}>80 km | 2.5 Hours</span>
-                    </div>
-                    <div className="dest-content">
-                        <h3 className="dest-title">Guruvayoor Sree Krishna Temple</h3>
-                        <p className="dest-desc">A major pilgrimage center in Kerala. Experience the divine tranquility and rich cultural heritage of this ancient temple dedicated to Lord Krishna, known for its intricate murals.</p>
-                        <div className="dest-meta">
-                            <span>Recommended: Morning</span>
-                            <span>Spiritual Pilgrimage</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            {/* Quick Airport Tour Desk Banner */}
-            <div className="glass-panel animate-fade-in" style={{'marginTop': '5rem', 'padding': '3rem', 'borderRadius': 'var(--border-radius)', 'textAlign': 'center'}}>
-                <h3 style={{'fontSize': '1.85rem', 'marginBottom': '1rem'}}>Need a Custom Itinerary?</h3>
-                <p style={{'color': 'var(--text-secondary)', 'maxWidth': '600px', 'margin': '0 auto 2rem auto', 'fontWeight': '300', 'fontSize': '0.9rem'}}>Our 24-hour Hotel Tour Desk customizes elite cab hires, booking schedules, private boat reservations, and expert translators for hassle-free Kerala expeditions.</p>
-                <a href="/contact" className="btn btn-primary">Speak to Tour Desk</a>
-            </div>
-        </div>
-    </section>
-
-    {/* ==========================================================================
-       GLOBAL PREMIUM FOOTER
-       ========================================================================== */}
+            </section>
         </main>
     );
 }

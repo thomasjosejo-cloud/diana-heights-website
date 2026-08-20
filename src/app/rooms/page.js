@@ -1,140 +1,115 @@
 import Link from 'next/link';
+import { roomsData } from '@/content/rooms';
+import { buildWhatsAppLink } from '@/lib/whatsapp';
 
-export default function Page() {
+export const metadata = {
+    title: 'Rooms & Suites · Diana Heights Hotel Cochin Airport',
+    description: 'Explore the 4 rooms and suites at Diana Heights, 10 minutes from Cochin International Airport. Presidential Suite, Luxury Suite, Executive Room, and Deluxe Room.'
+};
+
+export default function RoomsPage() {
     return (
-        <main>
-            {/* ==========================================================================
-       ROOMS HERO BANNER
-       ========================================================================== */}
-    <section className="hero" style={{'minHeight': '50vh', 'padding': '6rem 0', 'display': 'flex', 'alignItems': 'center'}}>
-        <div className="hero-bg">
-            <img src="/assets/images/Executive room 01.png" alt="Diana Heights Luxury Suite Interior Master Bed" />
-        </div>
-        <div className="container" style={{'position': 'relative', 'zIndex': '5', 'height': '100%', 'display': 'flex', 'alignItems': 'flex-end', 'paddingBottom': '4rem'}}>
-            <div className="hero-content animate-fade-in visible">
-                <h1 className="hero-title" style={{'fontSize': '3rem', 'marginBottom': '0'}}>Our Accommodations</h1>
-                <p className="hero-description" style={{'marginTop': '0.5rem', 'marginBottom': '0'}}>Impeccable spaces curated for high-flyers and luxury seekers.</p>
-            </div>
-        </div>
-    </section>
-
-    {/* ==========================================================================
-       ROOM COMPARISON DETAIL SHOWROOM
-       ========================================================================== */}
-    <section className="section section-showroom" style={{'backgroundColor': 'var(--bg-primary)'}}>
-        <div className="container">
-            <div className="section-title-wrap">
-                <span className="section-subtitle">Exquisite Rooms</span>
-                <h2 className="section-title">Rooms & Palatial Suites</h2>
-            </div>
-
-            {/* 1. Standard Room Details */}
-            <div className="facility-panel animate-fade-in">
-                <div className="facility-img-wrap glass-panel">
-                    <img src="/assets/images/deluxe room 01.png" alt="Diana Heights Deluxe Room" className="facility-img" />
-                </div>
-                <div className="facility-desc">
-                    <span className="facility-tag">Cozy Comfort &bull; From ₹3,000 / Night</span>
-                    <h3>Deluxe Room</h3>
-                    <p>
-                        A cozy corporate retreat blending warm aesthetic wood flooring, direct independent high-speed internet access, teak furnishings, a modern electric kettle with tea/coffee setups, and an elegant rain shower. Perfect for travelers seeking a serene second home.
+        <main style={{ backgroundColor: 'var(--ivory)', paddingTop: '90px' }}>
+            {/* Header Banner */}
+            <section style={{ backgroundColor: 'var(--ink)', color: '#ffffff', padding: '6rem 0 4rem', textAlign: 'center' }}>
+                <div className="container">
+                    <span className="eyebrow eyebrow-dark">ACCOMMODATIONS</span>
+                    <h1 className="font-serif" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1rem', color: '#ffffff' }}>
+                        Four rooms. One address.
+                    </h1>
+                    <p style={{ color: 'var(--stone-300)', maxWidth: '600px', margin: '0 auto', fontSize: '1.05rem', fontWeight: '300' }}>
+                        Generous space, thoughtful comfort, and quiet transit rest just ten minutes from Cochin International Airport.
                     </p>
-                    <div className="facility-highlights" style={{'marginBottom': '2rem'}}>
-                        <div className="facility-highlight-item">
-                            <span className="facility-hl-title">248 Square Feet</span>
-                            <span className="facility-hl-desc">Cozy functional grid</span>
-                        </div>
-                        <div className="facility-highlight-item">
-                            <span className="facility-hl-title">Teak Accents</span>
-                            <span className="facility-hl-desc">Keralite wooden details</span>
-                        </div>
+                </div>
+            </section>
+
+            {/* Rooms List */}
+            <section style={{ padding: 'var(--section-y) 0' }}>
+                <div className="container">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4.5rem' }}>
+                        {roomsData.map((room, index) => {
+                            const isEven = index % 2 === 1;
+                            const whatsappRoomLink = buildWhatsAppLink({
+                                type: 'room',
+                                roomName: room.name
+                            });
+
+                            return (
+                                <div 
+                                    key={room.slug}
+                                    style={{
+                                        display: 'grid',
+                                        gridTemplateColumns: isEven ? '1.1fr 0.9fr' : '0.9fr 1.1fr',
+                                        gap: '3.5rem',
+                                        alignItems: 'center',
+                                        backgroundColor: 'var(--paper)',
+                                        border: '1px solid var(--line)',
+                                        borderRadius: 'var(--border-radius)',
+                                        overflow: 'hidden',
+                                        padding: '2.5rem'
+                                    }}
+                                >
+                                    {/* Image Column */}
+                                    <div style={{ order: isEven ? 2 : 1, height: '420px', position: 'relative', borderRadius: 'var(--border-radius)', overflow: 'hidden', backgroundColor: 'var(--ink)' }}>
+                                        <img 
+                                            src={room.image} 
+                                            alt={room.name} 
+                                            style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                                        />
+                                    </div>
+
+                                    {/* Content Column */}
+                                    <div style={{ order: isEven ? 1 : 2 }}>
+                                        <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                                            <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--brass)', fontWeight: '600' }}>
+                                                {room.sizeQualitative}
+                                            </span>
+                                            <span style={{ color: 'var(--line)' }}>&bull;</span>
+                                            <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--stone-500)' }}>
+                                                {room.sleeps}
+                                            </span>
+                                        </div>
+
+                                        <h2 className="font-serif" style={{ fontSize: '2.2rem', marginBottom: '0.75rem', color: 'var(--ink)' }}>
+                                            {room.name}
+                                        </h2>
+
+                                        <p style={{ color: 'var(--stone-700)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
+                                            {room.description}
+                                        </p>
+
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '2rem' }}>
+                                            {room.features.slice(0, 3).map((f, i) => (
+                                                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--stone-700)' }}>
+                                                    <i className="fa-solid fa-check" style={{ color: 'var(--brass)', fontSize: '0.75rem' }}></i>
+                                                    <span>{f}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                                            <a 
+                                                href={whatsappRoomLink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="btn btn-brass"
+                                            >
+                                                Chat with Reservations
+                                            </a>
+                                            <Link 
+                                                href={`/rooms/${room.slug}`} 
+                                                className="btn btn-outline-dark"
+                                            >
+                                                View Room Details
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
-                    <a href="#quick-booking-anchor" className="btn btn-primary">Book Deluxe Room</a>
                 </div>
-            </div>
-
-            {/* 2. Executive Room Details */}
-            <div className="facility-panel animate-fade-in">
-                <div className="facility-desc">
-                    <span className="facility-tag">Spacious Transit &bull; From ₹4,200 / Night</span>
-                    <h3>Executive Room</h3>
-                    <p>
-                        Designed with generous space. Highlights a choice of plush Double, King, or Twin beds, a spacious, dedicated seating lounge area, private balcony pull-outs, direct workspace writing desks, safe repository cabinets, and full-service room amenities.
-                    </p>
-                    <div className="facility-highlights" style={{'marginBottom': '2rem'}}>
-                        <div className="facility-highlight-item">
-                            <span className="facility-hl-title">300-500 Square Feet</span>
-                            <span className="facility-hl-desc">Expansive room configuration</span>
-                        </div>
-                        <div className="facility-highlight-item">
-                            <span className="facility-hl-title">Bed Variety</span>
-                            <span className="facility-hl-desc">King, Double, or Twin setups</span>
-                        </div>
-                    </div>
-                    <a href="#quick-booking-anchor" className="btn btn-primary">Book Executive Room</a>
-                </div>
-                <div className="facility-img-wrap glass-panel">
-                    <img src="/assets/images/Executive room 01.png" alt="Diana Heights Executive Room" className="facility-img" />
-                </div>
-            </div>
-
-
-
-            {/* 4. Luxury Suite Details */}
-            <div className="facility-panel animate-fade-in">
-                <div className="facility-desc">
-                    <span className="facility-tag">Elite Exclusivity &bull; From ₹7,500 / Night</span>
-                    <h3>Luxury Suite</h3>
-                    <p>
-                        A premier accommodation, previously available by invitation only. Boasts palatial living and dining areas, premium teak furnishings, luxurious marble bathrooms, custom organic espresso capsules, and dedicated personal guest butler assistance at your disposal.
-                    </p>
-                    <div className="facility-highlights" style={{'marginBottom': '2rem'}}>
-                        <div className="facility-highlight-item">
-                            <span className="facility-hl-title">560-650 Square Feet</span>
-                            <span className="facility-hl-desc">Invitation-class luxury spacing</span>
-                        </div>
-                        <div className="facility-highlight-item">
-                            <span className="facility-hl-title">Premium Butler</span>
-                            <span className="facility-hl-desc">Personal guest managers</span>
-                        </div>
-                    </div>
-                    <a href="#quick-booking-anchor" className="btn btn-primary">Book Luxury Suite</a>
-                </div>
-                <div className="facility-img-wrap glass-panel">
-                    <img src="/assets/images/suit 01.png" alt="Diana Heights Luxury Suite" className="facility-img" />
-                </div>
-            </div>
-
-            {/* 5. Presidential Suite Details */}
-            <div className="facility-panel animate-fade-in">
-                <div className="facility-img-wrap glass-panel">
-                    <img src="/assets/images/P suite 01.png" alt="Diana Heights Presidential Suite" className="facility-img" />
-                </div>
-                <div className="facility-desc">
-                    <span className="facility-tag">The Symmetrical Majesty &bull; From ₹12,000 / Night</span>
-                    <h3>Presidential Suite</h3>
-                    <p>
-                        The hotel's absolute crowning achievement. Showcases an oversized grand living room or an expansive office table suite, dinner seating for six, service pantry, large private balconies, premium teak wood interiors, and VIP airport fast passes.
-                    </p>
-                    <div className="facility-highlights" style={{'marginBottom': '2rem'}}>
-                        <div className="facility-highlight-item">
-                            <span className="facility-hl-title">750 Square Feet</span>
-                            <span className="facility-hl-desc">Expansive private layout</span>
-                        </div>
-                        <div className="facility-highlight-item">
-                            <span className="facility-hl-title">Pantry & Six Diner Set</span>
-                            <span className="facility-hl-desc">Perfect for hosting events</span>
-                        </div>
-                    </div>
-                    <a href="#quick-booking-anchor" className="btn btn-primary">Book Presidential Suite</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {/* ==========================================================================
-       GLOBAL PREMIUM FOOTER
-       ========================================================================== */}
+            </section>
         </main>
     );
 }
