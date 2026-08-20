@@ -35,10 +35,11 @@ export default function EventsPage() {
                                 pax: venue.slug === 'runway-hall' ? 150 : 20
                             });
 
+                            const delayClass = `delay-${(index % 2) + 1}`;
                             return (
                                 <div
                                     key={venue.slug}
-                                    className="grid-venue-card"
+                                    className={`grid-venue-card reveal reveal-up ${delayClass}`}
                                     style={{
                                         backgroundColor: 'var(--surface-pure)',
                                         border: '1px solid var(--line-light)',

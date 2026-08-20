@@ -1,39 +1,46 @@
 "use client";
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function ScrollObserver() {
+    const pathname = usePathname();
+
     useEffect(() => {
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
+            threshold: 0.08,
+            rootMargin: "0px 0px -40px 0px"
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('is-revealed');
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
         const observeElements = () => {
-            const elements = document.querySelectorAll('.animate-fade-in:not(.visible), .animate-slide-up:not(.visible), .timeline-item:not(.visible)');
+            const elements = document.querySelectorAll(
+                '.reveal:not(.is-revealed), .reveal-up:not(.is-revealed), .reveal-fade:not(.is-revealed), .reveal-scale:not(.is-revealed), .reveal-stagger:not(.is-revealed)'
+            );
             elements.forEach(el => observer.observe(el));
         };
 
-        // Run initially
+        // Run immediately and slightly delayed for dynamic content
         observeElements();
-        
-        // Watch for React routing changes that inject new DOM nodes
+        const timeout = setTimeout(observeElements, 150);
+
+        // Mutation observer to handle client route changes
         const mutationObserver = new MutationObserver(observeElements);
         mutationObserver.observe(document.body, { childList: true, subtree: true });
 
         return () => {
+            clearTimeout(timeout);
             observer.disconnect();
             mutationObserver.disconnect();
         };
-    }, []);
+    }, [pathname]);
 
     return null;
 }

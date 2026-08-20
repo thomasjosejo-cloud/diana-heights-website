@@ -79,10 +79,13 @@ export default function GalleryPage() {
             <section style={{ padding: '2rem 0 6rem' }}>
                 <div className="container">
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: '1.25rem' }}>
-                        {filteredItems.map((item, index) => (
+                        {filteredItems.map((item, index) => {
+                            const delayClass = `delay-${(index % 4) + 1}`;
+                            return (
                             <div
                                 key={index}
                                 onClick={() => setActiveImage(item)}
+                                className={`reveal reveal-scale ${delayClass}`}
                                 style={{
                                     height: '260px',
                                     position: 'relative',
@@ -117,7 +120,8 @@ export default function GalleryPage() {
                                     {item.title}
                                 </div>
                             </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </section>

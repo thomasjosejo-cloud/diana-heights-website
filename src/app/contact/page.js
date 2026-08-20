@@ -35,7 +35,7 @@ export default function ContactPage() {
                 <div className="container">
                     <div className="grid-2-col-content">
                         {/* Left: Contact Info & Channels */}
-                        <div>
+                        <div className="reveal reveal-left">
                             <span className="eyebrow">HOTEL LOCATION & HOTLINES</span>
                             <h2 className="font-serif" style={{ fontSize: '2.3rem', marginBottom: '1.25rem', color: 'var(--sapphire-950)' }}>
                                 Reach out directly to our team.
@@ -102,7 +102,7 @@ export default function ContactPage() {
                         </div>
 
                         {/* Right: Instant WhatsApp Message Form */}
-                        <div>
+                        <div className="reveal reveal-right delay-1">
                             <div style={{ backgroundColor: 'var(--surface-pure)', border: '1px solid var(--line-light)', borderRadius: 'var(--radius-lg)', padding: '2.5rem', boxShadow: 'var(--shadow-sm)' }}>
                                 <span className="eyebrow">FAST RESPONSE</span>
                                 <h3 className="font-serif" style={{ fontSize: '1.85rem', marginBottom: '1.25rem', color: 'var(--sapphire-950)' }}>

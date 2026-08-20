@@ -77,7 +77,7 @@ export default async function RoomDetailPage({ params }) {
                 <div className="container">
                     <div className="grid-2-col-content" style={{ gridTemplateColumns: '1.2fr 0.8fr' }}>
                         {/* Left: Overview, Features, Gallery */}
-                        <div>
+                        <div className="reveal reveal-left">
                             <span className="eyebrow">ROOM SPECIFICATIONS</span>
                             <h2 className="font-serif" style={{ fontSize: '2.1rem', marginBottom: '1.35rem', color: 'var(--sapphire-950)' }}>
                                 Generous space. Complete comfort.
@@ -160,7 +160,7 @@ export default async function RoomDetailPage({ params }) {
                         </div>
 
                         {/* Right: Direct Reservation Card */}
-                        <div style={{ position: 'sticky', top: '105px' }}>
+                        <div className="reveal reveal-right delay-1" style={{ position: 'sticky', top: '105px' }}>
                             <div style={{ backgroundColor: 'var(--surface-pure)', border: '1px solid var(--line-light)', borderRadius: 'var(--radius-lg)', padding: '2.25rem', boxShadow: 'var(--shadow-sm)' }}>
                                 <span className="eyebrow">DIRECT RESERVATION</span>
                                 <h3 className="font-serif" style={{ fontSize: '1.75rem', marginBottom: '0.45rem', color: 'var(--sapphire-950)' }}>

@@ -27,9 +27,12 @@ export default function FacilitiesPage() {
             <section style={{ padding: 'var(--section-y) 0' }}>
                 <div className="container">
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2rem' }}>
-                        {facilitiesList.map((facility) => (
+                        {facilitiesList.map((facility, index) => {
+                            const delayClass = `delay-${(index % 3) + 1}`;
+                            return (
                             <div
                                 key={facility.id}
+                                className={`reveal reveal-up ${delayClass}`}
                                 style={{
                                     backgroundColor: 'var(--surface-pure)',
                                     border: '1px solid var(--line-light)',
@@ -79,7 +82,8 @@ export default function FacilitiesPage() {
                                     </div>
                                 </div>
                             </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </section>
