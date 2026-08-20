@@ -62,7 +62,7 @@ export default function HomePage() {
                 <div className="container">
                     <div className="hero-grid">
                         {/* Hero Left: Headline & Factual 4-Star Positioning */}
-                        <div>
+                        <div className="animate-fade-up">
                             <div className="status-pill" style={{ marginBottom: '1.25rem' }}>
                                 <span className="status-dot"></span>
                                 <span>Near Cochin Airport (CIAL) · 5.5 km along NH-47</span>
@@ -94,7 +94,7 @@ export default function HomePage() {
                         </div>
 
                         {/* Hero Right: Frosted Midnight Quick-Booking Dock */}
-                        <div>
+                        <div className="animate-fade-up animate-delay-1">
                             <div className="quick-book-card">
                                 <div style={{ borderBottom: '1px solid var(--line-sapphire)', paddingBottom: '0.85rem', marginBottom: '1.25rem' }}>
                                     <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--gold-light)', fontWeight: '600' }}>
@@ -224,14 +224,14 @@ export default function HomePage() {
             </section>
 
             {/* ==========================================================================
-               3. ABOUT — "THE MONUMENT"
+               3. ABOUT — "THE MONUMENT" (UNCROPPED 5 MINUTE MONUMENT)
                ========================================================================== */}
             <section className="section-monument">
                 <div className="container">
                     <div className="monument-grid">
                         <div className="monument-anchor">
                             <div className="monument-number">5 min.</div>
-                            <div style={{ fontSize: '0.8rem', fontWeight: '700', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
+                            <div style={{ fontSize: '0.8rem', fontWeight: '700', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
                                 FROM COCHIN INTERNATIONAL AIRPORT
                             </div>
                         </div>
@@ -252,7 +252,7 @@ export default function HomePage() {
                                 </div>
                                 <div className="monument-stat-cell">
                                     <div className="monument-stat-num">2</div>
-                                    <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>Restaurants (Flavours & Aero)</div>
+                                    <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>Restaurants</div>
                                 </div>
                                 <div className="monument-stat-cell">
                                     <div className="monument-stat-num">1</div>
@@ -260,7 +260,7 @@ export default function HomePage() {
                                 </div>
                                 <div className="monument-stat-cell">
                                     <div className="monument-stat-num">150</div>
-                                    <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>Pax Event Capacity</div>
+                                    <div style={{ fontSize: '0.725rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>Pax Capacity</div>
                                 </div>
                             </div>
                         </div>
@@ -269,11 +269,11 @@ export default function HomePage() {
             </section>
 
             {/* ==========================================================================
-               4. ROOMS — "FILM FRAMES" (4 ROOMS, 1 ADDRESS)
+               4. ROOMS — REFINED HARMONIOUS GRID (EQUAL HEIGHT, CLEAN SCRIM)
                ========================================================================== */}
             <section className="section-rooms">
                 <div className="container">
-                    <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}>
+                    <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 1.5rem' }}>
                         <span className="eyebrow">ACCOMMODATIONS</span>
                         <h2 className="section-title" style={{ color: 'var(--sapphire-950)' }}>
                             Four room categories. One address.
@@ -282,7 +282,6 @@ export default function HomePage() {
 
                     <div className="rooms-grid">
                         {roomsData.map((room) => {
-                            const isPres = room.slug === 'presidential-suite';
                             const whatsappRoomLink = buildWhatsAppLink({
                                 type: 'room',
                                 roomName: room.name
@@ -291,7 +290,7 @@ export default function HomePage() {
                             return (
                                 <div
                                     key={room.slug}
-                                    className={`room-card-sapphire ${isPres ? 'featured' : ''}`}
+                                    className="room-card-sapphire"
                                 >
                                     <div
                                         className="room-card-bg"
@@ -301,28 +300,31 @@ export default function HomePage() {
 
                                     <div className="room-card-content">
                                         <div className="room-card-rule" />
-                                        <div style={{ display: 'flex', gap: '0.65rem', fontSize: '0.725rem', color: 'var(--gold-light)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.45rem', fontWeight: '600' }}>
+                                        <div className="room-card-badge">
                                             <span>{room.areaSqFt}</span>
                                             <span>&bull;</span>
                                             <span>{room.sleeps}</span>
                                         </div>
-                                        <h3 className="font-serif" style={{ fontSize: '1.65rem', color: '#ffffff', marginBottom: '0.5rem' }}>{room.name}</h3>
-                                        <p style={{ fontSize: '0.825rem', color: '#CBD5E1', lineHeight: '1.5', marginBottom: '1.25rem', fontWeight: '300' }}>
+                                        <h3 className="font-serif" style={{ fontSize: '1.5rem', color: '#ffffff', marginBottom: '0.45rem', lineHeight: '1.2' }}>
+                                            {room.name}
+                                        </h3>
+                                        <p style={{ fontSize: '0.825rem', color: '#CBD5E1', lineHeight: '1.45', marginBottom: '1.15rem', fontWeight: '300', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                                             {room.description}
                                         </p>
 
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: '0.85rem' }}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.14)', paddingTop: '0.75rem' }}>
                                             <a
                                                 href={whatsappRoomLink}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="link-gold"
+                                                style={{ fontSize: '0.78rem' }}
                                             >
-                                                Reserve on WhatsApp <i className="fa-solid fa-arrow-right"></i>
+                                                WhatsApp <i className="fa-solid fa-arrow-right"></i>
                                             </a>
                                             <Link
                                                 href={`/rooms/${room.slug}`}
-                                                style={{ fontSize: '0.725rem', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', letterSpacing: '0.08em' }}
+                                                style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.75)', textTransform: 'uppercase', letterSpacing: '0.08em' }}
                                             >
                                                 Details &rarr;
                                             </Link>
@@ -504,7 +506,7 @@ export default function HomePage() {
             </section>
 
             {/* ==========================================================================
-               7. EVENTS — "ONE NUMBER, ONE IMAGE" (150 PAX)
+               7. EVENTS — "ONE NUMBER, ONE IMAGE" (UNCROPPED 150 PAX LOCKUP)
                ========================================================================== */}
             <section style={{ backgroundColor: 'var(--surface-pure)', borderTop: '1px solid var(--line-light)', borderBottom: '1px solid var(--line-light)', padding: 'var(--section-y) 0' }}>
                 <div className="container">
@@ -519,9 +521,13 @@ export default function HomePage() {
 
                         <div>
                             <span className="eyebrow">BANQUETS & CONFERENCES</span>
-                            <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.85rem', marginBottom: '1.15rem' }}>
-                                <span className="font-serif text-gold-gradient" style={{ fontSize: 'clamp(4.2rem, 7.5vw, 6.5rem)', lineHeight: '0.9' }}>150</span>
-                                <span className="font-serif" style={{ fontSize: '1.45rem', color: 'var(--sapphire-950)', fontStyle: 'italic' }}>guests. Every configuration.</span>
+                            <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.85rem', marginBottom: '1rem' }}>
+                                <span className="font-serif text-gold-gradient" style={{ fontSize: 'clamp(4.2rem, 7.5vw, 6.5rem)', lineHeight: '1.15', display: 'inline-block', paddingTop: '0.15em' }}>
+                                    150
+                                </span>
+                                <span className="font-serif" style={{ fontSize: '1.45rem', color: 'var(--sapphire-950)', fontStyle: 'italic' }}>
+                                    guests. Every configuration.
+                                </span>
                             </div>
                             <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: '1.7', marginBottom: '1.75rem' }}>
                                 Looking for a splendid get together? Runway Hall accommodates events for up to 150 people with acoustic sound and custom catering. The Business Lounge provides an executive boardroom setting for 20 guests with natural decor and attractive lighting.

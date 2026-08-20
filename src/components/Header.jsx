@@ -15,7 +15,7 @@ export default function Header() {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 30) {
+            if (window.scrollY > 20) {
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false);
@@ -31,20 +31,17 @@ export default function Header() {
     return (
         <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
             <div className="container">
-                <div className="header-capsule">
-                    {/* Brand Logo Lockup */}
-                    <Link href="/" className="brand-logo" aria-label="Diana Heights Homepage">
+                <div className="header-container">
+                    {/* Brand Logo - Single clean radiant gold mark */}
+                    <Link href="/" className="brand-logo-wrap" aria-label="Diana Heights Hotel Homepage">
                         <img 
-                            src="/assets/logo/logo.png" 
+                            src="/assets/logo/diana-logo-gold.png" 
                             alt="Diana Heights Hotel" 
                             className="brand-logo-img" 
                         />
-                        <span className="brand-title">
-                            Diana <span>Heights</span>
-                        </span>
                     </Link>
 
-                    {/* Desktop Navigation */}
+                    {/* Desktop Navigation - Clean single-line items */}
                     <nav aria-label="Main Navigation">
                         <ul className="main-nav">
                             <li>
@@ -64,7 +61,7 @@ export default function Header() {
                             </li>
                             <li>
                                 <Link href="/facilities" className={`nav-link ${pathname === '/facilities' ? 'active' : ''}`}>
-                                    Facilities & Spa
+                                    Spa & Pool
                                 </Link>
                             </li>
                             <li>
@@ -86,9 +83,9 @@ export default function Header() {
                     </nav>
 
                     {/* Header Actions */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                        <a href="tel:+919526799179" className="header-phone-badge" title="Call Diana Heights Desk">
-                            <i className="fa-solid fa-phone" style={{ color: 'var(--gold-light)', fontSize: '0.725rem' }}></i>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                        <a href="tel:+919526799179" className="header-phone-badge" title="Call Diana Heights Front Desk">
+                            <i className="fa-solid fa-phone" style={{ color: 'var(--gold-light)', fontSize: '0.7rem' }}></i>
                             <span>{HOTEL_PHONE}</span>
                         </a>
 
@@ -97,7 +94,7 @@ export default function Header() {
                             target="_blank" 
                             rel="noopener noreferrer" 
                             className="btn btn-gold"
-                            style={{ padding: '0.55rem 1.35rem', fontSize: '0.75rem' }}
+                            style={{ padding: '0.55rem 1.25rem', fontSize: '0.75rem' }}
                         >
                             Book Direct
                         </a>
@@ -118,9 +115,17 @@ export default function Header() {
 
             {/* Mobile Drawer Navigation */}
             <div className={`mobile-nav ${isMenuOpen ? 'open' : ''}`}>
+                <div style={{ marginBottom: '2rem' }}>
+                    <img 
+                        src="/assets/logo/diana-logo-gold.png" 
+                        alt="Diana Heights Hotel" 
+                        style={{ height: '40px', width: 'auto' }} 
+                    />
+                </div>
+
                 <ul className="mobile-nav-links">
                     <li><Link href="/">Home</Link></li>
-                    <li><Link href="/rooms">Rooms & Suites (4 Types)</Link></li>
+                    <li><Link href="/rooms">Rooms & Suites</Link></li>
                     <li><Link href="/dining">Dining (Flavours & Aero Cafe)</Link></li>
                     <li><Link href="/facilities">Diana Ira Spa & Pool</Link></li>
                     <li><Link href="/events">Runway Hall (150 Pax)</Link></li>
@@ -130,10 +135,10 @@ export default function Header() {
 
                 <div className="mobile-nav-footer">
                     <div style={{ marginBottom: '1.25rem', fontSize: '0.85rem', color: '#94A3B8' }}>
-                        <div style={{ textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.7rem', color: 'var(--gold-light)', marginBottom: '0.25rem' }}>
-                            24-Hour Desk · 5.5 km from CIAL
+                        <div style={{ textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.675rem', color: 'var(--gold-light)', marginBottom: '0.2rem' }}>
+                            24-Hour Front Desk · 5.5 km from CIAL
                         </div>
-                        <a href="tel:+919526799179" style={{ color: '#ffffff', fontWeight: '600', fontSize: '1.05rem' }}>
+                        <a href="tel:+919526799179" style={{ color: '#ffffff', fontWeight: '600', fontSize: '1rem' }}>
                             +91 952 679 9179
                         </a>
                     </div>

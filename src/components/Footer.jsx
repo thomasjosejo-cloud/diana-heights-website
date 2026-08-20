@@ -8,8 +8,12 @@ export default function Footer() {
                 <div className="footer-grid">
                     {/* Brand Column */}
                     <div>
-                        <div className="footer-brand-title">
-                            Diana <span>Heights</span>
+                        <div style={{ marginBottom: '1.25rem' }}>
+                            <img 
+                                src="/assets/logo/diana-logo-gold.png" 
+                                alt="Diana Heights Hotel" 
+                                style={{ height: '42px', width: 'auto' }} 
+                            />
                         </div>
                         <p className="footer-brand-desc">
                             4-star rated business class hotel, located just ten minutes from Cochin International Airport (CIAL). Complete business accommodation, Flavours multi-cuisine restaurant, Diana Ira Spa, and banquet facilities.
