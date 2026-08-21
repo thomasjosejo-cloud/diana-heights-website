@@ -70,6 +70,12 @@ html {
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--surface-light);
     color: var(--text-primary);
+    /* Clip horizontal overflow at the document level. body{overflow-x:hidden}
+       alone does NOT clip position:fixed descendants (header, sticky CTA bar,
+       booking sheet), so any full-width fixed element that resolves to the
+       scrollbar-inclusive width would give <html> a phantom horizontal scroll
+       — shifting the page left and exposing a light strip on the right. */
+    overflow-x: hidden;
 }
 
 body {
@@ -78,6 +84,8 @@ body {
     font-family: var(--font-sans);
     line-height: 1.65;
     overflow-x: hidden;
+    position: relative;
+    width: 100%;
 }
 
 ::selection {
