@@ -601,7 +601,7 @@ header.site-header.scrolled {
 .mobile-nav {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: 100%;
     max-width: 340px;
     height: 100vh;
@@ -612,13 +612,17 @@ header.site-header.scrolled {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: right 0.35s var(--ease-out);
+    /* Closed drawer is pushed off-canvas with a transform (not right:-100%), so
+       its layout box stays anchored at right:0 and it never widens the document
+       or creates horizontal scroll on mobile. */
+    transform: translateX(100%);
+    transition: transform 0.35s var(--ease-out);
     box-shadow: -10px 0 35px rgba(0, 0, 0, 0.6);
     border-left: 1px solid var(--line-sapphire);
 }
 
 .mobile-nav.open {
-    right: 0;
+    transform: translateX(0);
 }
 
 .mobile-nav-links {
