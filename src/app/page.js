@@ -25,7 +25,7 @@ export default function HomePage() {
     const [mounted, setMounted] = useState(false);
     const [showStickyBar, setShowStickyBar] = useState(false);
     const [sheetOpen, setSheetOpen] = useState(false);
-    const heroRef = useRef(null);
+    const heroCtaRef = useRef(null);
 
     // Ken Burns background carousel rotation
     useEffect(() => {
@@ -40,15 +40,18 @@ export default function HomePage() {
         setMounted(true);
     }, []);
 
-    // Reveal the sticky CTA bar only once the hero has scrolled out of view
+    // Reveal the sticky CTA bar as soon as the hero's button group scrolls out of
+    // view (~one screen down), not after the whole hero section. The negative top
+    // rootMargin fires it just as the buttons leave, so there is no gap where
+    // neither gold CTA is visible.
     useEffect(() => {
-        const heroEl = heroRef.current;
-        if (!heroEl || typeof IntersectionObserver === 'undefined') return;
+        const ctaEl = heroCtaRef.current;
+        if (!ctaEl || typeof IntersectionObserver === 'undefined') return;
         const observer = new IntersectionObserver(
             ([entry]) => setShowStickyBar(!entry.isIntersecting),
-            { threshold: 0 }
+            { threshold: 0, rootMargin: '-64px 0px 0px 0px' }
         );
-        observer.observe(heroEl);
+        observer.observe(ctaEl);
         return () => observer.disconnect();
     }, []);
 
@@ -82,7 +85,7 @@ export default function HomePage() {
             {/* ==========================================================================
                1. HERO SECTION (GRAND EDITORIAL + DOCKED RESERVATION BAR)
                ========================================================================== */}
-            <section className="hero-sapphire" ref={heroRef}>
+            <section className="hero-sapphire">
                 <div className="hero-ken-burns">
                     {heroSlides.map((slide, index) => (
                         <div
@@ -109,10 +112,10 @@ export default function HomePage() {
                         </h1>
 
                         <p className="hero-subtext">
-                            43 well-appointed rooms, Flavours multi-cuisine restaurant, Aero Cafe, Diana Ira Spa, and a tranquil outdoor pool — positioned right at Athani Junction.
+                            43 rooms. Two restaurants, a spa, and an outdoor pool — ten minutes from Cochin International Airport.
                         </p>
 
-                        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <div ref={heroCtaRef} style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                             <a
                                 href={buildWhatsAppLink({ type: 'booking' })}
                                 target="_blank"
@@ -220,17 +223,17 @@ export default function HomePage() {
                             <i className="fa-solid fa-star" style={{ color: 'var(--gold-light)' }}></i>
                             <span><strong>4.3★</strong> Google Rating</span>
                         </div>
-                        <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gold)', opacity: 0.6 }}></div>
+                        <div className="trust-dot" style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gold)', opacity: 0.6 }}></div>
                         <div className="trust-item">
                             <i className="fa-solid fa-comment-dots" style={{ color: 'var(--gold-light)' }}></i>
                             <span><strong>4,700+</strong> Verified Reviews</span>
                         </div>
-                        <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gold)', opacity: 0.6 }}></div>
+                        <div className="trust-dot" style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gold)', opacity: 0.6 }}></div>
                         <div className="trust-item">
                             <i className="fa-solid fa-plane-departure" style={{ color: 'var(--gold-light)' }}></i>
                             <span><strong>5.5 km (10 min)</strong> To Cochin Airport</span>
                         </div>
-                        <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gold)', opacity: 0.6 }}></div>
+                        <div className="trust-dot" style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gold)', opacity: 0.6 }}></div>
                         <div className="trust-item">
                             <i className="fa-solid fa-tag" style={{ color: 'var(--gold-light)' }}></i>
                             <span><strong>Direct Rates</strong> — Zero OTA Fees</span>
