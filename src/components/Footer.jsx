@@ -63,7 +63,7 @@ export default function Footer() {
                                 <a href="tel:+919526799179" style={{ color: '#ffffff', fontWeight: '600', display: 'block' }}>
                                     +91 952 679 9179
                                 </a>
-                                <span style={{ fontSize: '0.75rem', color: '#64748B' }}>Landline: 0484 261 0366</span>
+                                <span style={{ fontSize: '0.75rem', color: '#7C8794' }}>Landline: 0484 261 0366</span>
                             </div>
                         </div>
                         <div className="footer-contact-item">

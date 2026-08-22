@@ -22,6 +22,7 @@
     --gold: #C99B4A;
     --gold-light: #DFB56C;
     --gold-deep: #9E742D;
+    --gold-on-light: #8A6420; /* AA-contrast gold for small text on light backgrounds (>=4.5:1 on white) */
     --gold-tint: #F7EEDB;
     --gold-glow: rgba(201, 155, 74, 0.28);
     --gold-gradient: linear-gradient(135deg, #DFB56C 0%, #C99B4A 50%, #9E742D 100%);
@@ -296,7 +297,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--gold-on-light);
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -308,7 +309,7 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-block;
     width: 16px;
     height: 2px;
-    background-color: var(--gold);
+    background-color: var(--gold-on-light);
 }
 
 .eyebrow-dark {
@@ -422,6 +423,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .link-gold:hover i {
     transform: translateX(4px);
+}
+
+/* Gold links sitting on light (white) card backgrounds need the darker,
+   AA-contrast gold instead of the bright brand gold used on dark surfaces. */
+.diptych-card-sapphire .link-gold {
+    color: var(--gold-on-light);
+}
+
+.diptych-card-sapphire .link-gold:hover {
+    color: #6E501A;
 }
 
 /* Status Pill */
@@ -580,9 +591,14 @@ header.site-header.scrolled {
 .hamburger {
     display: none;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 5px;
     cursor: pointer;
-    padding: 6px;
+    padding: 11px;
+    min-width: 44px;
+    min-height: 44px;
+    box-sizing: border-box;
     z-index: 105;
 }
 
@@ -984,6 +1000,7 @@ header.site-header.scrolled {
     .mobile-cta-btn {
         width: 100%;
         justify-content: center;
+        min-height: 48px;
     }
 
     /* Reserve space so the fixed bar never permanently covers the closing CTA */
@@ -1439,6 +1456,8 @@ footer.site-footer {
 .footer-nav-list a {
     font-size: 0.85rem;
     color: #94A3B8;
+    display: inline-block;
+    padding: 5px 0;
 }
 
 .footer-nav-list a:hover {
@@ -1464,7 +1483,7 @@ footer.site-footer {
     flex-wrap: wrap;
     gap: 1rem;
     font-size: 0.75rem;
-    color: #64748B;
+    color: #7C8794; /* AA-contrast muted on the dark footer (>=4.5:1) */
 }
 
 /* ==========================================================================
@@ -1681,6 +1700,26 @@ footer.site-footer {
 
     .room-card-sapphire {
         height: 420px;
+    }
+
+    /* Enlarge the room-card footer links (WhatsApp / Details) to a comfortable
+       touch target without changing their visual position. */
+    .room-card-content a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+    }
+
+    /* Comfortable touch targets for standalone text links (dining CTAs,
+       footer contact + drawer phone/email). */
+    .link-gold {
+        min-height: 32px;
+    }
+
+    .footer-contact-item a,
+    .mobile-nav-footer a[href^="tel"] {
+        display: inline-block;
+        padding: 4px 0;
     }
 
     /* Facilities */

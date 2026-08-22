@@ -476,10 +476,10 @@ export default function HomePage() {
                             </div>
                             <div style={{ padding: 'clamp(1.5rem, 4vw, 2.25rem)', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                 <div>
-                                    <div style={{ fontSize: '0.725rem', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '0.45rem' }}>
+                                    <div style={{ fontSize: '0.725rem', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold-on-light)', marginBottom: '0.45rem' }}>
                                         MULTI-CUISINE & BUFFET (7:30 AM – 10:00 PM)
                                     </div>
-                                    <h3 className="font-serif" style={{ fontSize: '1.85rem', marginBottom: '0.65rem', color: 'var(--sapphire-950)' }}>
+                                    <h3 className="font-serif" style={{ fontSize: 'clamp(1.35rem, 5vw, 1.85rem)', marginBottom: '0.65rem', color: 'var(--sapphire-950)' }}>
                                         Flavours : Multi Cuisine
                                     </h3>
                                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: '1.65', marginBottom: '1.35rem' }}>
@@ -505,10 +505,10 @@ export default function HomePage() {
                             </div>
                             <div style={{ padding: 'clamp(1.5rem, 4vw, 2.25rem)', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                 <div>
-                                    <div style={{ fontSize: '0.725rem', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '0.45rem' }}>
+                                    <div style={{ fontSize: '0.725rem', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold-on-light)', marginBottom: '0.45rem' }}>
                                         SPECIALITY DINING (11:00 AM – 11:00 PM)
                                     </div>
-                                    <h3 className="font-serif" style={{ fontSize: '1.85rem', marginBottom: '0.65rem', color: 'var(--sapphire-950)' }}>
+                                    <h3 className="font-serif" style={{ fontSize: 'clamp(1.35rem, 5vw, 1.85rem)', marginBottom: '0.65rem', color: 'var(--sapphire-950)' }}>
                                         Aero Cafe : Speciality Restaurant
                                     </h3>
                                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: '1.65', marginBottom: '1.35rem' }}>
@@ -586,7 +586,7 @@ export default function HomePage() {
                         Rahul Menon &bull; Verified Google Review
                     </div>
 
-                    <div style={{ marginTop: '2.5rem', paddingTop: '1.75rem', borderTop: '1px solid var(--line-light)', fontSize: '0.825rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
+                    <div style={{ marginTop: '2.5rem', paddingTop: '1.75rem', borderTop: '1px solid var(--line-light)', fontSize: '0.825rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#5C6979' }}>
                         <strong>4.3★ on Google</strong> &bull; 4,700+ verified reviews &bull; Near Cochin International Airport
                     </div>
                 </div>
