@@ -989,8 +989,19 @@ header.site-header.scrolled {
     color: var(--gold-light);
 }
 
+/* Trust-strip marquee loop (mobile). Two identical chip sets → -50% is seamless. */
+@keyframes trust-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .fab { transition: none; }
+    /* No auto-scroll: fall back to a manually swipeable chip row, single set. */
+    .trust-strip-inner { animation: none; }
+    .trust-strip,
+    .trust-strip .container { overflow-x: auto; }
+    .trust-dup { display: none; }
 }
 
 /* ==========================================================================
@@ -1025,6 +1036,11 @@ header.site-header.scrolled {
 .trust-item strong {
     color: #ffffff;
     font-weight: 700;
+}
+
+/* Duplicate marquee set is hidden by default (desktop); shown only on mobile. */
+.trust-dup {
+    display: none;
 }
 
 /* ==========================================================================
@@ -1510,10 +1526,13 @@ footer.site-footer {
         padding: 0.65rem 0;
     }
 
-    /* Hero — tightened spacing now that the inline widget is hidden on mobile */
+    /* Hero fills the first screen; the trust-strip marquee (64px) sits directly
+       below it so hero + strip == one full viewport, and the About section
+       starts on the second screen (mirrors the desktop flow). */
     .hero-sapphire {
-        min-height: auto;
-        padding: 6rem 0 2.75rem;
+        min-height: calc(100vh - 64px);
+        min-height: calc(100dvh - 64px);
+        padding: 5.5rem 0 1.5rem;
     }
 
     .hero-content-center {
@@ -1533,10 +1552,6 @@ footer.site-footer {
     /* Shorter subtext on mobile (headline already says "ten minutes") */
     .hero-subtext-full { display: none; }
     .hero-subtext-short { display: block; }
-
-    /* Hero WhatsApp button removed on mobile — redundant with the header
-       "Book Direct" and the floating WhatsApp button. */
-    .hero-btn-whatsapp { display: none; }
 
     /* Let the Ken Burns photo read through: much lighter overlay, slightly
        darker at the bottom edge where it meets the trust strip. Text stays
@@ -1568,32 +1583,36 @@ footer.site-footer {
         grid-template-columns: 1fr;
     }
 
-    /* Trust Strip — compact horizontal chip row (scrollable), no orphan dots */
+    /* Trust Strip — auto-scrolling chip marquee, fixed 64px band at the bottom
+       of the first screen. Two identical chip sets animate translateX(-50%)
+       for a seamless loop. */
     .trust-strip {
-        padding: 0.85rem 0;
+        height: 64px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
     }
 
     .trust-strip .container {
-        padding-right: 0;
+        padding: 0;
+        width: 100%;
+        overflow: hidden;
     }
 
     .trust-strip-inner {
         flex-direction: row;
         flex-wrap: nowrap;
-        align-items: stretch;
-        gap: 0.5rem;
-        overflow-x: auto;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-        padding-right: 1.25rem;
-    }
-
-    .trust-strip-inner::-webkit-scrollbar {
-        display: none;
+        justify-content: flex-start;
+        align-items: center;
+        width: max-content;
+        gap: 0;
+        animation: trust-marquee 28s linear infinite;
     }
 
     .trust-item {
         flex: 0 0 auto;
+        margin-right: 0.6rem;
         gap: 0.45rem;
         font-size: 0.78rem;
         padding: 0.5rem 0.85rem;
@@ -1601,6 +1620,10 @@ footer.site-footer {
         border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 999px;
         white-space: nowrap;
+    }
+
+    .trust-dup {
+        display: inline-flex;
     }
 
     .trust-dot {

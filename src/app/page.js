@@ -1,6 +1,6 @@
 "use client";
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { buildWhatsAppLink, HOTEL_PHONE } from '@/lib/whatsapp';
 import { roomsData } from '@/content/rooms';
 
@@ -10,6 +10,13 @@ const heroSlides = [
     '/assets/images/P suite 02.png',
     '/assets/images/lobby.png',
     '/assets/images/dining 01.png'
+];
+
+const trustSignals = [
+    { icon: 'fa-solid fa-star', strong: '4.3★', rest: 'Google Rating' },
+    { icon: 'fa-solid fa-comment-dots', strong: '4,700+', rest: 'Verified Reviews' },
+    { icon: 'fa-solid fa-plane-departure', strong: '5.5 km (10 min)', rest: 'To Cochin Airport' },
+    { icon: 'fa-solid fa-tag', strong: 'Direct Rates', rest: '— Zero OTA Fees' },
 ];
 
 export default function HomePage() {
@@ -81,14 +88,6 @@ export default function HomePage() {
                         </p>
 
                         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                            <a
-                                href={buildWhatsAppLink({ type: 'booking' })}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn btn-gold hero-btn-whatsapp"
-                            >
-                                <i className="fa-brands fa-whatsapp"></i> Book Direct on WhatsApp
-                            </a>
                             <Link href="/rooms" className="btn btn-outline-light">
                                 Explore 4 Room Categories &rarr;
                             </Link>
@@ -170,7 +169,7 @@ export default function HomePage() {
                             {/* 5. Submit CTA Button */}
                             <div>
                                 <button type="submit" className="btn btn-gold reservation-btn">
-                                    Check Rates &rarr;
+                                    <i className="fa-brands fa-whatsapp"></i> Check Rates on WhatsApp
                                 </button>
                             </div>
                         </form>
@@ -184,25 +183,25 @@ export default function HomePage() {
             <section className="trust-strip reveal reveal-fade">
                 <div className="container">
                     <div className="trust-strip-inner">
-                        <div className="trust-item">
-                            <i className="fa-solid fa-star" style={{ color: 'var(--gold-light)' }}></i>
-                            <span><strong>4.3★</strong> Google Rating</span>
-                        </div>
-                        <div className="trust-dot" style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gold)', opacity: 0.6 }}></div>
-                        <div className="trust-item">
-                            <i className="fa-solid fa-comment-dots" style={{ color: 'var(--gold-light)' }}></i>
-                            <span><strong>4,700+</strong> Verified Reviews</span>
-                        </div>
-                        <div className="trust-dot" style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gold)', opacity: 0.6 }}></div>
-                        <div className="trust-item">
-                            <i className="fa-solid fa-plane-departure" style={{ color: 'var(--gold-light)' }}></i>
-                            <span><strong>5.5 km (10 min)</strong> To Cochin Airport</span>
-                        </div>
-                        <div className="trust-dot" style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gold)', opacity: 0.6 }}></div>
-                        <div className="trust-item">
-                            <i className="fa-solid fa-tag" style={{ color: 'var(--gold-light)' }}></i>
-                            <span><strong>Direct Rates</strong> — Zero OTA Fees</span>
-                        </div>
+                        {/* Primary set — static row on desktop, first half of the marquee on mobile */}
+                        {trustSignals.map((t, i) => (
+                            <Fragment key={`trust-${i}`}>
+                                <div className="trust-item">
+                                    <i className={t.icon} style={{ color: 'var(--gold-light)' }}></i>
+                                    <span><strong>{t.strong}</strong> {t.rest}</span>
+                                </div>
+                                {i < trustSignals.length - 1 && (
+                                    <div className="trust-dot" style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gold)', opacity: 0.6 }}></div>
+                                )}
+                            </Fragment>
+                        ))}
+                        {/* Duplicate set — hidden on desktop; forms the seamless second half of the mobile marquee */}
+                        {trustSignals.map((t, i) => (
+                            <div className="trust-item trust-dup" aria-hidden="true" key={`trust-dup-${i}`}>
+                                <i className={t.icon} style={{ color: 'var(--gold-light)' }}></i>
+                                <span><strong>{t.strong}</strong> {t.rest}</span>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
