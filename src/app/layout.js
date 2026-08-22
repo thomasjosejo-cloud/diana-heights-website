@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ScrollObserver from "../components/ScrollObserver";
+import FloatingActions from "../components/FloatingActions";
 
 export const metadata = {
   title: {
@@ -153,6 +154,7 @@ export default function RootLayout({ children }) {
         <Header />
         {children}
         <Footer />
+        <FloatingActions />
       </body>
     </html>
   );

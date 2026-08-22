@@ -1,7 +1,6 @@
 "use client";
 import Link from 'next/link';
-import { useState, useEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
+import { useState, useEffect } from 'react';
 import { buildWhatsAppLink, HOTEL_PHONE } from '@/lib/whatsapp';
 import { roomsData } from '@/content/rooms';
 
@@ -21,12 +20,6 @@ export default function HomePage() {
     const [adults, setAdults] = useState('2');
     const [children, setChildren] = useState('0');
 
-    // Mobile booking-flow state
-    const [mounted, setMounted] = useState(false);
-    const [showStickyBar, setShowStickyBar] = useState(false);
-    const [sheetOpen, setSheetOpen] = useState(false);
-    const heroCtaRef = useRef(null);
-
     // Ken Burns background carousel rotation
     useEffect(() => {
         const timer = setInterval(() => {
@@ -35,37 +28,7 @@ export default function HomePage() {
         return () => clearInterval(timer);
     }, []);
 
-    // Portal SSR guard — only render after mount
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    // Reveal the sticky CTA bar as soon as the hero's button group scrolls out of
-    // view (~one screen down), not after the whole hero section. The negative top
-    // rootMargin fires it just as the buttons leave, so there is no gap where
-    // neither gold CTA is visible.
-    useEffect(() => {
-        const ctaEl = heroCtaRef.current;
-        if (!ctaEl || typeof IntersectionObserver === 'undefined') return;
-        const observer = new IntersectionObserver(
-            ([entry]) => setShowStickyBar(!entry.isIntersecting),
-            { threshold: 0, rootMargin: '-64px 0px 0px 0px' }
-        );
-        observer.observe(ctaEl);
-        return () => observer.disconnect();
-    }, []);
-
-    // Lock body scroll while the sheet is open; always restore on unmount
-    useEffect(() => {
-        if (sheetOpen) {
-            const previous = document.body.style.overflow;
-            document.body.style.overflow = 'hidden';
-            return () => {
-                document.body.style.overflow = previous;
-            };
-        }
-    }, [sheetOpen]);
-
+    // Desktop reservation bar → WhatsApp
     const handleQuickBook = (e) => {
         e.preventDefault();
         const whatsappUrl = buildWhatsAppLink({
@@ -77,7 +40,6 @@ export default function HomePage() {
             children
         });
         window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-        setSheetOpen(false);
     };
 
     return (
@@ -111,16 +73,19 @@ export default function HomePage() {
                             Everything else, <em>taken care of.</em>
                         </h1>
 
-                        <p className="hero-subtext">
+                        <p className="hero-subtext hero-subtext-full">
                             43 rooms. Two restaurants, a spa, and an outdoor pool — ten minutes from Cochin International Airport.
                         </p>
+                        <p className="hero-subtext hero-subtext-short">
+                            43 rooms, two restaurants, a spa &amp; an outdoor pool.
+                        </p>
 
-                        <div ref={heroCtaRef} style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                             <a
                                 href={buildWhatsAppLink({ type: 'booking' })}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn btn-gold"
+                                className="btn btn-gold hero-btn-whatsapp"
                             >
                                 <i className="fa-brands fa-whatsapp"></i> Book Direct on WhatsApp
                             </a>
@@ -622,134 +587,6 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* ==========================================================================
-               MOBILE-ONLY: STICKY CTA BAR (hidden on desktop; appears after hero exits)
-               ========================================================================== */}
-            <div className={`mobile-cta-bar ${showStickyBar ? 'is-visible' : ''}`}>
-                <button
-                    type="button"
-                    className="btn btn-gold mobile-cta-btn"
-                    onClick={() => setSheetOpen(true)}
-                >
-                    Check Availability
-                </button>
-            </div>
-
-            {/* ==========================================================================
-               MOBILE-ONLY: BOOKING SHEET (rendered via portal to escape overflow:hidden)
-               ========================================================================== */}
-            {mounted && createPortal(
-                <div
-                    className={`booking-sheet-root ${sheetOpen ? 'is-open' : ''}`}
-                    aria-hidden={!sheetOpen}
-                >
-                    <div
-                        className="booking-sheet-backdrop"
-                        onClick={() => setSheetOpen(false)}
-                    />
-                    <div
-                        className="booking-sheet"
-                        role="dialog"
-                        aria-modal="true"
-                        aria-label="Check availability"
-                    >
-                        <div className="booking-sheet-header">
-                            <h3 className="booking-sheet-title font-serif">Check Availability</h3>
-                            <button
-                                type="button"
-                                className="booking-sheet-close"
-                                aria-label="Close"
-                                onClick={() => setSheetOpen(false)}
-                            >
-                                <i className="fa-solid fa-xmark"></i>
-                            </button>
-                        </div>
-
-                        <form onSubmit={handleQuickBook} className="booking-sheet-form">
-                            <div className="field-group">
-                                <label className="field-label" htmlFor="sheet-checkin">
-                                    <i className="fa-regular fa-calendar"></i> Check In
-                                </label>
-                                <input
-                                    type="date"
-                                    id="sheet-checkin"
-                                    className="field-input"
-                                    value={checkIn}
-                                    onChange={(e) => setCheckIn(e.target.value)}
-                                />
-                            </div>
-
-                            <div className="field-group">
-                                <label className="field-label" htmlFor="sheet-checkout">
-                                    <i className="fa-regular fa-calendar"></i> Check Out
-                                </label>
-                                <input
-                                    type="date"
-                                    id="sheet-checkout"
-                                    className="field-input"
-                                    value={checkOut}
-                                    onChange={(e) => setCheckOut(e.target.value)}
-                                />
-                            </div>
-
-                            <div className="field-group full-width">
-                                <label className="field-label" htmlFor="sheet-room">
-                                    <i className="fa-solid fa-bed"></i> Room Category
-                                </label>
-                                <select
-                                    id="sheet-room"
-                                    className="field-input"
-                                    value={roomType}
-                                    onChange={(e) => setRoomType(e.target.value)}
-                                >
-                                    <option value="Presidential Suite">Presidential Suite (750 Sq. Ft.)</option>
-                                    <option value="Luxury Suite">Luxury Suite (560–650 Sq. Ft.)</option>
-                                    <option value="Executive Room">Executive Room (300–500 Sq. Ft.)</option>
-                                    <option value="Deluxe Room">Deluxe Room (248 Sq. Ft.)</option>
-                                </select>
-                            </div>
-
-                            <div className="field-group">
-                                <label className="field-label" htmlFor="sheet-adults">
-                                    <i className="fa-solid fa-user"></i> Adults
-                                </label>
-                                <select
-                                    id="sheet-adults"
-                                    className="field-input"
-                                    value={adults}
-                                    onChange={(e) => setAdults(e.target.value)}
-                                >
-                                    <option value="1">1 Adult</option>
-                                    <option value="2">2 Adults</option>
-                                    <option value="3">3 Adults</option>
-                                    <option value="4">4 Adults</option>
-                                </select>
-                            </div>
-
-                            <div className="field-group">
-                                <label className="field-label" htmlFor="sheet-children">
-                                    <i className="fa-solid fa-child"></i> Children
-                                </label>
-                                <select
-                                    id="sheet-children"
-                                    className="field-input"
-                                    value={children}
-                                    onChange={(e) => setChildren(e.target.value)}
-                                >
-                                    <option value="0">0 Children</option>
-                                    <option value="1">1 Child</option>
-                                    <option value="2">2 Children</option>
-                                </select>
-                            </div>
-
-                            <button type="submit" className="btn btn-gold booking-sheet-submit">
-                                Check Rates on WhatsApp &rarr;
-                            </button>
-                        </form>
-                    </div>
-                </div>,
-                document.body
-            )}
         </main>
     );
 }
