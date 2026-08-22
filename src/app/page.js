@@ -1,6 +1,6 @@
 "use client";
 import Link from 'next/link';
-import { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect } from 'react';
 import { buildWhatsAppLink, HOTEL_PHONE } from '@/lib/whatsapp';
 import { roomsData } from '@/content/rooms';
 
@@ -12,11 +12,16 @@ const heroSlides = [
     '/assets/images/dining 01.png'
 ];
 
-const trustSignals = [
+// Single unified "highlights" marquee — trust signals + amenities in one strip.
+const heroHighlights = [
     { icon: 'fa-solid fa-star', strong: '4.3★', rest: 'Google Rating' },
-    { icon: 'fa-solid fa-comment-dots', strong: '4,700+', rest: 'Verified Reviews' },
-    { icon: 'fa-solid fa-plane-departure', strong: '5.5 km (10 min)', rest: 'To Cochin Airport' },
-    { icon: 'fa-solid fa-tag', strong: 'Direct Rates', rest: '— Zero OTA Fees' },
+    { icon: 'fa-solid fa-comment-dots', strong: '4,700+', rest: 'Reviews' },
+    { icon: 'fa-solid fa-plane-departure', strong: '5 min', rest: 'to Cochin Airport' },
+    { icon: 'fa-solid fa-bed', strong: '43', rest: 'Rooms & Suites' },
+    { icon: 'fa-solid fa-utensils', strong: '2', rest: 'Restaurants' },
+    { icon: 'fa-solid fa-spa', strong: 'Diana Ira', rest: 'Spa' },
+    { icon: 'fa-solid fa-water', strong: 'Outdoor', rest: 'Pool' },
+    { icon: 'fa-solid fa-tag', strong: 'Direct Rates', rest: '· Zero OTA Fees' },
 ];
 
 export default function HomePage() {
@@ -31,7 +36,7 @@ export default function HomePage() {
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-        }, 6500);
+        }, 4200);
         return () => clearInterval(timer);
     }, []);
 
@@ -72,20 +77,13 @@ export default function HomePage() {
                     <div className="hero-content-center animate-fade-up">
                         <div className="status-pill" style={{ marginBottom: '1.5rem' }}>
                             <span className="status-dot"></span>
-                            <span>4-Star Business Class · Near Cochin Airport (CIAL) · 5.5 km along NH-47</span>
+                            <span>Premier Business-Class · Cochin Airport</span>
                         </div>
 
                         <h1 className="hero-headline">
-                            Ten minutes from your gate.<br />
+                            Five minutes from your gate.<br />
                             Everything else, <em>taken care of.</em>
                         </h1>
-
-                        <p className="hero-subtext hero-subtext-full">
-                            43 rooms. Two restaurants, a spa, and an outdoor pool — ten minutes from Cochin International Airport.
-                        </p>
-                        <p className="hero-subtext hero-subtext-short">
-                            43 rooms, two restaurants, a spa &amp; an outdoor pool.
-                        </p>
 
                         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                             <Link href="/rooms" className="btn btn-outline-light">
@@ -180,24 +178,18 @@ export default function HomePage() {
             {/* ==========================================================================
                2. TRUST STRIP (MIDNIGHT SAPPHIRE BAND)
                ========================================================================== */}
-            <section className="trust-strip reveal reveal-fade">
-                <div className="container">
+            <section className="trust-strip">
+                <div className="trust-marquee">
                     <div className="trust-strip-inner">
-                        {/* Primary set — static row on desktop, first half of the marquee on mobile */}
-                        {trustSignals.map((t, i) => (
-                            <Fragment key={`trust-${i}`}>
-                                <div className="trust-item">
-                                    <i className={t.icon} style={{ color: 'var(--gold-light)' }}></i>
-                                    <span><strong>{t.strong}</strong> {t.rest}</span>
-                                </div>
-                                {i < trustSignals.length - 1 && (
-                                    <div className="trust-dot" style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--gold)', opacity: 0.6 }}></div>
-                                )}
-                            </Fragment>
+                        {/* Two identical sets → seamless translateX(-50%) loop */}
+                        {heroHighlights.map((t, i) => (
+                            <div className="trust-item" key={`hl-${i}`}>
+                                <i className={t.icon} style={{ color: 'var(--gold-light)' }}></i>
+                                <span><strong>{t.strong}</strong> {t.rest}</span>
+                            </div>
                         ))}
-                        {/* Duplicate set — hidden on desktop; forms the seamless second half of the mobile marquee */}
-                        {trustSignals.map((t, i) => (
-                            <div className="trust-item trust-dup" aria-hidden="true" key={`trust-dup-${i}`}>
+                        {heroHighlights.map((t, i) => (
+                            <div className="trust-item" aria-hidden="true" key={`hl-dup-${i}`}>
                                 <i className={t.icon} style={{ color: 'var(--gold-light)' }}></i>
                                 <span><strong>{t.strong}</strong> {t.rest}</span>
                             </div>
